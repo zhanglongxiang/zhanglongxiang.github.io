@@ -344,96 +344,16 @@
 
       
         
-          
-            <h3 id="Java的工作方式"><a href="#Java的工作方式" class="headerlink" title="Java的工作方式"></a>Java的工作方式</h3><ul>
-<li>1 编写源代码文件。</li>
-<li>2 用编译器编译源代码，编译器会对源文件进行检查，如果有错误就要改正才能产生正确的输出。</li>
-<li>3 编译器会产生字节码文件，任何支持Java的设备都能把字节码文件转译成可执行的内容。</li>
-<li>4 用设备装的Java虚拟机可以读取并且执行字节码文件。</li>
-</ul>
-<p>我们来做一做</p>
-<ul>
-<li>1 进入命令行窗口，先看一下机器有没有安装Java环境。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
-<ul>
-<li>2 用任何一个文本编辑器都可以来写Java源代码文件，比如最原始的windows的记事本。写完代码，把文件保存。注意，文件名必须与class后面的那串字母完全一致（包括大小写），扩展名必须为.java。所以下面这个例子的源代码文件名字为：JavaTest.java。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class JavaTest&#123;</div><div class="line">  public static void main(String[] args)&#123;</div><div class="line">        System.out.println(&quot;Hello World!&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>3 对源代码文件进行编译，产生字节码文件。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac JavaTest.java</div></pre></td></tr></table></figure>
-<ul>
-<li>4 这时看目录中，应该比原来多了一个JavaTest.class文件，这就是字节码文件。</li>
-<li>5 用Java虚拟机执行字节码文件。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java JavaTest</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h3><ul>
+          <h3 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h3><ul>
 <li>Java是一种面向对象程序设计语言，目前版本是1.8。由美国的Sun公司在1995年正式推出，2010年被Oracle公司收购。Java经过20年的发展，目前在全球的移动互联网、云计划、大数据等领域都占有重要的一席之地，发展前景看好。Java编译器、虚拟机的获得可以到Oracle官方网站下载。</li>
 </ul>
-<hr>
-<h3 id="Java的程序结构"><a href="#Java的程序结构" class="headerlink" title="Java的程序结构"></a>Java的程序结构</h3><ul>
-<li>1 源文件：扩展名为.java的文件，里面有类的定义，类是用来表示程序的一个组件。小程序或许只会有一个类，大软件肯定有多个类组成。类的内容必须包在花括号里面。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>2 类：类中带有一个或多个方法。在Dog这个类中，bark方法带有如何“汪汪”的指令。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line">   void bark()&#123;</div><div class="line">   </div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>3 方法：在方法的花括号中编写这个方法应该执行的语句。你可以把方法想象成是一个函数或过程。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line">   void bark()&#123;</div><div class="line">   	  System.out.println(&quot;汪汪&quot;);</div><div class="line">   	   ......</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>经过上面的介绍，大体结构是：首先要有源文件，然后源文件中有类，类中有方法。画一画会看得更清楚。</li>
-</ul>
-<hr>
-<h3 id="一个特殊的方法：main-方法"><a href="#一个特殊的方法：main-方法" class="headerlink" title="一个特殊的方法：main()方法"></a>一个特殊的方法：main()方法</h3><ul>
-<li>当Java虚拟机启动执行时，它会寻找你在命令行所指定的类，然后它会锁定这个类中一个特定的方法:main()方法。</li>
-<li>main()方法就是程序的起点。不管你的程序有多大（也可以说不管有多少个类），一定都会有一个main()来作为程序的起点，而且只有一个。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args)&#123;</div><div class="line">	......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>先简单介绍一下，上面这一行，称作main()方法声明。public是访问修饰符关键字，static也是一个关键字，void关键字表示这个方法没有返回值，main是这个方法的名字，小括号表示这个方法的参数。这些关键字具体起什么作用，我们以后会详细介绍。</li>
-</ul>
-<hr>
-<h3 id="能在main-方法中做什么"><a href="#能在main-方法中做什么" class="headerlink" title="能在main()方法中做什么"></a>能在main()方法中做什么</h3><ul>
-<li>1 做某件事。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int x = 3;</div><div class="line">String name = &quot;Marry&quot;;</div><div class="line">x = x * 10;</div><div class="line">System.out.print(&quot;x is &quot; + x);</div><div class="line">//这是注释行</div></pre></td></tr></table></figure>
-<ul>
-<li>2 反复做某件事。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">while(x &gt; 12)&#123;</div><div class="line">  x = x - 1;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">for(int i = 0; i &lt; 10; i = i + 1)&#123;</div><div class="line">	System.out.println(&quot;i is now &quot; + i);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>3 在适当条件下做某件事。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if(x == 10)&#123;</div><div class="line">  System.out.println(&quot;x is 10&quot;);</div><div class="line">&#125;else&#123;</div><div class="line">  System.out.println(&quot;x isn&apos;t 10&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="介绍了这么多，实践出真知，下面是实践"><a href="#介绍了这么多，实践出真知，下面是实践" class="headerlink" title="介绍了这么多，实践出真知，下面是实践"></a>介绍了这么多，实践出真知，下面是实践</h3><ul>
-<li>1 如果程序的输出结果是：DooBeeDooBeeDo，下面的空白处应该填什么呢？请实验一下，然后填空。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class DooBee&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		int x = 1;</div><div class="line">		while(x &lt; _____)&#123;</div><div class="line">			System.out._____(&quot;Doo&quot;);</div><div class="line">			System.out._____(&quot;Bee&quot;);</div><div class="line">			x = x + 1;</div><div class="line">		&#125;</div><div class="line">		if(x == _____)&#123;</div><div class="line">		  System.out.print(&quot;Do&quot;);	</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>2 程序的输出结果是:a-b  c-d ，下面的程序代码是乱的，排排看，排成正确的。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if(x == 1)&#123;</div><div class="line"> System.out.print(&quot;d&quot;);</div><div class="line"> x = x - 1;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(x == 2)&#123;</div><div class="line">	System.out.print(&quot;b c&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class Shuffle&#123;</div><div class="line">	public static void main(String[] args)&#123;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(x &gt; 2)&#123;</div><div class="line">  System.out.print(&quot;a&quot;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int x = 3;</div></pre></td></tr></table></figure>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = x - 1;</div><div class="line">System.out.print(&quot;-&quot;);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">while(x &gt; 0)&#123;</div></pre></td></tr></table></figure>
-<ul>
-<li>3 有A、B、C三个源程序，你扮演编译器角色,判断哪个程序可以编译过关，如果有问题，哪里需要修改。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class ExerciseA&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		int x = 1;</div><div class="line">		while(x &lt; 10)&#123;</div><div class="line">			if(x &gt; 3)&#123;</div><div class="line">				System.out.println(&quot;big x&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class ExerciseB&#123;</div><div class="line">	int x = 5;</div><div class="line">	while(x &gt; 1)&#123;</div><div class="line">		x = x - 1;</div><div class="line">		if(x &lt; 3)&#123;</div><div class="line">			System.out.println(&quot;small x&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void main(String args)&#123;</div><div class="line">	int x = 5;</div><div class="line">	while(x &gt; 1)&#123;</div><div class="line">		x = x - 1;</div><div class="line">		if(x &lt; 3)&#123;</div><div class="line">			System.out.println(&quot;small x&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/01/Java-第一课(简介)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
