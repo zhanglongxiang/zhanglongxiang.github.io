@@ -87,18 +87,21 @@
 
 
 
-<meta name="description" content="我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
+<meta name="description" content="导入
+我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
 它们最直观的不同是：语法不同，这个不同，我们在这里不讨论。深远的不同是：同一件事情流程，用C语言和JAVA语言来描述，看待事物的角度不一样。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第2次课 类与对象">
 <meta property="og:url" content="http://yoursite.com/2017/03/07/Java-第二课(类与对象)/index.html">
 <meta property="og:site_name" content="乌龙">
-<meta property="og:description" content="我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
+<meta property="og:description" content="导入
+我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
 它们最直观的不同是：语法不同，这个不同，我们在这里不讨论。深远的不同是：同一件事情流程，用C语言和JAVA语言来描述，看待事物的角度不一样。">
-<meta property="og:updated_time" content="2017-03-08T08:44:08.000Z">
+<meta property="og:updated_time" content="2017-03-08T08:47:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第2次课 类与对象">
-<meta name="twitter:description" content="我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
+<meta name="twitter:description" content="导入
+我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？
 它们最直观的不同是：语法不同，这个不同，我们在这里不讨论。深远的不同是：同一件事情流程，用C语言和JAVA语言来描述，看待事物的角度不一样。">
 
 
@@ -345,13 +348,13 @@
       
 
       
-        <ul>
+        <h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><ul>
 <li>我们上个学期学习了C语言，这个学期学习JAVA，用它们都是写计算机程序，它们有什么不同？</li>
 <li>它们最直观的不同是：语法不同，这个不同，我们在这里不讨论。深远的不同是：同一件事情流程，用C语言和JAVA语言来描述，看待事物的角度不一样。<a id="more"></a></li>
 <li>我们用一个例子，分别用C语言和Java来实现。这个例子都能达到用计算机程序来解决实际问题的目的，但是有不同，我们来run一下，体会它们的不同。</li>
 </ul>
 <hr>
-<h3 id="1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"><a href="#1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。" class="headerlink" title="1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"></a>1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。</h3><ul>
+<h3 id="工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"><a href="#工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。" class="headerlink" title="工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"></a>工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。</h3><ul>
 <li>如果用C语言来写程序，它是面向过程的思考方式，以过程（事件）为单位，现在有二个过程（事件），所以要写二个函数，一个是按动按钮函数，一个是发出声音函数。</li>
 <li>流程用C程序描述如下：</li>
 </ul>
@@ -366,7 +369,7 @@
 <li>看上面的代码，感觉C语言更简洁一点。同一个操作过程，C语言只写一次。然后反复调用就可以。而Java要写三个类，好象相同的操作代码要写三遍。</li>
 </ul>
 <hr>
-<h3 id="2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"><a href="#2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。" class="headerlink" title="2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"></a>2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。</h3><ul>
+<h3 id="现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"><a href="#现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。" class="headerlink" title="现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"></a>现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。</h3><ul>
 <li>对于C语言程序来说，我们马上会想到如何修改上面两个函数的程序逻辑，让它能够满足新的工作局面。可是修改是让人头疼的。上面的C语言程序修改成了下面这样，用参数的数值来代表现在是哪个工位，我用4来代表工位D，用1、2、3分别来代表工位A、B、C。</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pressButton</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">playSound</span><span class="params">()</span></span>;</div><div class="line">    pressButton(<span class="number">4</span>);</div><div class="line">    playSound(<span class="number">4</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pressButton</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(i == <span class="number">4</span>)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"出货按扭按下\n"</span>);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"完成按钮按下\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">playSound</span><span class="params">(<span class="keyword">int</span> i)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(i == <span class="number">4</span>)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"喜洋洋声音发出\n"</span>);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"嘀嘀声音发出\n"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -387,9 +390,9 @@
 <li>上面的类是父类，它总结了大部分工位相同的地方。我们让不同的工位类继承它。如下这种形式。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StationA</span> <span class="keyword">extends</span> <span class="title">Station</span></span>&#123;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationB extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationC extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationD extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StationB</span> <span class="keyword">extends</span> <span class="title">Station</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StationC</span> <span class="keyword">extends</span> <span class="title">Station</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StationD</span> <span class="keyword">extends</span> <span class="title">Station</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>这样，ABCD四个工位类都继承了Station类里面的方法，虽然看起来是空空的，实际上已经有了“隐形”的方法。</li>
 <li>问题出来了，StationD类，这两个方法的实现是不一样的。这样继承过来的方法明显不符合它的要求。</li>
@@ -635,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"><span class="nav-number">1.</span> <span class="nav-text">1、工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"><span class="nav-number">2.</span> <span class="nav-text">2、现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#到目前为止，Java的代码好象重复的太多，我们对面向对象这个概念还没介绍完。我们可以提取出各种工位相同的部分，组成新的类。"><span class="nav-number">3.</span> <span class="nav-text">到目前为止，Java的代码好象重复的太多，我们对面向对象这个概念还没介绍完。我们可以提取出各种工位相同的部分，组成新的类。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象，类和对象是什么关系呢？"><span class="nav-number">4.</span> <span class="nav-text">面向对象，类和对象是什么关系呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象如何执行呢？"><span class="nav-number">5.</span> <span class="nav-text">对象如何执行呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好了，说了这么多，下面是实验环节。"><span class="nav-number">6.</span> <span class="nav-text">好了，说了这么多，下面是实验环节。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。"><span class="nav-number">6.0.1.</span> <span class="nav-text">1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。"><span class="nav-number">6.0.2.</span> <span class="nav-text">2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。"><span class="nav-number">6.0.3.</span> <span class="nav-text">3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入"><span class="nav-number">1.</span> <span class="nav-text">导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。"><span class="nav-number">2.</span> <span class="nav-text">工厂车间里有很多工位，这些工位根据职责可以划分为三大类：A、B、C，他们完成自己的工作之后，都要按动“完成”按扭，然后发出“滴滴滴”的声音。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。"><span class="nav-number">3.</span> <span class="nav-text">现在对程序有了新的需求，工厂又增加了一类工位D，这类工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一类工位，这类工位的工作完成之后，产品完成了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#到目前为止，Java的代码好象重复的太多，我们对面向对象这个概念还没介绍完。我们可以提取出各种工位相同的部分，组成新的类。"><span class="nav-number">4.</span> <span class="nav-text">到目前为止，Java的代码好象重复的太多，我们对面向对象这个概念还没介绍完。我们可以提取出各种工位相同的部分，组成新的类。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象，类和对象是什么关系呢？"><span class="nav-number">5.</span> <span class="nav-text">面向对象，类和对象是什么关系呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象如何执行呢？"><span class="nav-number">6.</span> <span class="nav-text">对象如何执行呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好了，说了这么多，下面是实验环节。"><span class="nav-number">7.</span> <span class="nav-text">好了，说了这么多，下面是实验环节。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。"><span class="nav-number">7.0.1.</span> <span class="nav-text">1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。"><span class="nav-number">7.0.2.</span> <span class="nav-text">2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。"><span class="nav-number">7.0.3.</span> <span class="nav-text">3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
