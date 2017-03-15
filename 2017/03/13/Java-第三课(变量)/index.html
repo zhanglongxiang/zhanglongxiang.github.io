@@ -91,12 +91,7 @@
 通过上周的学习：
 已经会定义一个类。
 主方法是程序的唯一入口。
-双类测试法，普通类和测试类。下例：
-
-
-
-12345class Station&amp;#123;    //这是一个普通类	void pressButton()&amp;#123;   //这是一个普通方法		System.out.println(&quot;complete button is press&quot;);	&amp;#125;&amp;#125;
-123">
+双类测试法，普通类和测试类。下例：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第3次课 变量">
 <meta property="og:url" content="http://yoursite.com/2017/03/13/Java-第三课(变量)/index.html">
@@ -105,26 +100,16 @@
 通过上周的学习：
 已经会定义一个类。
 主方法是程序的唯一入口。
-双类测试法，普通类和测试类。下例：
-
-
-
-12345class Station&amp;#123;    //这是一个普通类	void pressButton()&amp;#123;   //这是一个普通方法		System.out.println(&quot;complete button is press&quot;);	&amp;#125;&amp;#125;
-123">
+双类测试法，普通类和测试类。下例：">
 <meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20140120/20140120090020286.jpg">
-<meta property="og:updated_time" content="2017-03-15T08:38:53.000Z">
+<meta property="og:updated_time" content="2017-03-15T08:47:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第3次课 变量">
 <meta name="twitter:description" content="上次课回顾
 通过上周的学习：
 已经会定义一个类。
 主方法是程序的唯一入口。
-双类测试法，普通类和测试类。下例：
-
-
-
-12345class Station&amp;#123;    //这是一个普通类	void pressButton()&amp;#123;   //这是一个普通方法		System.out.println(&quot;complete button is press&quot;);	&amp;#125;&amp;#125;
-123">
+双类测试法，普通类和测试类。下例：">
 <meta name="twitter:image" content="http://www.2cto.com/uploadfile/Collfiles/20140120/20140120090020286.jpg">
 
 
@@ -375,7 +360,8 @@
 <li>通过上周的学习：<ul>
 <li>已经会定义一个<code>类</code>。</li>
 <li><code>主方法</code>是程序的唯一入口。</li>
-<li>双类测试法，普通类和测试类。下例：</li>
+<li><code>双类测试法</code>，普通类和测试类。下例：<a id="more"></a>
+</li>
 </ul>
 </li>
 </ul>
@@ -383,14 +369,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;   <span class="comment">//这是测试类，里面有主方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Station s = <span class="keyword">new</span> Station(); <span class="comment">//生成了一个真实存在的工位</span></div><div class="line">		s.pressButton(); <span class="comment">//这个工位按动按钮</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="本次课概述"><a href="#本次课概述" class="headerlink" title="本次课概述"></a>本次课概述</h4><ul>
-<li>类中除了方法还可以有属性（也叫变量），用属性来更好的刻画类。</li>
+<li>类中除了方法还可以有<code>属性</code>（也叫变量），用属性来更好的刻画类。</li>
 <li>例如：有学生(Student)类,用它来描述学生，假设学生有上课、考试这两个动作，把这两个动作写成<code>方法</code>。学生要有姓名、年龄，以此来区别每个学生，定义<code>属性</code>来存储姓名和年龄。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</div><div class="line">    </div><div class="line">    String name;</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">exam</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"exam...."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">study</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"study...."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="变量与数据类型"><a href="#变量与数据类型" class="headerlink" title="变量与数据类型"></a>变量与数据类型</h4><ul>
-<li>变量里面存放的是数据，数据自然有大有小，我们可以把变量看成是“容器”，我们不希望存储空间有浪费，所以希望大数据放进“大容器”，小数据放在“小容器”。这样更科学一些。</li>
-<li>所以有了数据类型（就象是容器规格）这个概念，Java有自己的数据类型，我们只有了解了这些“容器规格”，才知道怎么安排组织我们的数据。</li>
+<li>变量里面存放的是数据，数据自然有大有小，我们可以把变量看成是“容器”，我们不希望存储空间有浪费，所以希望大数据放进“大容器”，小数据放在“小容器”。</li>
+<li>所以有了数据类型（就象是容器规格）这个概念，Java有自己的数据类型，我们只有了解这些“容器规格”，才知道怎么安排组织数据。</li>
 <li>Java的数据类型分为两大类：（1）原生数据类型，（2）引用类型。</li>
 </ul>
 <hr>
@@ -418,7 +404,6 @@
 <hr>
 <h5 id="变量命名要遵守的规范"><a href="#变量命名要遵守的规范" class="headerlink" title="变量命名要遵守的规范"></a>变量命名要遵守的规范</h5><ul>
 <li>名字必须以字母、下划线或$符号开头，不能用数字开头；</li>
-<li>除了第一个字符之外，后面可以用数字；</li>
 <li>避开Java保留字，比如class、static、public、main等等，这些都是Java保留字，不要用它们做为变量的名字。</li>
 </ul>
 <hr>
