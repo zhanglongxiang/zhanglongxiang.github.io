@@ -1,0 +1,773 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="教学," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="从现在开始，不贴全部代码，只贴讲课关键代码。
+概述
+已经知道类由两大部分组成：方法和属性（变量）。
+这次课来介绍方法和属性的配合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java第4次课 方法与属性">
+<meta property="og:url" content="http://yoursite.com/2017/03/21/Java-第四课(方法与属性)/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="从现在开始，不贴全部代码，只贴讲课关键代码。
+概述
+已经知道类由两大部分组成：方法和属性（变量）。
+这次课来介绍方法和属性的配合。">
+<meta property="og:updated_time" content="2017-03-22T08:43:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java第4次课 方法与属性">
+<meta name="twitter:description" content="从现在开始，不贴全部代码，只贴讲课关键代码。
+概述
+已经知道类由两大部分组成：方法和属性（变量）。
+这次课来介绍方法和属性的配合。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/21/Java-第四课(方法与属性)/"/>
+
+
+
+
+
+  <title> Java第4次课 方法与属性 | 乌龙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/Java-第四课(方法与属性)/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java第4次课 方法与属性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T05:16:55+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/21/Java-第四课(方法与属性)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/21/Java-第四课(方法与属性)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="从现在开始，不贴全部代码，只贴讲课关键代码。"><a href="#从现在开始，不贴全部代码，只贴讲课关键代码。" class="headerlink" title="从现在开始，不贴全部代码，只贴讲课关键代码。"></a>从现在开始，不贴全部代码，只贴讲课关键代码。</h4><hr>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li>已经知道类由两大部分组成：方法和属性（变量）。</li>
+<li>这次课来介绍方法和属性的配合。<a id="more"></a></li>
+<li><p><strong>例</strong>：有Dog类,狗的体重不同，发出的叫声不同。看下面代码，每只狗都调用相同的方法bark()，根据weight属性值不同，输出结果不一样。所以属性和方法的联系十分紧密。</p>
+</li>
+<li><p>成品类</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line">    String name;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(weight &gt; <span class="number">60</span>)&#123;</div><div class="line">            System.out.println(<span class="string">"wang"</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(weight &gt; <span class="number">20</span>)&#123;</div><div class="line">            System.out.println(<span class="string">"wangwang"</span>);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            System.out.println(<span class="string">"wangwangwang"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>测试类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DogTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Dog dog1 = <span class="keyword">new</span> Dog();</div><div class="line">        Dog dog2 = <span class="keyword">new</span> Dog();</div><div class="line">        dog1.weight = <span class="number">70</span>;</div><div class="line">        dog2.weight = <span class="number">10</span>;</div><div class="line">        dog1.bark();</div><div class="line">        dog2.bark();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="可以参数传值给方法"><a href="#可以参数传值给方法" class="headerlink" title="可以参数传值给方法"></a>可以参数传值给方法</h4><ul>
+<li>上面的bark()方法进行如下改写：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bark</span><span class="params">(<span class="keyword">int</span> numOfBarks)</span></span>&#123;</div><div class="line">        <span class="keyword">while</span>(numOfBarks &gt; <span class="number">0</span>)&#123;</div><div class="line">            System.out.println(<span class="string">"wang"</span>);</div><div class="line">            numOfBarks = numOfBarks - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>方法有参数，怎么来调用这个方法？</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Dog dog1 = <span class="keyword">new</span> Dog();<span class="comment">//bark方法是属于Dog类的，自然要先生成Dog类的对象</span></div><div class="line">dog1.bark(<span class="number">3</span>);<span class="comment">//对象调用bark方法，这里需要传入一个int类型的参数，传入3</span></div></pre></td></tr></table></figure>
+<hr>
+<h4 id="方法可以有返回值"><a href="#方法可以有返回值" class="headerlink" title="方法可以有返回值"></a>方法可以有返回值</h4><ul>
+<li>每个方法都有返回值类型。以前一直写void，void代表没有返回值。下例写了一个int,代表这个方法执行后会有一个int类型的返回值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">giveNumber</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="number">100</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="可以向方法中传入一个以上的参数"><a href="#可以向方法中传入一个以上的参数" class="headerlink" title="可以向方法中传入一个以上的参数"></a>可以向方法中传入一个以上的参数</h4><ul>
+<li>向方法中传入多个参数是可以的。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getTwo</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> z = x + y;</div><div class="line">	System.out.println(z);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>可以把变量当做参数传入方法，只要类型相符就可以。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> a1 = <span class="number">7</span>;</div><div class="line">	<span class="keyword">int</span> b1 = <span class="number">3</span>;</div><div class="line">	getTwo(a1,b1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getTwo</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> z = x + y;</div><div class="line">	System.out.println(z);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="Java中的参数传递是值传递（拷贝参数的值传递进方法）"><a href="#Java中的参数传递是值传递（拷贝参数的值传递进方法）" class="headerlink" title="Java中的参数传递是值传递（拷贝参数的值传递进方法）"></a>Java中的参数传递是值传递（拷贝参数的值传递进方法）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">(<span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">        System.out.println(z);</div><div class="line">        z = <span class="number">0</span>;</div><div class="line">        System.out.println(z);<span class="comment">//z的值被修改，这里z是0。</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args&#123;</span></span></div><div class="line">		Foo foo = new Foo();<span class="comment">//生成Foo对象</span></div><div class="line">		<span class="keyword">int</span> x = <span class="number">10</span>;</div><div class="line">		foo.go(x);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="属性封装"><a href="#属性封装" class="headerlink" title="属性封装"></a>属性封装</h4><ul>
+<li>到目前为止所写代码，属性的调用是不合理的（危险的），请看下面的代码，这是我们原来写的。</li>
+<li>这段代码有什么不合理呢，把weight裸露在外界，也就是说，任何人都可以修改weight的值。显然，这是危险的。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog dog1 = <span class="keyword">new</span> Dog();</div><div class="line">dog1.weight = <span class="number">0</span>;</div><div class="line">dog1.weight = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>我们需要给所有的属性设置Getter和Setter方法，对属性来进行“取”和“存”。下面的代码示例了对weight属性进行“存”。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setWeight</span><span class="params">(<span class="keyword">int</span> wt)</span></span>&#123;</div><div class="line">          weight = wt;</div><div class="line">        &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</div><div class="line">    		<span class="keyword">return</span> weight;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>看了上面的代码，感觉不用dog1.setWeight(20),还是能dog1.weight = 20。</li>
+<li>上面代码还不完整。要使用<code>公有</code>与<code>私有</code>两个存取修饰符，把数据隐藏。这是<code>对象封装</code>的基础操作。</li>
+<li>关键字：<code>public</code>公有的。 <code>private</code>私有的。它们代表某种存取权限。</li>
+<li>封装基本原则：将属性标记为私有，并提供公有的getter与setter方法来控制存取动作。</li>
+<li>下面，看一个例子，我们如何封装Dog。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;<span class="comment">//private修饰</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeight</span><span class="params">(<span class="keyword">int</span> wt)</span></span>&#123;</div><div class="line">        weight = wt;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> weight;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="对象变量与局部变量之间的区别"><a href="#对象变量与局部变量之间的区别" class="headerlink" title="对象变量与局部变量之间的区别"></a>对象变量与局部变量之间的区别</h4><ul>
+<li>对象变量是声明在类中而不是方法中，对象变量可以只声明不初始化，它有默认值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeight</span><span class="params">(<span class="keyword">int</span> wt)</span></span>&#123;</div><div class="line">        weight = wt;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> weight;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DogTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Dog dog1 = <span class="keyword">new</span> Dog();</div><div class="line">        System.out.println(dog1.getWeight());<span class="comment">//这里会输出0，可见没有赋值，默认值是0。</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>局部变量是声明在方法中，局部变量在使用前必须初始化。象下面这样写，numOfBarks是局部变量，没有赋初值，是不对的。程序会执行错误。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> weight;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeight</span><span class="params">(<span class="keyword">int</span> wt)</span></span>&#123;</div><div class="line">        weight = wt;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWeight</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> weight;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> numOfBarks;</div><div class="line">        <span class="keyword">while</span>(numOfBarks &lt; <span class="number">3</span>)&#123;</div><div class="line">            System.out.println(<span class="string">"wang"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="变量的比较"><a href="#变量的比较" class="headerlink" title="变量的比较"></a>变量的比较</h4><ul>
+<li>这个很简单，在Java中，=运算符表示赋值， ==运算符表示比较。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">3</span>;</div><div class="line"><span class="keyword">if</span>(a == b)&#123;</div><div class="line">    ... </div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="实验1"><a href="#实验1" class="headerlink" title="实验1"></a>实验1</h4><ul>
+<li><em>提示：有不明白的地方，立即写测试类进行测试，不要一直写到最后再测试！</em></li>
+<li>找错</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span></span>&#123;</div><div class="line">	String time;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setTime</span><span class="params">(String t)</span></span>&#123;</div><div class="line">		time = t;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getTime</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> time;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClockTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Clock c = <span class="keyword">new</span> Clock();</div><div class="line">		c.setTime(<span class="string">"12345"</span>);</div><div class="line">		String tod = c.getTime();</div><div class="line">		System.out.println(<span class="string">"time:"</span> + tod);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="实验2"><a href="#实验2" class="headerlink" title="实验2"></a>实验2</h4><ul>
+<li>尝试写一个GoodDog类，要求：<br>(1)这个类有一个属性size，有一个bark()方法。<br>(2)要完成对size的封装。<br>(3)bark()方法根据size的值，有三种输出结果，输出结果如下。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Wooof!</div><div class="line">Ruff!</div><div class="line">Yip!</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教学/" rel="tag"># 教学</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/17/Java-第3次实验课总结/" rel="next" title="Java第3次实验课思路总结">
+                <i class="fa fa-chevron-left"></i> Java第3次实验课思路总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/21/Java-第四课(方法与属性)/"
+           data-title="Java第4次课 方法与属性" data-url="http://yoursite.com/2017/03/21/Java-第四课(方法与属性)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#从现在开始，不贴全部代码，只贴讲课关键代码。"><span class="nav-number">1.</span> <span class="nav-text">从现在开始，不贴全部代码，只贴讲课关键代码。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以参数传值给方法"><span class="nav-number">3.</span> <span class="nav-text">可以参数传值给方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法可以有返回值"><span class="nav-number">4.</span> <span class="nav-text">方法可以有返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以向方法中传入一个以上的参数"><span class="nav-number">5.</span> <span class="nav-text">可以向方法中传入一个以上的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中的参数传递是值传递（拷贝参数的值传递进方法）"><span class="nav-number">6.</span> <span class="nav-text">Java中的参数传递是值传递（拷贝参数的值传递进方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性封装"><span class="nav-number">7.</span> <span class="nav-text">属性封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象变量与局部变量之间的区别"><span class="nav-number">8.</span> <span class="nav-text">对象变量与局部变量之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的比较"><span class="nav-number">9.</span> <span class="nav-text">变量的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验1"><span class="nav-number">10.</span> <span class="nav-text">实验1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验2"><span class="nav-number">11.</span> <span class="nav-text">实验2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
