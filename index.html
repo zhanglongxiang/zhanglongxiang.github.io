@@ -481,28 +481,16 @@
 
       
         
-          
-            <h4 id="实验第1部分："><a href="#实验第1部分：" class="headerlink" title="实验第1部分："></a>实验第1部分：</h4><ul>
+          <h4 id="实验第1部分："><a href="#实验第1部分：" class="headerlink" title="实验第1部分："></a>实验第1部分：</h4><ul>
 <li>本次实验需要一些工具类和它们的方法（工具类就是已经写好的类，直接拿来用即可）。</li>
-<li>把下面的工具类和相关方法实验通过。<h5 id="GameHelper工具类"><a href="#GameHelper工具类" class="headerlink" title="GameHelper工具类"></a>GameHelper工具类</h5></li>
-<li>这个工具类获取用户从键盘输入的字符串；</li>
-<li>这个类有一个getUserInput方法，注意看它的参数和返回值。</li>
-<li>写一个测试类，生成它的对象，然后对象调用它的getUserInput方法，试一试，自然会用了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameHelper</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserInput</span><span class="params">()</span></span>&#123;</div><div class="line">        String inputLine = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            BufferedReader is = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</div><div class="line">            inputLine = is.readLine();</div><div class="line">            <span class="keyword">if</span>(inputLine.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;<span class="keyword">catch</span> (IOException e)&#123;</div><div class="line">            System.out.println(<span class="string">"IOException:"</span> + e);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> inputLine;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="将String类型数据转换成int类型数据。"><a href="#将String类型数据转换成int类型数据。" class="headerlink" title="将String类型数据转换成int类型数据。"></a>将String类型数据转换成int类型数据。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Integer是Java提供的一个工具类;</div><div class="line">parestInt()是它的一个方法;</div><div class="line">下面的代码把"3"转换成整数3，返回。</div><div class="line">*/</div><div class="line"><span class="keyword">int</span> result = Integer.parseInt(<span class="string">"3"</span>);</div></pre></td></tr></table></figure>
-<h5 id="产生随机数。"><a href="#产生随机数。" class="headerlink" title="产生随机数。"></a>产生随机数。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">Math是Java提供的一个工具类；random()是它的一个方法；会返回一个介于0到1之间的数，所以下面这条语句会产生出介于0-4之间的整数。</div><div class="line">(int)，这是强制类型转换，因为Math.random()会返回double类型，而我们需要0-4之间的int。因此需要转换成int。</div><div class="line">*/</div><div class="line"><span class="keyword">int</span> randomNum = (<span class="keyword">int</span>)(Math.random()*<span class="number">5</span>);</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="实验第2部分："><a href="#实验第2部分：" class="headerlink" title="实验第2部分："></a>实验第2部分：</h4><h5 id="GameTest类中的main方法需要有下面的功能。"><a href="#GameTest类中的main方法需要有下面的功能。" class="headerlink" title="GameTest类中的main方法需要有下面的功能。"></a>GameTest类中的main方法需要有下面的功能。</h5><ul>
-<li>创建出Tank的对象tank（课堂已经完成）</li>
-<li>要求玩家猜测（未完成）</li>
-<li>检查用户猜测值userGuess（课堂已经完成）</li>
-<li>重复猜测走到击沉为止（未完成）</li>
-<li>显示玩家的猜测次数（未完成）<h5 id="下面是GameTest类中main方法的伪码，在上课代码的基础上，把下面的伪码用Java代码实现。"><a href="#下面是GameTest类中main方法的伪码，在上课代码的基础上，把下面的伪码用Java代码实现。" class="headerlink" title="下面是GameTest类中main方法的伪码，在上课代码的基础上，把下面的伪码用Java代码实现。"></a>下面是GameTest类中main方法的伪码，在上课代码的基础上，把下面的伪码用Java代码实现。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">	定义一个<span class="keyword">int</span>类型变量 numOfGuesses，记录玩家猜测次数；</div><div class="line">	用一个工具类，获得玩家输入；</div><div class="line">	生成一个Tank对象；</div><div class="line">	生成一个随机数，做为Tank的第一个位置；</div><div class="line">	定义一个<span class="keyword">int</span>数组，以上一步随机数为坦克的第一个位置，然后+<span class="number">1</span>，+<span class="number">2</span>。整好三个位置构成一辆坦克；</div><div class="line">	调用setLocationCells方法完成初始化；</div><div class="line">	声明一个<span class="keyword">boolean</span>变量，isAlive，初值为<span class="keyword">true</span>，用它来标示游戏是否继续进行；</div><div class="line">	<span class="keyword">while</span> (isAlive==<span class="keyword">true</span>)&#123;</div><div class="line">		获取 用户输入</div><div class="line">	    调用 checkYourself()方法来进行检测</div><div class="line">	    numOfGusses ++</div><div class="line">	    <span class="keyword">if</span> result is <span class="string">"kill"</span></div><div class="line">	      让 isAlive to <span class="keyword">false</span></div><div class="line">	      输出 the number of user guesses</div><div class="line">	    end <span class="keyword">if</span></div><div class="line">	 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
+<li>把下面的工具类和相关方法实验通过。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/29/Java-第五课 实验部分/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
