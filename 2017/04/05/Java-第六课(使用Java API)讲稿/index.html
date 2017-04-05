@@ -89,41 +89,20 @@
 
 <meta name="description" content="上节课的问题
 上节课的Tank游戏有一个bug，玩家相同数字输入三遍，也会返回”kill”。为什么？
-问题出在下面这段代码：
-
-1234if(userGuess == locationCells[i])&amp;#123;   numOfHits++;   result = &quot;hit&quot;; &amp;#125;
-
-上面代码，每当玩家猜中数组中某一数时，我们就将计数器加1，而不管之前是否已经被猜中。
-
-
-怎么解决？">
+问题出在下面这段代码：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第6次课 使用Java API">
 <meta property="og:url" content="http://yoursite.com/2017/04/05/Java-第六课(使用Java API)讲稿/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="上节课的问题
 上节课的Tank游戏有一个bug，玩家相同数字输入三遍，也会返回”kill”。为什么？
-问题出在下面这段代码：
-
-1234if(userGuess == locationCells[i])&amp;#123;   numOfHits++;   result = &quot;hit&quot;; &amp;#125;
-
-上面代码，每当玩家猜中数组中某一数时，我们就将计数器加1，而不管之前是否已经被猜中。
-
-
-怎么解决？">
-<meta property="og:updated_time" content="2017-04-05T04:34:04.000Z">
+问题出在下面这段代码：">
+<meta property="og:updated_time" content="2017-04-05T08:24:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第6次课 使用Java API">
 <meta name="twitter:description" content="上节课的问题
 上节课的Tank游戏有一个bug，玩家相同数字输入三遍，也会返回”kill”。为什么？
-问题出在下面这段代码：
-
-1234if(userGuess == locationCells[i])&amp;#123;   numOfHits++;   result = &quot;hit&quot;; &amp;#125;
-
-上面代码，每当玩家猜中数组中某一数时，我们就将计数器加1，而不管之前是否已经被猜中。
-
-
-怎么解决？">
+问题出在下面这段代码：">
 
 
 
@@ -393,7 +372,8 @@
       
         <h4 id="上节课的问题"><a href="#上节课的问题" class="headerlink" title="上节课的问题"></a>上节课的问题</h4><ul>
 <li>上节课的Tank游戏有一个bug，玩家相同数字输入三遍，也会返回”kill”。为什么？</li>
-<li>问题出在下面这段代码：</li>
+<li>问题出在下面这段代码：<a id="more"></a>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(userGuess == locationCells[i])&#123;</div><div class="line">   numOfHits++;</div><div class="line">   result = <span class="string">"hit"</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <ul>

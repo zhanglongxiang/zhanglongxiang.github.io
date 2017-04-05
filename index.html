@@ -502,35 +502,16 @@
 
       
         
-          
-            <h4 id="上节课的问题"><a href="#上节课的问题" class="headerlink" title="上节课的问题"></a>上节课的问题</h4><ul>
+          <h4 id="上节课的问题"><a href="#上节课的问题" class="headerlink" title="上节课的问题"></a>上节课的问题</h4><ul>
 <li>上节课的Tank游戏有一个bug，玩家相同数字输入三遍，也会返回”kill”。为什么？</li>
-<li>问题出在下面这段代码：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(userGuess == locationCells[i])&#123;</div><div class="line">   numOfHits++;</div><div class="line">   result = <span class="string">"hit"</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>上面代码，每当玩家猜中数组中某一数时，我们就将计数器加1，而不管之前是否已经被猜中。</li>
-</ul>
-<hr>
-<h4 id="怎么解决？"><a href="#怎么解决？" class="headerlink" title="怎么解决？"></a>怎么解决？</h4><ul>
-<li>需要一种方法来判断数组中元素是否已经被猜中，如果猜中了，下次再猜中就不能再算了。</li>
-<li>方法一：可以建立第二个数组，用第二个数组来标识第一个数组的状态。第一个数组存储坦克位置，第二个数组存储坦克每个部位是否被击中。</li>
-<li>缺点：太费时间，每次玩家猜中某一格时，都必须要改变第二个数组状态，而且还需要检查该数组来判断此格是否已经被命中。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tank</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] locationCells;<span class="comment">//第一个数组</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> numOfHits;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span>[] flagLocationCells;<span class="comment">//第二个数组</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getLocationCells() &#123;</div><div class="line">        <span class="keyword">return</span> locationCells;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocationCells</span><span class="params">(<span class="keyword">int</span>[] locationCells)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.locationCells = locationCells;</div><div class="line">        <span class="comment">//第二个数组默认都是false</span></div><div class="line">        flagLocationCells = <span class="keyword">new</span> <span class="keyword">boolean</span>[locationCells.length];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">checkYourself</span><span class="params">(String userInput)</span></span>&#123;</div><div class="line">        String result = <span class="string">"miss"</span>;</div><div class="line">        <span class="keyword">int</span> userGuess = Integer.parseInt(userInput);<span class="comment">//字符串转换成整数</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; locationCells.length; i++)&#123;</div><div class="line">            <span class="comment">//如果击中并且状态为false，说明是第一次被击中</span></div><div class="line">            <span class="keyword">if</span>(userGuess == locationCells[i] &amp;&amp; flagLocationCells[i] == <span class="keyword">false</span>)&#123;</div><div class="line">                numOfHits++; <span class="comment">//计数器加1</span></div><div class="line">                flagLocationCells[i] = <span class="keyword">true</span>; <span class="comment">//对应标志位改为true</span></div><div class="line">                result = <span class="string">"hit"</span>; <span class="comment">//结果为击中</span></div><div class="line">                <span class="keyword">break</span>; <span class="comment">//跳出for循环</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//如果击中次数为数组长度，我们认为坦克被击毁</span></div><div class="line">        <span class="keyword">if</span>(numOfHits == locationCells.length)&#123; </div><div class="line">                    result = <span class="string">"kill"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result; <span class="comment">//返回结果</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>方法二：可以只用原来的数组，办法是将任何被击中的格子改为-1。这样只需要维护与检查一个数组。这种方案比方案一要好一些。</li>
-<li>缺点，就算有些格子已经被命中过了，还是得逐个搜寻数组中的那些格子。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(userGuess == locationCells[i] )&#123;</div><div class="line">          numOfHits++;</div><div class="line">          locationCells[i] = -<span class="number">1</span>;</div><div class="line">          result = <span class="string">"hit"</span>;</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>方法三：在命中某个格子时就把它删除掉，因此格子会越来越少。但是数组无法改变大小。因此必须作出新的数组并拷贝旧数组的值。这样仍然很麻烦。</li>
-<li>如果能找到一种数组会在删除掉某些元素时自动缩小就好了。这样就不必检查所有的元素，只要查询它是否带有寻找中的值就好。</li>
-<li>高兴的是，Java给我们提供了强大的工具类库，统称为Java API。其中在API中有一个类叫ArrayList，它能满足我们上面的要求。</li>
-<li>ArrayList是什么，大家可以百度一下，网上很多详细介绍。</li>
-</ul>
-
-          
+<li>问题出在下面这段代码：
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/05/Java-第六课(使用Java API)讲稿/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
