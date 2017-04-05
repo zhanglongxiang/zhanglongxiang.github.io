@@ -88,18 +88,18 @@
 
 
 <meta name="description" content="第1个实验，熟悉ArrayList的常用方法
-先别管下面这个尖括号，这代表创建出一个String类型的列表，你照着写就可以。">
+下面这行代码，创建出一个String类型的列表，你照着写就可以。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第6次课 实验部分">
 <meta property="og:url" content="http://yoursite.com/2017/04/05/Java-第六课 实验部分/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="第1个实验，熟悉ArrayList的常用方法
-先别管下面这个尖括号，这代表创建出一个String类型的列表，你照着写就可以。">
-<meta property="og:updated_time" content="2017-04-05T08:18:58.000Z">
+下面这行代码，创建出一个String类型的列表，你照着写就可以。">
+<meta property="og:updated_time" content="2017-04-05T22:39:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第6次课 实验部分">
 <meta name="twitter:description" content="第1个实验，熟悉ArrayList的常用方法
-先别管下面这个尖括号，这代表创建出一个String类型的列表，你照着写就可以。">
+下面这行代码，创建出一个String类型的列表，你照着写就可以。">
 
 
 
@@ -346,20 +346,20 @@
 
       
         <h4 id="第1个实验，熟悉ArrayList的常用方法"><a href="#第1个实验，熟悉ArrayList的常用方法" class="headerlink" title="第1个实验，熟悉ArrayList的常用方法"></a>第1个实验，熟悉ArrayList的常用方法</h4><ul>
-<li>先别管下面这个尖括号，这代表创建出一个String类型的列表，你照着写就可以。<a id="more"></a>
+<li>下面这行代码，创建出一个String类型的列表，你照着写就可以。<a id="more"></a>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList&lt;String&gt; stringList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div></pre></td></tr></table></figure>
 <ul>
 <li>ArrayList有下面这些常用方法，你可以用上面生成的stringList对象来验证这些方法。也可以百度查询一下这些方法详细声明。</li>
-<li>比如第一个add方法，参数是一个对象参数，“2”就是一个字符串，就是一个字符串对象，它就可以做为参数放进去。所以可以：stringList.add(“2”);</li>
-<li>你现在把这些方法写测试类，实验一遍，看看效果。</li>
+<li>比如第一个add方法，参数是一个对象参数，“2”是一个字符串，就是一个字符串对象，它就可以做为参数传进去。所以可以：stringList.add(“2”);</li>
+<li>你现在把这些方法写到测试类里，实验一遍，看看效果。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">add(Object object)          <span class="comment">//向list中加入对象参数</span></div><div class="line">remove(<span class="keyword">int</span> index)           <span class="comment">//在索引参数中移除对象</span></div><div class="line">remove(Object object)       <span class="comment">//移除该对象</span></div><div class="line">contains(Object object)     <span class="comment">//如果和对象参数匹配返回true</span></div><div class="line">isEmpty()                   <span class="comment">//如果list中没有元素返回true</span></div><div class="line">indexOf(Object object)      <span class="comment">//返回对象参数的索引或-1</span></div><div class="line">size()						 <span class="comment">//返回list中元素的一个数</span></div><div class="line">get(<span class="keyword">int</span> index)				 <span class="comment">//返回当前索引参数的对象</span></div></pre></td></tr></table></figure>
 <hr>
 <h4 id="第2个实验，掌握了上面ArrayList的常用方法，用ArrayList对上节课的坦克游戏进行改写。"><a href="#第2个实验，掌握了上面ArrayList的常用方法，用ArrayList对上节课的坦克游戏进行改写。" class="headerlink" title="第2个实验，掌握了上面ArrayList的常用方法，用ArrayList对上节课的坦克游戏进行改写。"></a>第2个实验，掌握了上面ArrayList的常用方法，用ArrayList对上节课的坦克游戏进行改写。</h4><ul>
 <li>思路提示1：坦克的三个位置，是不是可以用ArrayList<string>，这样用户从键盘输入的String类型字符串，就不需要再转换成int了。</string></li>
-<li>思路提示2：不需要用for循环来遍历判断是否击中。</li>
+<li>思路提示2：不需要用for循环来遍历判断是否击中，刚才ArrayList某个方法已经能决这个问题。</li>
 <li>思路提示3：可以把用户猜中的列表元素remove掉，这样列表是不是逐渐变短了？</li>
 </ul>
 
