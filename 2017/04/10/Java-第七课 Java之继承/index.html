@@ -89,21 +89,21 @@
 
 <meta name="description" content="问题
 我们现在会写类，类中会写方法。
-写程序，可能要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
+写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第7次课 继承与多态">
 <meta property="og:url" content="http://yoursite.com/2017/04/10/Java-第七课 Java之继承/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="问题
 我们现在会写类，类中会写方法。
-写程序，可能要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
+写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
-<meta property="og:updated_time" content="2017-04-12T10:11:33.000Z">
+<meta property="og:updated_time" content="2017-04-12T13:21:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第7次课 继承与多态">
 <meta name="twitter:description" content="问题
 我们现在会写类，类中会写方法。
-写程序，可能要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
+写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta name="twitter:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
 
 
@@ -352,7 +352,7 @@
       
         <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
 <li>我们现在会写类，类中会写方法。</li>
-<li>写程序，可能要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。<a id="more"></a>
+<li>写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。<a id="more"></a>
 </li>
 </ul>
 <hr>
@@ -362,7 +362,7 @@
 <li>现在有两个类，Child和Father。</li>
 <li>如果Child是Father类的子类，那么Child会自动地继承Father的属性和方法。</li>
 <li>但Child可以有自己的方法和属性。也可以覆盖掉继承自Father的方法。属性不能被覆盖掉，是因为不需要，它们并没有定义特殊行为。</li>
-<li>现在举个医生的例子，来看一下到底什么是继承。继承用<code>extends</code>关键字。</li>
+<li>现在举个医生的例子，来看一下什么是继承。继承用<code>extends</code>关键字。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Doctor</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> worksAtHospital;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">treatPatient</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//执行检查</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FamilyDoctor</span> <span class="keyword">extends</span> <span class="title">Doctor</span></span>&#123;</div><div class="line">    Boolean makeHouseCalls;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">giveAdvice</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//提出诊断</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -370,7 +370,7 @@
 <p><img src="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png" alt="Mou Icon"></p>
 <hr>
 <h4 id="如何判断写的继承是否正确"><a href="#如何判断写的继承是否正确" class="headerlink" title="如何判断写的继承是否正确"></a>如何判断写的继承是否正确</h4><ul>
-<li>想要知道我写的一个类继承另外一个类时，继承的是否正确？</li>
+<li>想要知道写的一个类继承另外一个类，继承的是否正确？</li>
 <li>用IS-A测试来检验。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">三角形是一个多边型  （正确） 三角形可以继承多边形</div><div class="line">外科医生是一个医生  （正确） 外科医生可以继承医生</div><div class="line">澡盆是一个浴室     （错误） 澡盆不能继承浴室</div></pre></td></tr></table></figure>
