@@ -98,7 +98,7 @@
 我们现在会写类，类中会写方法。
 写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
-<meta property="og:updated_time" content="2017-04-12T13:56:11.000Z">
+<meta property="og:updated_time" content="2017-04-12T22:27:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第7次课 继承与多态">
 <meta name="twitter:description" content="问题
@@ -387,9 +387,16 @@
 <hr>
 <h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><ul>
 <li>多态：父类型的引用可以指向子类型的对象。</li>
-<li>假设有Animal类，是父类。有Dog、Wolf类，是子类。下面这种代码就是多态的体现。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Animal dog = <span class="keyword">new</span> Dog(); <span class="comment">//多态</span></div><div class="line">		Animal wolf = <span class="keyword">new</span> Wolf(); <span class="comment">//多态</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Doctor doctor1 = <span class="keyword">new</span> FamilyDoctor(); <span class="comment">//多态</span></div><div class="line">		Doctor doctor2 = <span class="keyword">new</span> Surgeon(); <span class="comment">//多态</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>假设指派医生去窗口给病人看病，是giveDoctore方法。没有多态的话，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HospitalWindow</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">giveDoctor</span><span class="params">(FamilyDoctor doctor)</span></span>&#123;<span class="comment">//家庭医生做为参数</span></div><div class="line">		doctor.treatPatient();</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">giveDoctor</span><span class="params">(Surgeon doctor)</span></span>&#123;<span class="comment">//外科医生做为参数</span></div><div class="line">		doctor.treanPatient();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//如果有100种医生都是子类，就要写100个giveDoctor方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>有了多态，父类型的引用可以指向子类型的对象。方法的参数类型都可以用父类。只写一个方法就可以。它能做很多事情，关键看传入的参数是哪个子类对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HospitalWindow</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">giveDoctor</span><span class="params">(Doctore doctor)</span></span>&#123;<span class="comment">//父类做为参数</span></div><div class="line">		doctor.treanPatient();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
