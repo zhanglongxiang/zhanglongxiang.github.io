@@ -98,7 +98,7 @@
 我们现在会写类，类中会写方法。
 写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
-<meta property="og:updated_time" content="2017-04-12T13:21:22.000Z">
+<meta property="og:updated_time" content="2017-04-12T13:37:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第7次课 继承与多态">
 <meta name="twitter:description" content="问题
@@ -384,6 +384,12 @@
 <li>换上改变过的父类，则所有扩充过它的类都会自动使用到新的版本。</li>
 <li>定义出共同的协议。继承让你可以确保某个父型之下的所有类都会有父类所持有的全部方法。也就是说，你会通过继承来定义相关类间的共同协议。</li>
 </ul>
+<hr>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><ul>
+<li>多态：父类型的引用可以指向子类型的对象。</li>
+<li>假设有Animal类，是父类。有Dog、Wolf类，是子类。下面这种代码就是多态的体现。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Animal dog = <span class="keyword">new</span> Dog(); <span class="comment">//多态</span></div><div class="line">		Animal wolf = <span class="keyword">new</span> Wolf(); <span class="comment">//多态</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -561,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何判断写的继承是否正确"><span class="nav-number">3.</span> <span class="nav-text">如何判断写的继承是否正确</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的意义"><span class="nav-number">4.</span> <span class="nav-text">继承的意义</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何判断写的继承是否正确"><span class="nav-number">3.</span> <span class="nav-text">如何判断写的继承是否正确</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的意义"><span class="nav-number">4.</span> <span class="nav-text">继承的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">5.</span> <span class="nav-text">多态</span></a></li></ol></div>
             
 
           </div>
