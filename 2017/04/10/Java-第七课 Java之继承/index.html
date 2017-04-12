@@ -87,16 +87,24 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223class MainTest&amp;#123;	public static void main(String[] args)&amp;#123;		int numOfGuesses = 0; //猜了几次计数器		GameHelper helper = new GameHelper();  //用户输入工具类，生成它的新对象		Strin">
+<meta name="description" content="问题
+我们现在会写类，类中会写方法。
+以后写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java第5次课 实验参考代码">
-<meta property="og:url" content="http://yoursite.com/2017/04/02/Java-第五课 实验参考代码/index.html">
+<meta property="og:title" content="Java第7次课 继承与多态">
+<meta property="og:url" content="http://yoursite.com/2017/04/10/Java-第七课 Java之继承/index.html">
 <meta property="og:site_name" content="乌龙">
-<meta property="og:description" content="1234567891011121314151617181920212223class MainTest&amp;#123;	public static void main(String[] args)&amp;#123;		int numOfGuesses = 0; //猜了几次计数器		GameHelper helper = new GameHelper();  //用户输入工具类，生成它的新对象		Strin">
-<meta property="og:updated_time" content="2017-04-01T22:08:28.000Z">
+<meta property="og:description" content="问题
+我们现在会写类，类中会写方法。
+以后写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
+<meta property="og:updated_time" content="2017-04-12T04:58:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java第5次课 实验参考代码">
-<meta name="twitter:description" content="1234567891011121314151617181920212223class MainTest&amp;#123;	public static void main(String[] args)&amp;#123;		int numOfGuesses = 0; //猜了几次计数器		GameHelper helper = new GameHelper();  //用户输入工具类，生成它的新对象		Strin">
+<meta name="twitter:title" content="Java第7次课 继承与多态">
+<meta name="twitter:description" content="问题
+我们现在会写类，类中会写方法。
+以后写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png">
 
 
 
@@ -124,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/02/Java-第五课 实验参考代码/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/10/Java-第七课 Java之继承/"/>
 
 
 
 
 
-  <title> Java第5次课 实验参考代码 | 乌龙 </title>
+  <title> Java第7次课 继承与多态 | 乌龙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +265,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/Java-第五课 实验参考代码/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/10/Java-第七课 Java之继承/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="乌龙">
@@ -281,7 +289,7 @@
             
             
               
-                Java第5次课 实验参考代码
+                Java第7次课 继承与多态
               
             
           </h1>
@@ -296,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T05:59:25+08:00">
-                2017-04-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-10T05:37:50+08:00">
+                2017-04-10
               </time>
             
 
@@ -315,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/02/Java-第五课 实验参考代码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/02/Java-第五课 实验参考代码/" itemprop="commentCount"></span>
+                <a href="/2017/04/10/Java-第七课 Java之继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/Java-第七课 Java之继承/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,7 +350,41 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> numOfGuesses = <span class="number">0</span>; <span class="comment">//猜了几次计数器</span></div><div class="line">		GameHelper helper = <span class="keyword">new</span> GameHelper();  <span class="comment">//用户输入工具类，生成它的新对象</span></div><div class="line">		String userInput; <span class="comment">//定义一个变量，准备获取用户输入</span></div><div class="line">		Tank tank = <span class="keyword">new</span> Tank();  <span class="comment">//生成坦克</span></div><div class="line">		<span class="keyword">int</span> randomNum = (<span class="keyword">int</span>)(Math.random()*<span class="number">5</span>);  <span class="comment">//生成随机数</span></div><div class="line">		<span class="keyword">int</span>[] locationCells = &#123;randomNum,randomNum+<span class="number">1</span>,randomNum+<span class="number">2</span>&#125;; <span class="comment">//生成三个数的数组</span></div><div class="line">		tank.setLocationCells(locationCells);  <span class="comment">//坦克随机定位</span></div><div class="line">		<span class="keyword">boolean</span> isAlive = <span class="keyword">true</span>;  <span class="comment">//游戏是否继续执行的指示器，初始为true</span></div><div class="line">		<span class="keyword">while</span>(isAlive == <span class="keyword">true</span>)&#123;    <span class="comment">//while循环，游戏指示器为true时，反复执行...</span></div><div class="line">			numOfGuesses++;  <span class="comment">//猜了几次 +1</span></div><div class="line">			userInput = helper.getUserInput();<span class="comment">// 获取用户输入</span></div><div class="line">			<span class="keyword">int</span> userGuess = Integer.parseInt(userInput); <span class="comment">//用户输入的字符串转换成int</span></div><div class="line">			String result = tank.checkYourSelf(userGuess); <span class="comment">//用tank的check方法进行判断是否击中</span></div><div class="line">			System.out.println(result); <span class="comment">//输出 miss hit</span></div><div class="line">			<span class="keyword">if</span>(result == <span class="string">"kill"</span>) &#123; <span class="comment">//当result的值为kill时</span></div><div class="line">				isAlive = <span class="keyword">false</span>;</div><div class="line">				System.out.println(<span class="string">"你取得了胜利，共猜了"</span> + numOfGuesses + <span class="string">"次！"</span> );</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li>我们现在会写类，类中会写方法。</li>
+<li>以后写程序，要写多个类，假设这些类中有些功能是相同的。难道要把同一段代码一遍又一遍敲进去吗？就像同一句话，我们要反复说多遍。<a id="more"></a></li>
+<li>很显然，这浪费了我们的时间，还造成了程序冗余，程序可读性也差。</li>
+</ul>
+<hr>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><ul>
+<li>继承的思想：把共同的程序代码放在某个类中，然后告诉其它类说这个类是它们的父类。</li>
+<li>继承关系意味着子类继承了父类的成员。（成员就是属性和方法）。</li>
+<li>现在有两个类，Child和Father。</li>
+<li>如果Child是Father类的子类，那么Child会自动地继承Father的属性和方法。</li>
+<li>但Child可以有自己的方法和属性。也可以覆盖掉继承自Father的方法。属性不能被覆盖掉，是因为不需要，它们并没有定义特殊行为。</li>
+<li>现在举个医生的例子，来看一下到底什么是继承。继承用<code>extends</code>关键字。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Doctor</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> worksAtHospital;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">treatPatient</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//执行检查</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FamilyDoctor</span> <span class="keyword">extends</span> <span class="title">Doctor</span></span>&#123;</div><div class="line">    Boolean makeHouseCalls;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">giveAdvice</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//提出诊断</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Surgeon</span> <span class="keyword">extends</span> <span class="title">Doctor</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">treatPatient</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//进行手术</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">makeInjection</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">//注射        </span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/760572/201604/760572-20160415002943520-1328769803.png" alt="Mou Icon"></p>
+<hr>
+<h4 id="如何判断写的继承是否正确"><a href="#如何判断写的继承是否正确" class="headerlink" title="如何判断写的继承是否正确"></a>如何判断写的继承是否正确</h4><ul>
+<li>想要知道我写的一个类继承另外一个类时，继承的是否正确？</li>
+<li>用IS-A测试来检验。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">三角形是一个多边型  （正确） 三角形可以继承多边形</div><div class="line">外科医生是一个医生  （正确） 外科医生可以继承医生</div><div class="line">澡盆是一个浴室     （错误） 澡盆不能继承浴室</div></pre></td></tr></table></figure>
+<ul>
+<li>继承是单向的关系，外科医生是一个医生，医生可不是一个外科医生。</li>
+</ul>
+<hr>
+<h4 id="继承的意义"><a href="#继承的意义" class="headerlink" title="继承的意义"></a>继承的意义</h4><ul>
+<li>通过提取出一组类间共同的抽象性，你能够排除掉重复的程序代码而将这个部分放在父类中。</li>
+<li>这样，如果有共同的部分需要改变，就只会有一个地方要修改而已，且这样的改变会应用到所有继承此行为的类。修改之后只需要重新编译就行，不必动子类。</li>
+<li>换上改变过的父类，则所有扩充过它的类都会自动使用到新的版本。</li>
+<li>定义出共同的协议。继承让你可以确保某个父型之下的所有类都会有父类所持有的全部方法。也就是说，你会通过继承来定义相关类间的共同协议。</li>
+</ul>
+
       
     </div>
 
@@ -378,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/29/Java-第五课(方法详解)讲稿/" rel="next" title="Java第5次课 方法详解">
-                <i class="fa fa-chevron-left"></i> Java第5次课 方法详解
+              <a href="/2017/04/07/Java-实验课存在问题(1)/" rel="next" title="Java实验课存在问题（1）">
+                <i class="fa fa-chevron-left"></i> Java实验课存在问题（1）
               </a>
             
           </div>
@@ -388,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/05/Java-第六课(使用Java API)讲稿/" rel="prev" title="Java第6次课 使用Java API">
-                Java第6次课 使用Java API <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/12/Java-第六课 实验参考代码/" rel="prev" title="Java第6次课 实验答案">
+                Java第6次课 实验答案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -416,8 +458,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/02/Java-第五课 实验参考代码/"
-           data-title="Java第5次课 实验参考代码" data-url="http://yoursite.com/2017/04/02/Java-第五课 实验参考代码/">
+      <div class="ds-thread" data-thread-key="2017/04/10/Java-第七课 Java之继承/"
+           data-title="Java第7次课 继承与多态" data-url="http://yoursite.com/2017/04/10/Java-第七课 Java之继承/">
       </div>
     
   </div>
@@ -441,8 +483,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -500,6 +551,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何判断写的继承是否正确"><span class="nav-number">3.</span> <span class="nav-text">如何判断写的继承是否正确</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的意义"><span class="nav-number">4.</span> <span class="nav-text">继承的意义</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
