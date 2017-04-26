@@ -367,7 +367,7 @@
       
         
           <h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><ul>
-<li>上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">Animal cat = <span class="keyword">new</span> Cat();<span class="comment">//这是多态，父类型引用指向子类型对象</span></div><div class="line">Animal animal = <span class="keyword">new</span> Animal();<span class="comment">//这行代码没有错误，但有点奇怪</span></div></pre></td></tr></table></figure>
+<li>上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">	Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">	Animal cat = <span class="keyword">new</span> Cat();<span class="comment">//这是多态，父类型引用指向子类型对象</span></div><div class="line">	Animal animal = <span class="keyword">new</span> Animal();<span class="comment">//这行代码没有错误，但有点奇怪</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
           <!--noindex-->

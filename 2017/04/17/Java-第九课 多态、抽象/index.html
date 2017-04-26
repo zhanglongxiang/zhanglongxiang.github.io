@@ -88,18 +88,18 @@
 
 
 <meta name="description" content="引子
-上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：12345public static void main(String[] args)&amp;#123;	Dog dog = new Dog();	Animal cat = new Cat();//这是多态，父类型引用指向子类型对象	Animal animal = new Animal();//这行代码没有错误，但有点奇怪&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第9次课 深入多态">
 <meta property="og:url" content="http://yoursite.com/2017/04/17/Java-第九课 多态、抽象/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="引子
-上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
-<meta property="og:updated_time" content="2017-04-26T08:08:47.000Z">
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：12345public static void main(String[] args)&amp;#123;	Dog dog = new Dog();	Animal cat = new Cat();//这是多态，父类型引用指向子类型对象	Animal animal = new Animal();//这行代码没有错误，但有点奇怪&amp;#125;">
+<meta property="og:updated_time" content="2017-04-26T23:35:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第9次课 深入多态">
 <meta name="twitter:description" content="引子
-上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：12345public static void main(String[] args)&amp;#123;	Dog dog = new Dog();	Animal cat = new Cat();//这是多态，父类型引用指向子类型对象	Animal animal = new Animal();//这行代码没有错误，但有点奇怪&amp;#125;">
 
 
 
@@ -368,47 +368,35 @@
 
       
         <h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><ul>
-<li>上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">Animal cat = <span class="keyword">new</span> Cat();<span class="comment">//这是多态，父类型引用指向子类型对象</span></div><div class="line">Animal animal = <span class="keyword">new</span> Animal();<span class="comment">//这行代码没有错误，但有点奇怪</span></div></pre></td></tr></table></figure>
+<li>上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">	Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">	Animal cat = <span class="keyword">new</span> Cat();<span class="comment">//这是多态，父类型引用指向子类型对象</span></div><div class="line">	Animal animal = <span class="keyword">new</span> Animal();<span class="comment">//这行代码没有错误，但有点奇怪</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>上面第三行代码，仔细想想，有点奇怪，animal对象生成一个动物，是什么动物？</li>
+<li>上面第三行代码，仔细想想，有点奇怪，animal对象生成一个动物对象，是什么动物？</li>
 <li>所以得出：有些类不应该被实例化（也就是不应该被new出来）。</li>
 <li>目前要用Animal这个类做为父类，来发挥继承和多态的作用，但是又要限制它不能被new。我们需要的是Dog、Cat对象，而不是Animal对象。</li>
 </ul>
+<hr>
 <h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><ul>
 <li>一个类标记为<code>抽象类</code>，就不能被new。</li>
-<li>标记抽象类很简单，在类名前面加上抽象类关键字<code>abstract</code>就可以了。下面是一个抽象类Animal。可以实验一下，Animal现在不能被new了。</li>
+<li>标记抽象类很简单，在类名前面加上关键字<code>abstract</code>就可以了。下面是一个抽象类Animal。可以实验一下，Animal现在不能被new了。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>总结：抽象类除了被继承，没有其它用途，它的存在就是为了被继承，就是为了子类共同的“协议”、“多态”的作用。</li>
+<li>总结：抽象类除了被继承，没有其它用途，它的存在就是为了被继承，就是为了制定子类共同的“协议”、“多态”的作用。</li>
 </ul>
 <hr>
 <h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><ul>
-<li>除了抽象类，还可以将方法标记为abstract，叫做抽象方法。抽象方法只有方法声明，没有方法实现。</li>
-<li>抽象类代表此类是要被extend，<code>抽象方法代表此方法一定要被子类实现</code>。</li>
-<li>为什么要有抽象方法，因为在某个继承层次写出方法的实现代码没有意义，所以抽象方法只有方法声明没有方法实现。</li>
-<li>抽象方法的意义同抽象类，虽然没有实现内容，但还是可以定义出一组子型共同的协议。这样做的好处还是多态。下面的eat方法就是抽象方法，只有方法声明，没有方法实现。</li>
+<li>除了抽象类，还可以将方法标记为<code>abstract</code>，叫做抽象方法。抽象方法只有方法声明，没有方法实现。</li>
+<li>抽象类代表此类是要被继承，<code>抽象方法代表此方法一定要被子类实现</code>。</li>
+<li>为什么要有抽象方法，因为有时在父类写该方法的实现代码没有意义，所以抽象方法只有方法声明没有方法实现。</li>
+<li>抽象方法的意义同抽象类，虽然没有实现内容，但还是可以定义出一组子型共同的协议。下面的eat方法就是抽象方法，只有方法声明，没有方法实现。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
 <ul>
-<li>如果声明出一个抽象方法，就必须将类也标记为抽象的。不能在普通类中拥有抽象方法。</li>
+<li>抽象方法必须在抽象类中，不能在普通类中拥有抽象方法。</li>
 </ul>
-<hr>
-<h4 id="多态的使用"><a href="#多态的使用" class="headerlink" title="多态的使用"></a>多态的使用</h4><ul>
-<li>假设想要编写维护list的类以及保存Dog对象。</li>
-<li>比如ArrayList有add()方法，现在实现我们自己的add()方法。</li>
-<li>使用大小为5的简单Dog数组来保存新加入的Dog对象。代码如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDogList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Dog[] dogs = <span class="keyword">new</span> Dog[<span class="number">5</span>];</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Dog d)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(nextIndex &lt; dogs.length)&#123;</div><div class="line">            dogs[nextIndex] = d;</div><div class="line">            System.out.println(<span class="string">"Dog added at"</span> + nextIndex);</div><div class="line">        &#125;</div><div class="line">        nextIndex ++;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>假设还要写一个Cat用的list类。<br>（1）另外创建一个单独的MyCatList类，这样不好。<br>（2）创建一个单独的DogAndCatList类，用addCat(Cat c)与addDog(Dog d)来处理两个不同的数组实例，这也不好。<br>（3）编写一个AnimalList类让它处理Animal所有的子类，这应该是最好的办法。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//父类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//子类继承父类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//子类继承父类</span></div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAnimalList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];<span class="comment">//生成Animal类型数组</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Animal a)</span></span>&#123; <span class="comment">//add方法</span></div><div class="line">        <span class="keyword">if</span>(nextIndex &lt; animals.length)&#123;</div><div class="line">            animals[nextIndex] = a;</div><div class="line">            System.out.println(<span class="string">"Animal added at "</span> + nextIndex);</div><div class="line">            nextIndex++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        MyAnimalList list = <span class="keyword">new</span> MyAnimalList();</div><div class="line">        Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">        Cat cat = <span class="keyword">new</span> Cat();</div><div class="line">        list.add(dog);<span class="comment">//狗能放进去</span></div><div class="line">        list.add(cat);<span class="comment">//猫能放进去</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="任何类的直接或间接父类是Object类"><a href="#任何类的直接或间接父类是Object类" class="headerlink" title="任何类的直接或间接父类是Object类"></a>任何类的直接或间接父类是Object类</h4><ul>
 <li>以下是继承了Object的几个常用方法举例：</li>
@@ -427,7 +415,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animal dog = <span class="keyword">new</span> Dog();</div><div class="line">  dog.playBall();<span class="comment">//这行是错误的，因为Animal找不到这个方法</span></div></pre></td></tr></table></figure>
 <ul>
-<li><p>所以我们真正需要的方法应该满足下面的条件：<br>1、一种可以让宠物行为只应用在宠物身上的方法。<br>2、一种确保所有宠物类都有相同的方法定义的方法<br>3、一种是在多态情况下可以调用的方法。</p>
+<li><p>所以真正需要的方法应该满足下面的条件：<br>1、一种可以让宠物行为只应用在宠物身上的方法。<br>2、一种确保所有宠物类都有相同的方法定义的方法<br>3、一种是在多态情况下可以调用的方法。</p>
 </li>
 <li><p>多重继承？Dog和Cat即继承Animal类，又继承Pet类？</p>
 </li>
@@ -435,8 +423,8 @@
 </ul>
 <hr>
 <h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
-<li>Java有个解决方案，使用接口。接口关键字是interface。</li>
-<li>接口可以解决多重继承的问题而不会产生致命方块这种问题。</li>
+<li>Java有个解决方案，使用接口，接口关键字是<code>interface</code>。</li>
+<li>接口可以解决多重继承问题而不会产生致命方块这种问题。</li>
 <li>接口的地位等同于类，它里面的方法必须是抽象方法，不能有具体方法。</li>
 <li>Java的接口就好象是100%的纯抽象类。</li>
 <li>一个类只能有一个父类（只能继承一个类），但是可以实现多个接口。</li>
@@ -621,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象方法"><span class="nav-number">3.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态的使用"><span class="nav-number">4.</span> <span class="nav-text">多态的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任何类的直接或间接父类是Object类"><span class="nav-number">5.</span> <span class="nav-text">任何类的直接或间接父类是Object类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#想要修改合约怎么办？"><span class="nav-number">6.</span> <span class="nav-text">想要修改合约怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">7.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验部分-用Java代码描述-花木兰替父从军"><span class="nav-number">8.</span> <span class="nav-text">实验部分 用Java代码描述 花木兰替父从军</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象方法"><span class="nav-number">3.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任何类的直接或间接父类是Object类"><span class="nav-number">4.</span> <span class="nav-text">任何类的直接或间接父类是Object类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#想要修改合约怎么办？"><span class="nav-number">5.</span> <span class="nav-text">想要修改合约怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">6.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验部分-用Java代码描述-花木兰替父从军"><span class="nav-number">7.</span> <span class="nav-text">实验部分 用Java代码描述 花木兰替父从军</span></a></li></ol></div>
             
 
           </div>
