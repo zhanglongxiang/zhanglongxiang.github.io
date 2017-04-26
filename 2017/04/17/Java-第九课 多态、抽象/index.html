@@ -1,0 +1,792 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="引子
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java第9次课 深入多态">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/Java-第九课 多态、抽象/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="引子
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
+<meta property="og:updated_time" content="2017-04-26T08:08:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java第9次课 深入多态">
+<meta name="twitter:description" content="引子
+上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：123Dog dog = new Dog();Animal cat = new Cat();//这是多态，父类型引用指向子类型对象Animal animal = new Animal();//这行代码没有错误，但有点奇怪">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/Java-第九课 多态、抽象/"/>
+
+
+
+
+
+  <title> Java第9次课 深入多态 | 乌龙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Java-第九课 多态、抽象/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java第9次课 深入多态
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-17T06:21:42+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java教学/" itemprop="url" rel="index">
+                    <span itemprop="name">Java教学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/17/Java-第九课 多态、抽象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/17/Java-第九课 多态、抽象/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><ul>
+<li>上节课学习了继承和多态，在动物继承体系下，下面写法是正确的：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">Animal cat = <span class="keyword">new</span> Cat();<span class="comment">//这是多态，父类型引用指向子类型对象</span></div><div class="line">Animal animal = <span class="keyword">new</span> Animal();<span class="comment">//这行代码没有错误，但有点奇怪</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>上面第三行代码，仔细想想，有点奇怪，animal对象生成一个动物，是什么动物？</li>
+<li>所以得出：有些类不应该被实例化（也就是不应该被new出来）。</li>
+<li>目前要用Animal这个类做为父类，来发挥继承和多态的作用，但是又要限制它不能被new。我们需要的是Dog、Cat对象，而不是Animal对象。</li>
+</ul>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><ul>
+<li>一个类标记为<code>抽象类</code>，就不能被new。</li>
+<li>标记抽象类很简单，在类名前面加上抽象类关键字<code>abstract</code>就可以了。下面是一个抽象类Animal。可以实验一下，Animal现在不能被new了。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>总结：抽象类除了被继承，没有其它用途，它的存在就是为了被继承，就是为了子类共同的“协议”、“多态”的作用。</li>
+</ul>
+<hr>
+<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><ul>
+<li>除了抽象类，还可以将方法标记为abstract，叫做抽象方法。抽象方法只有方法声明，没有方法实现。</li>
+<li>抽象类代表此类是要被extend，<code>抽象方法代表此方法一定要被子类实现</code>。</li>
+<li>为什么要有抽象方法，因为在某个继承层次写出方法的实现代码没有意义，所以抽象方法只有方法声明没有方法实现。</li>
+<li>抽象方法的意义同抽象类，虽然没有实现内容，但还是可以定义出一组子型共同的协议。这样做的好处还是多态。下面的eat方法就是抽象方法，只有方法声明，没有方法实现。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果声明出一个抽象方法，就必须将类也标记为抽象的。不能在普通类中拥有抽象方法。</li>
+</ul>
+<hr>
+<h4 id="多态的使用"><a href="#多态的使用" class="headerlink" title="多态的使用"></a>多态的使用</h4><ul>
+<li>假设想要编写维护list的类以及保存Dog对象。</li>
+<li>比如ArrayList有add()方法，现在实现我们自己的add()方法。</li>
+<li>使用大小为5的简单Dog数组来保存新加入的Dog对象。代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDogList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Dog[] dogs = <span class="keyword">new</span> Dog[<span class="number">5</span>];</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Dog d)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(nextIndex &lt; dogs.length)&#123;</div><div class="line">            dogs[nextIndex] = d;</div><div class="line">            System.out.println(<span class="string">"Dog added at"</span> + nextIndex);</div><div class="line">        &#125;</div><div class="line">        nextIndex ++;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>假设还要写一个Cat用的list类。<br>（1）另外创建一个单独的MyCatList类，这样不好。<br>（2）创建一个单独的DogAndCatList类，用addCat(Cat c)与addDog(Dog d)来处理两个不同的数组实例，这也不好。<br>（3）编写一个AnimalList类让它处理Animal所有的子类，这应该是最好的办法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//父类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//子类继承父类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;&#125;<span class="comment">//子类继承父类</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAnimalList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];<span class="comment">//生成Animal类型数组</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Animal a)</span></span>&#123; <span class="comment">//add方法</span></div><div class="line">        <span class="keyword">if</span>(nextIndex &lt; animals.length)&#123;</div><div class="line">            animals[nextIndex] = a;</div><div class="line">            System.out.println(<span class="string">"Animal added at "</span> + nextIndex);</div><div class="line">            nextIndex++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        MyAnimalList list = <span class="keyword">new</span> MyAnimalList();</div><div class="line">        Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">        Cat cat = <span class="keyword">new</span> Cat();</div><div class="line">        list.add(dog);<span class="comment">//狗能放进去</span></div><div class="line">        list.add(cat);<span class="comment">//猫能放进去</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="任何类的直接或间接父类是Object类"><a href="#任何类的直接或间接父类是Object类" class="headerlink" title="任何类的直接或间接父类是Object类"></a>任何类的直接或间接父类是Object类</h4><ul>
+<li>以下是继承了Object的几个常用方法举例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Dog a = <span class="keyword">new</span> Dog();</div><div class="line">Cat c = <span class="keyword">new</span> Cat();</div><div class="line"><span class="keyword">if</span>(a.equals(c))&#123; <span class="comment">//两个对象是否相等</span></div><div class="line">    System.out.println(<span class="string">"true"</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    System.out.println(<span class="string">"false"</span>);</div><div class="line">&#125;</div><div class="line">System.out.println(c.getClass());<span class="comment">//对象的类是谁</span></div><div class="line">System.out.println(c.toString());<span class="comment">//类名和地址</span></div></pre></td></tr></table></figure>
+<ul>
+<li>思考：String是一个类，自然也会有继承Object得来的equals()方法，你尝试调用它继承过来的equals()方法，看看运行结果，结果合理吗？我们已经学习了方法的重写，你能不能重写它的equals()方法呢？</li>
+</ul>
+<hr>
+<h4 id="想要修改合约怎么办？"><a href="#想要修改合约怎么办？" class="headerlink" title="想要修改合约怎么办？"></a>想要修改合约怎么办？</h4><ul>
+<li>现在Dog的父类有Animal、Object，这两个类都是合约的一部分。</li>
+<li><p>现在想给Dog加上几个方法，比如，与人亲热、玩球….（称它为宠物方法吧）</p>
+</li>
+<li><p>解决方案：<br>1、把宠物方法加进Animal中，缺点：老虎也会继承过来，但它们不可能与人亲热。<br>2、采用方法1，把宠物的方法设定成抽象的，强迫每个动物子类覆盖它们。缺点：所有的动物都得实现这个抽象方法，合约不太合理。<br>3、把方法加到Dog、Cat类中。缺点：失去了合约保证，多态无法起作用，因为Animal不会有共同的宠物行为。代码如下：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Animal dog = <span class="keyword">new</span> Dog();</div><div class="line">  dog.playBall();<span class="comment">//这行是错误的，因为Animal找不到这个方法</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>所以我们真正需要的方法应该满足下面的条件：<br>1、一种可以让宠物行为只应用在宠物身上的方法。<br>2、一种确保所有宠物类都有相同的方法定义的方法<br>3、一种是在多态情况下可以调用的方法。</p>
+</li>
+<li><p>多重继承？Dog和Cat即继承Animal类，又继承Pet类？</p>
+</li>
+<li>Java不支持多重继承这种方式，因为多重继承会有称为“致命方块”的问题。（这个可以百度，这里不再赘述）</li>
+</ul>
+<hr>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><ul>
+<li>Java有个解决方案，使用接口。接口关键字是interface。</li>
+<li>接口可以解决多重继承的问题而不会产生致命方块这种问题。</li>
+<li>接口的地位等同于类，它里面的方法必须是抽象方法，不能有具体方法。</li>
+<li>Java的接口就好象是100%的纯抽象类。</li>
+<li>一个类只能有一个父类（只能继承一个类），但是可以实现多个接口。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Pet</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">beFriendly</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">playBall</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beFriendly</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//必须实现</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playBall</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//必须实现</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//一般的覆盖方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="实验部分-用Java代码描述-花木兰替父从军"><a href="#实验部分-用Java代码描述-花木兰替父从军" class="headerlink" title="实验部分 用Java代码描述 花木兰替父从军"></a>实验部分 用Java代码描述 花木兰替父从军</h4><ul>
+<li>花木兰替父亲花弧从军。那么这时候花木兰是子类，花弧是父类。花弧有自己的属性<code>年龄</code>，<code>姓名</code>，<code>性别</code>。花木兰也有这些属性，但是很明显二者的属性值完全不一样。花弧有自己的方法<code>骑马杀敌</code>，同样花木兰也遗传了父亲一样的方法<code>骑马杀敌</code>。花弧还有一个方法<code>自我介绍</code>，每个人都可以问花弧姓甚名谁。同时花木兰还有一个自己特有的方法<code>涂脂抹粉</code>。但是，现在花木兰替父从军，女扮男装。这时候相当于父类的引用（花弧这个名字）指向了子类对象（花木兰这个人），那么在其他类（其他的人）中访问子类对象（花木兰这个人）的成员属性（姓名，年龄，性别）时，其实看到的都是花木兰她父亲的名字（花弧）、年龄（60岁）、性别（男）。当访问子类对象（花木兰这个人）的方法（骑马打仗）时，其实都是看到花木兰自己运用十八般武艺在骑马打仗。当访问花木兰的方法时（自我介绍），花木兰自己都是用她父亲的名字信息在向别人作自我介绍。并且这时候花木兰不能使用自己特有的方法”涂脂抹粉”。—–多态中的向上转型。</li>
+<li><p>那么终于一将功成万骨枯，打仗旗开得胜了，花木兰告别了战争生活。有一天，遇到了自己心爱的男人，这时候爱情的力量将父类对象的引用（花弧这个名字）强制转换为子类对象本来的引用（花木兰这个名字），那么花木兰又从新成为了她自己，这时候她完全是她自己了。名字是花木兰，年龄是28，性别是女，打仗依然那样生猛女汉子，自我介绍则堂堂正正地告诉别人我叫花木兰。OMG！终于，终于可以使用自己特有的方法”涂脂抹粉”了。从此，花木兰完全回到了替父从军前的那个花木兰了。并且和自己心爱的男人幸福的过完了一生。—–多态中的向下转型</p>
+</li>
+<li><p>命名约定如下：</p>
+</li>
+</ul>
+<blockquote>
+<p>花弧:Huahu，花木兰:Mulan，骑马杀敌:rideEnemy，自我介绍:introduce，涂脂抹粉:prettify，年龄:age，姓名:name，性别:sex</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/12/Java-第七课 继承和多态/" rel="next" title="Java第7次课 继承与多态">
+                <i class="fa fa-chevron-left"></i> Java第7次课 继承与多态
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/17/Java-第九课 多态、抽象/"
+           data-title="Java第9次课 深入多态" data-url="http://yoursite.com/2017/04/17/Java-第九课 多态、抽象/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">2.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象方法"><span class="nav-number">3.</span> <span class="nav-text">抽象方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态的使用"><span class="nav-number">4.</span> <span class="nav-text">多态的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任何类的直接或间接父类是Object类"><span class="nav-number">5.</span> <span class="nav-text">任何类的直接或间接父类是Object类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#想要修改合约怎么办？"><span class="nav-number">6.</span> <span class="nav-text">想要修改合约怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">7.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验部分-用Java代码描述-花木兰替父从军"><span class="nav-number">8.</span> <span class="nav-text">实验部分 用Java代码描述 花木兰替父从军</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
