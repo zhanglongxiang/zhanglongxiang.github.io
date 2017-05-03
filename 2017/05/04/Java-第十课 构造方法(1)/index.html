@@ -88,20 +88,20 @@
 
 
 <meta name="description" content="创建对象
-现在更深入学习对象的创建，也就是那个new关键字。
+现在更深入学习对象的创建，也就是new关键字。
 声明对象和赋值有3个步骤：声明引用变量、创建对象、连接对象和引用，下面这行代码执行的时候，就会有这三个步骤。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第10次课 构造方法">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/Java-第十课 构造方法(1)/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="创建对象
-现在更深入学习对象的创建，也就是那个new关键字。
+现在更深入学习对象的创建，也就是new关键字。
 声明对象和赋值有3个步骤：声明引用变量、创建对象、连接对象和引用，下面这行代码执行的时候，就会有这三个步骤。">
-<meta property="og:updated_time" content="2017-05-03T22:18:21.000Z">
+<meta property="og:updated_time" content="2017-05-03T22:52:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第10次课 构造方法">
 <meta name="twitter:description" content="创建对象
-现在更深入学习对象的创建，也就是那个new关键字。
+现在更深入学习对象的创建，也就是new关键字。
 声明对象和赋值有3个步骤：声明引用变量、创建对象、连接对象和引用，下面这行代码执行的时候，就会有这三个步骤。">
 
 
@@ -371,7 +371,7 @@
 
       
         <h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><ul>
-<li>现在更深入学习对象的创建，也就是那个<code>new</code>关键字。</li>
+<li>现在更深入学习对象的创建，也就是<code>new</code>关键字。</li>
 <li><p>声明对象和赋值有3个步骤：<code>声明引用变量</code>、<code>创建对象</code>、<code>连接对象和引用</code>，下面这行代码执行的时候，就会有这三个步骤。</p>
 <a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Dog dog = <span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure>
@@ -379,17 +379,13 @@
 <li><p>这行代码看起来很像是在调用Dog()这个方法，实际是在调用Dog的<code>构造方法</code>。</p>
 </li>
 <li>构造方法是new的时候会执行的程序代码，它的作用就是生成对象。<strong>唯一能够调用构造方法的时刻就是新建一个对象的时候</strong>。</li>
-<li>可以根据自己的需求编写构造方法，但如果你没有写，编译器会自动帮你加上一个。反正，一个类中必须要有构造方法。</li>
+<li>可以根据自己的需求编写构造方法，但如果你没有写，编译器会自动帮你加上一个。总之，一个类中至少要有一个构造方法。</li>
 <li>下面的代码就是你没写，编译器会自动写出来的默认无参构造方法：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span></span>&#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>有没有发现上面这个构造方法跟普通方法有什么不同之处？</li>
-<li><strong>普通方法有返回值类型，构造方法没有返回值类型</strong></li>
-<li><p><strong>构造方法名字一定要与类名完全相同</strong></p>
-</li>
-<li><p>构造方法的一项关键特征就是它会在对象被赋值给引用之前就执行。</p>
-</li>
+<li>构造方法跟普通方法的不同之处：<strong>普通方法有返回值类型，构造方法没有返回值类型</strong>；<strong>构造方法名字一定要与类名完全相同</strong></li>
+<li>构造方法的一项关键特征就是它会在对象被赋值给引用之前就执行。</li>
 <li>这代表你可以有机会在对象被使用之前介入。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Dog"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -397,7 +393,7 @@
 <hr>
 <h4 id="新建Dog状态的初始化"><a href="#新建Dog状态的初始化" class="headerlink" title="新建Dog状态的初始化"></a>新建Dog状态的初始化</h4><ul>
 <li>大部分人都是使用构造方法来初始化对象的状态，也就是说设置和给对象的属性赋值。</li>
-<li>下例，这会让Dog的weight暂时处于没有大小数值的状态（实例变量没有默认值），且需要两行才能搞定。</li>
+<li>下例，这会让Dog的weight暂时处于没有大小数值的状态（实例变量没有默认值），且需要两行代码才能搞定。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Dog"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeight</span><span class="params">(<span class="keyword">int</span> weight)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.weight = weight;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">        dog.setWeight(<span class="number">100</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
