@@ -255,6 +255,139 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Java-第十课 实验参考代码/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/04/Java-第十课 实验参考代码/" itemprop="url">
+                  Java第10课 我写的实验代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T22:34:17+08:00">
+                2017-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/04/Java-第十课 实验参考代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/Java-第十课 实验参考代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>我并不是一气写下来的，有些模糊的地方，我也停下来，写测试类进行验证我写的对不对，然后再向下写。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123; <span class="comment">//先写People类</span></div><div class="line">    String name;</div><div class="line">    <span class="keyword">char</span> sex;</div><div class="line">    <span class="keyword">int</span> age;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">People</span><span class="params">(String name,<span class="keyword">char</span> sex,<span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.sex = sex;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">People</span></span>&#123;  <span class="comment">//再写Student类</span></div><div class="line">    String number;</div><div class="line">    <span class="keyword">int</span> score;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"张三"</span>,<span class="string">'m'</span>,<span class="number">18</span>);<span class="comment">//由于父类只有一个带参数的构造方法，所以这一行必须要写</span></div><div class="line">        <span class="keyword">this</span>.number=<span class="string">"1001"</span>;</div><div class="line">        <span class="keyword">this</span>.name = <span class="string">"张三"</span>;</div><div class="line">        <span class="keyword">this</span>.sex = <span class="string">'m'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String number,String name,<span class="keyword">char</span> sex,<span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(name,sex,age);<span class="comment">//由于父类只有一个带参数的构造方法，所以这一行必须要写</span></div><div class="line">        <span class="keyword">this</span>.number = number;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.sex = sex;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">choose</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"no choose course"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">choose</span><span class="params">(String course)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"my choose"</span> + course + <span class="string">"courese"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getScore</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.score;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setScore</span><span class="params">(<span class="keyword">int</span> score)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.score = score;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;  <span class="comment">//最后写测试类</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Student[] students = <span class="keyword">new</span> Student[<span class="number">10</span>];<span class="comment">//定义一个Student类型的数组，存放学生，模拟班级</span></div><div class="line">        students[<span class="number">0</span>] = <span class="keyword">new</span> Student(<span class="string">"1001"</span>,<span class="string">"zhang0"</span>,<span class="string">'m'</span>,<span class="number">18</span>);<span class="comment">//生成第1个学生，放在数组中的第1个位置</span></div><div class="line">        students[<span class="number">1</span>] = <span class="keyword">new</span> Student(<span class="string">"1002"</span>,<span class="string">"zhang1"</span>,<span class="string">'f'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">2</span>] = <span class="keyword">new</span> Student(<span class="string">"1003"</span>,<span class="string">"zhang2"</span>,<span class="string">'m'</span>,<span class="number">19</span>);</div><div class="line">        students[<span class="number">3</span>] = <span class="keyword">new</span> Student(<span class="string">"1004"</span>,<span class="string">"zhang3"</span>,<span class="string">'f'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">4</span>] = <span class="keyword">new</span> Student(<span class="string">"1005"</span>,<span class="string">"zhang4"</span>,<span class="string">'m'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">5</span>] = <span class="keyword">new</span> Student(<span class="string">"1006"</span>,<span class="string">"zhang5"</span>,<span class="string">'m'</span>,<span class="number">17</span>);</div><div class="line">        students[<span class="number">6</span>] = <span class="keyword">new</span> Student(<span class="string">"1007"</span>,<span class="string">"zhang6"</span>,<span class="string">'f'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">7</span>] = <span class="keyword">new</span> Student(<span class="string">"1008"</span>,<span class="string">"zhang7"</span>,<span class="string">'m'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">8</span>] = <span class="keyword">new</span> Student(<span class="string">"1009"</span>,<span class="string">"zhang8"</span>,<span class="string">'m'</span>,<span class="number">20</span>);</div><div class="line">        students[<span class="number">9</span>] = <span class="keyword">new</span> Student(<span class="string">"1010"</span>,<span class="string">"zhang9"</span>,<span class="string">'m'</span>,<span class="number">18</span>);</div><div class="line">        students[<span class="number">0</span>].setScore(<span class="number">90</span>);<span class="comment">//调用第一个学生的setScore方法，给他设置成绩，其他学生的设置成绩我不再写</span></div><div class="line">        <span class="keyword">double</span> result = getAverageScore(students);<span class="comment">//调用求平均值方法，由于这个方法是静态的，所以可以直接调用</span></div><div class="line">        System.out.println(result);<span class="comment">//输出平均成绩结果 </span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">getAverageScore</span><span class="params">(Student[] students)</span></span>&#123; <span class="comment">//这个求平均值的方法不应该属于某个学生，所以不应写在Student类中</span></div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; students.length; i++)&#123;<span class="comment">//遍历，求成绩之和</span></div><div class="line">            sum = sum + students[i].getScore();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sum/students.length;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Java-第十课 构造方法(1)/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1567,142 +1700,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/Java-第六课 实验部分/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="乌龙">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="乌龙">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/05/Java-第六课 实验部分/" itemprop="url">
-                  Java第6次课 实验部分
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T12:40:56+08:00">
-                2017-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/05/Java-第六课 实验部分/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/05/Java-第六课 实验部分/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="第1个实验，熟悉ArrayList的常用方法"><a href="#第1个实验，熟悉ArrayList的常用方法" class="headerlink" title="第1个实验，熟悉ArrayList的常用方法"></a>第1个实验，熟悉ArrayList的常用方法</h4><ul>
-<li>下面这行代码，创建出一个String类型的列表，你照着写就可以。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/05/Java-第六课 实验部分/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1752,7 +1749,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
