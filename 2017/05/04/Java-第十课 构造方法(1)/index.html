@@ -97,7 +97,7 @@
 <meta property="og:description" content="创建对象
 现在更深入学习对象的创建，也就是new关键字。
 声明对象和赋值有3个步骤：声明引用变量、创建对象、连接对象和引用，下面这行代码执行的时候，就会有这三个步骤。">
-<meta property="og:updated_time" content="2017-05-03T22:52:45.000Z">
+<meta property="og:updated_time" content="2017-05-04T02:22:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第10次课 构造方法">
 <meta name="twitter:description" content="创建对象
@@ -458,7 +458,7 @@
 <li>用下面这样形式：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">(String name)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        System.out.println(<span class="string">"Making an Animal"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Dog extends Animal&#123;</div><div class="line">    String name;</div><div class="line">    public Dog(String name)&#123;</div><div class="line">        super(name);</div><div class="line">        System.out.println(&quot;Making a Dog&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</div><div class="line">    String name;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">(String name)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(name);</div><div class="line">        System.out.println(<span class="string">"Making a Dog"</span>);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="从某个构造方法调用重载版的另一个构造方法"><a href="#从某个构造方法调用重载版的另一个构造方法" class="headerlink" title="从某个构造方法调用重载版的另一个构造方法"></a>从某个构造方法调用重载版的另一个构造方法</h4><ul>
 <li>我们已经知道，一个类中，构造方法可以有多个，叫做构造方法的重载。</li>
