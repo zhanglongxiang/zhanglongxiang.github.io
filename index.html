@@ -979,117 +979,16 @@
 
       
         
-          
-            <h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><ul>
+          <h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><ul>
 <li>程序执行不可能一直顺利，比如程序运行过程中找不到文件、非法参数、网络连接错误等等，程序是会发生异常的。</li>
-<li>当你在编写可能会有异常的方法时，你需要写一些<strong>能够处理异常状况的代码</strong>来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a/b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>上面代码执行，如果传入的第二个参数是0，编译器就会报错误，因为除数不能为0。错误的大体意思是这个程序有异常，你还没有处理。</li>
-<li>如何得知某个方法会抛出异常呢，看该方法的方法声明，如果方法声明中有<font color="red">throws</font>关键字就说明这个方法在执行的过程中可能会抛出异常。所以上面的div方法应该写成如下这样：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">	<span class="keyword">return</span> a/b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h4><ul>
-<li>如果把有风险的代码包含在<font color="red">try/catch块</font>中，那么编译器会放心许多。</li>
-<li>调用该方法的程序代码要有try…catch…处理块。没有的话，调用的方法真要异常抛出了，没法进行异常处理。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">	MainTest mt = <span class="keyword">new</span> MainTest();</div><div class="line">	<span class="keyword">try</span>&#123;</div><div class="line">		mt.div(<span class="number">3</span>,<span class="number">0</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">		System.out.println(<span class="string">"除数不能为0"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>try…catch…块的流程控制是：如果成功，只执行try，不执行catch；如果失败，try失败后的代码不再执行，转到catch由它捕获异常执行catch块中的代码。</li>
-</ul>
-<hr>
-<h4 id="finally：无论如何都要执行的部分"><a href="#finally：无论如何都要执行的部分" class="headerlink" title="finally：无论如何都要执行的部分"></a>finally：无论如何都要执行的部分</h4><ul>
-<li>finally块是用来存放不管有没有异常都得执行的程序，它是异常处理过程中的可选项。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		MainTest mt = <span class="keyword">new</span> MainTest();</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			mt.div(<span class="number">3</span>,<span class="number">0</span>);</div><div class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">			System.out.println(<span class="string">"除数不能为0"</span>);</div><div class="line">		&#125;<span class="keyword">finally</span>&#123; <span class="comment">//这里加上了finally部分</span></div><div class="line">			System.out.println(<span class="string">"必须要执行的部分"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		<span class="keyword">return</span> a/b;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>如果不写finally块，上面程序要改成下面这样,才能够保证必须执行的部分肯定能执行到，必须执行的代码要写两次。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		MainTest mt = <span class="keyword">new</span> MainTest();</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			System.out.println(<span class="string">"必须要执行的部分"</span>);</div><div class="line">			mt.div(<span class="number">3</span>,<span class="number">0</span>);</div><div class="line"></div><div class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">			System.out.println(<span class="string">"除数不能为0"</span>);</div><div class="line">			System.out.println(<span class="string">"必须要执行的部分"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		<span class="keyword">return</span> a/b;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="异常也可以选择避开（继续抛出）"><a href="#异常也可以选择避开（继续抛出）" class="headerlink" title="异常也可以选择避开（继续抛出）"></a>异常也可以选择避开（继续抛出）</h4><ul>
-<li>当调用有throws的方法时，编译器需要对这件事情有所表示。反正得处理这个可能会出现的异常。</li>
-<li>大部分情况下我们用try/catch块来进行处理。</li>
-<li>但也可以实行不同的方案：把它继续抛出去让调用你方法的程序来try/catch该异常。</li>
-<li>这很容易，你只要表示出会再throws此异常就可以了。</li>
-<li>下面的例子，连main()也去throws，就不对了。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">song</span><span class="params">()</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</div><div class="line">	</div><div class="line">	Player player = <span class="keyword">new</span> Player();</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		MainTest mt = <span class="keyword">new</span> MainTest();</div><div class="line">		mt.foo();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		player.song();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>综上所讲，异常的处理有两种形式：处理（try…catch块…finally…）和声明（继续throws）</li>
-</ul>
-<hr>
-<h4 id="实验部分1（课上实验）"><a href="#实验部分1（课上实验）" class="headerlink" title="实验部分1（课上实验）"></a>实验部分1（课上实验）</h4><ul>
-<li>写一个类<strong>TestException</strong>，它有一个静态方法doRisky(String test)。这个方法要做的事：<ol>
-<li>输出字符”start”</li>
-<li>判断参数如果不是”yes”，要抛出异常</li>
-<li>输出字符串”end”</li>
-</ol>
-</li>
-<li>在该类中写main方法，调用doRisky方法，如果有异常，输出”Risky Exception”。不论是否有异常，最后一定要做的事情是输出”finally”。</li>
-<li>程序运行效果，发生异常是这样：<br><img src="http://imglf1.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtdHJETll3T1ZXWWdhNzNqZDMvYkI2TGxRM1U1RGF3RW5nPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Mou icon"></li>
-<li>没有发生异常是这样：<br><img src="http://imglf2.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtc09IZndQOGxhaFpCVWwyejJGTjNBam9ia0lBYTE3RzFnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="Mou icon"></li>
-</ul>
-<hr>
-<h4 id="实验部分2-课下实验"><a href="#实验部分2-课下实验" class="headerlink" title="实验部分2(课下实验)"></a>实验部分2(课下实验)</h4><ul>
-<li>写一个MIDI音乐播放器软件，类名叫MIDIApp，里面有一个play()方法。形如以下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MIDIApp midiApp = new MIDIApp();</div><div class="line">midiApp.play();//能播放出声音</div></pre></td></tr></table></figure>
-<h5 id="预备内容："><a href="#预备内容：" class="headerlink" title="预备内容："></a>预备内容：</h5><ul>
-<li>实验室的机器需要插耳机才能听到声音。</li>
-<li>MIDI文件带有音乐的信息，但不具备声音本身，它有点像乐谱。</li>
-<li>MIDI装置知道要如何读取MIDI文件并加以播放。通常MIDI装置具有许多乐器的音效并且可以同时发声。</li>
-<li>我们要一边看JDK相关API，一边来完成我们的程序：<strong><a href="http://tool.oschina.net/apidocs/apidoc?api=jdk-zh" target="_blank" rel="external">中文JDK地址</a></strong></li>
-<li>我们这节课用到的API都在<font color="red">javax.sound.midi</font>这个包中，你只关注这个包就可以了。</li>
-<li>思路：既然要让电脑播放MIDI，我们首先要获得本台电脑的MIDI发音装置，然后我们要制造出MIDI，然后让这个MIDI发音装置去播放我们制造出来的MIDI。三步走。</li>
-</ul>
-<h5 id="第一步，获得本台电脑的发音装置"><a href="#第一步，获得本台电脑的发音装置" class="headerlink" title="第一步，获得本台电脑的发音装置"></a>第一步，获得本台电脑的发音装置</h5><ul>
-<li>电脑的默认midi发音设备类是<font color="red">Sequencer</font>，所以一个Sequencer类型的对象就能代表一个midi发音设备了，可是真正的发音设备在哪呢？就象int a,a是一个int类型的变量，真正的变量值在哪呢？</li>
-<li>请看<font color="red">MidiSystem</font>类中的<font color="red">getSequencer()</font>方法。</li>
-<li>到此为止，发音装置我们已经获得了，但还没有声音播放。下面，我们要开始制作midi声音。</li>
-</ul>
-<h5 id="第二步，制作midi声音"><a href="#第二步，制作midi声音" class="headerlink" title="第二步，制作midi声音"></a>第二步，制作midi声音</h5><ul>
-<li>midi声音是用<font color="red">Sequence</font>这个类来进行制作的，我们用它的第一个构造方法来生成它的对象，其中第一个float参数我们用它的一个静态属性<font color="red">Sequence.PPQ</font>，第二个参数填4。即：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Sequence(Sequence.PPQ,<span class="number">4</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li>我从Sequence类中复制过来的一句话，这就是我们下面继续要做的事情：</li>
-</ul>
-<blockquote>
-<p><strong><em>还可以从头构建 sequence，方法是将新的 Track 添加到空 Sequence 中，然后将 MidiEvent 对象添加到这些 Track 中。</em></strong></p>
-</blockquote>
-<ul>
-<li><p>sequence我们上面已经创建了，现在要做的工作是把新的音轨(track)添加到sequence中,你看一下,Sequence中哪个方法可以做这件事情呢？<font color="red">createTrack()</font>。</p>
-</li>
-<li><p>做到这里，Track已经有了，只不过是空白的Track。你现在可以播放了，怎么播放？<font color="red">Sequencer</font>里面，有<font color="red">setSequencer()</font>方法，还有<font color="red">open()</font>方法，还有<font color="red">start()</font>方法，调用这些方法，就可以播放，没有任何错误，但是没有声音。因为Track（音轨）目前是空白的。</p>
-</li>
-</ul>
-<h5 id="第二步续，制作有声音的Track"><a href="#第二步续，制作有声音的Track" class="headerlink" title="第二步续，制作有声音的Track"></a>第二步续，制作有声音的Track</h5><ul>
-<li><p>Track有个<font color="red">add()</font>方法，它要接收一个<font color="red">MidiEvent</font>类型的参数,</p>
-</li>
-<li><p>MidiEvent是组合乐曲的指令，一连串的MidiEvent就好象是乐谱一样。MidiEvent是非常琐碎的描述，所以你必须指定何时开始播放某个音符(NOTE ON事件)以及何时停止(NOTE OFF事件).所以，我们要向我们生成的Track对象里add进两次MidiEvent对象，一次是开始，一次停止。</p>
-</li>
-<li><p>MidiEvent的构造方法要接收两个参数，第一个是MidiMessage类型的参数，第二个是节拍，1~32之间的数，意思是从第几个节拍开始发音，从第几个节拍发音结束。</p>
-</li>
-<li><p>我们用MidiMessage的子类ShortMessage来生成MidiEvent需要的参数，ShortMessage里有一个方法setMessage()，4个参数：第1个参数：144代表开始，128代表结束。第2个参数：1代表吉它、2代表Bass。第3个参数：0~127代表音高。第4个参数：0~100代表用多大的力气按下。</p>
-</li>
-<li><p>总结：制作Track音轨就是:</p>
-<ol>
-<li>先做声音的开始：生成第一个ShortMessage，设置它的信息，把这个对象做为MidiEvent构造方法的参数,再把MidiEvent对象add进Track对象。</li>
-<li>再做声音的结束：再生成一个ShortMessage，与开始不同的是第一个参数144改为128。</li>
-</ol>
-</li>
-</ul>
-<h5 id="第三步，调试播放"><a href="#第三步，调试播放" class="headerlink" title="第三步，调试播放"></a>第三步，调试播放</h5><ul>
-<li>理顺一下上面写的程序，该set的set，该add的add，该open的open，该play的play，该start的start，不要有漏的。</li>
-<li>注意，看JDK中的方法声明，有些方法是会抛出异常的，我们调用这些方法应该try…catch…</li>
-<li>代码中一些方法的参数数字调整一下，应该能听到用不同乐器、时间长短的声音。</li>
-</ul>
-
-          
+<li><p>当你在编写可能会有异常的方法时，你需要写一些<strong>能够处理异常状况的代码</strong>来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/Java-第十一课 异常/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

@@ -89,34 +89,22 @@
 
 <meta name="description" content="异常
 程序执行不可能一直顺利，比如程序运行过程中找不到文件、非法参数、网络连接错误等等，程序是会发生异常的。
-当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。
-
-123public double div(int a,int b)&amp;#123;	return a/b;&amp;#125;
-
-上面代码执行，如果传入的第二个参数">
+当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java第11次课 异常">
 <meta property="og:url" content="http://yoursite.com/2017/05/03/Java-第十一课 异常/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="异常
 程序执行不可能一直顺利，比如程序运行过程中找不到文件、非法参数、网络连接错误等等，程序是会发生异常的。
-当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。
-
-123public double div(int a,int b)&amp;#123;	return a/b;&amp;#125;
-
-上面代码执行，如果传入的第二个参数">
+当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。">
 <meta property="og:image" content="http://imglf1.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtdHJETll3T1ZXWWdhNzNqZDMvYkI2TGxRM1U1RGF3RW5nPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
 <meta property="og:image" content="http://imglf2.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtc09IZndQOGxhaFpCVWwyejJGTjNBam9ia0lBYTE3RzFnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:updated_time" content="2017-05-10T14:49:38.000Z">
+<meta property="og:updated_time" content="2017-05-10T21:49:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第11次课 异常">
 <meta name="twitter:description" content="异常
 程序执行不可能一直顺利，比如程序运行过程中找不到文件、非法参数、网络连接错误等等，程序是会发生异常的。
-当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。
-
-123public double div(int a,int b)&amp;#123;	return a/b;&amp;#125;
-
-上面代码执行，如果传入的第二个参数">
+当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。">
 <meta name="twitter:image" content="http://imglf1.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtdHJETll3T1ZXWWdhNzNqZDMvYkI2TGxRM1U1RGF3RW5nPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
 
 
@@ -387,11 +375,12 @@
       
         <h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><ul>
 <li>程序执行不可能一直顺利，比如程序运行过程中找不到文件、非法参数、网络连接错误等等，程序是会发生异常的。</li>
-<li>当你在编写可能会有异常的方法时，你需要写一些<strong>能够处理异常状况的代码</strong>来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。</li>
-</ul>
+<li><p>当你在编写可能会有异常的方法时，你需要写一些<strong>能够处理异常状况的代码</strong>来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。</p>
+<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> a/b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>上面代码执行，如果传入的第二个参数是0，编译器就会报错误，因为除数不能为0。错误的大体意思是这个程序有异常，你还没有处理。</li>
+</li>
+<li><p>上面代码执行，如果传入的第二个参数是0，编译器就会报错误，因为除数不能为0。错误的大体意思是这个程序有异常，你还没有处理。</p>
+</li>
 <li>如何得知某个方法会抛出异常呢，看该方法的方法声明，如果方法声明中有<font color="red">throws</font>关键字就说明这个方法在执行的过程中可能会抛出异常。所以上面的div方法应该写成如下这样：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">	<span class="keyword">return</span> a/b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
