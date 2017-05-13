@@ -99,7 +99,7 @@
 当你在编写可能会有异常的方法时，你需要写一些能够处理异常状况的代码来应对它，告诉将来的调用者，我这个方法在执行的时候可能会有异常出现。">
 <meta property="og:image" content="http://imglf1.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtdHJETll3T1ZXWWdhNzNqZDMvYkI2TGxRM1U1RGF3RW5nPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
 <meta property="og:image" content="http://imglf2.nosdn.127.net/img/TVpzSWthVWN0a3B2bEFEb0ZXRWRtc09IZndQOGxhaFpCVWwyejJGTjNBam9ia0lBYTE3RzFnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:updated_time" content="2017-05-10T22:34:53.000Z">
+<meta property="og:updated_time" content="2017-05-13T14:37:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第11次课 异常">
 <meta name="twitter:description" content="异常
@@ -443,7 +443,7 @@
 <h5 id="第一步，获得本台电脑的发音装置"><a href="#第一步，获得本台电脑的发音装置" class="headerlink" title="第一步，获得本台电脑的发音装置"></a>第一步，获得本台电脑的发音装置</h5><ul>
 <li>电脑的默认midi发音设备类是<font color="red">Sequencer</font>，所以一个Sequencer类型的对象就能代表一个midi发音设备了，可是真正的发音设备在哪呢？就象int a,a是一个int类型的变量，真正的变量值在哪呢？</li>
 <li>请看<font color="red">MidiSystem</font>类中的<font color="red">getSequencer()</font>方法。</li>
-<li>到此为止，发音装置我们已经获得了，但还没有声音播放。下面，我们要开始制作midi声音。</li>
+<li>到此为止，发音装置我们已经获得了，但还没有声音源。下面，我们要开始制作midi声音源，才能让我们的设备去播放它。</li>
 </ul>
 <h5 id="第二步，制作midi声音"><a href="#第二步，制作midi声音" class="headerlink" title="第二步，制作midi声音"></a>第二步，制作midi声音</h5><ul>
 <li>midi声音是用<font color="red">Sequence</font>这个类来进行制作的，我们用它的第一个构造方法来生成它的对象，其中第一个float参数我们用它的一个静态属性<font color="red">Sequence.PPQ</font>，第二个参数填4。即：</li>
@@ -464,7 +464,7 @@
 <h5 id="第二步续，制作有声音的Track"><a href="#第二步续，制作有声音的Track" class="headerlink" title="第二步续，制作有声音的Track"></a>第二步续，制作有声音的Track</h5><ul>
 <li><p>Track有个<font color="red">add()</font>方法，它要接收一个<font color="red">MidiEvent</font>类型的参数,</p>
 </li>
-<li><p>MidiEvent是组合乐曲的指令，一连串的MidiEvent就好象是乐谱一样。MidiEvent是非常琐碎的描述，所以你必须指定何时开始播放某个音符(NOTE ON事件)以及何时停止(NOTE OFF事件).所以，我们要向我们生成的Track对象里add进两次MidiEvent对象，一次是开始，一次停止。</p>
+<li><p>MidiEvent是组合乐曲的指令，一连串的MidiEvent就好象是乐谱一样。MidiEvent是非常琐碎的描述，所以你必须指定何时开始播放某个音符(NOTE ON事件)以及何时停止(NOTE OFF事件)。所以，我们要向生成的Track对象里add进两次MidiEvent对象，一次是开始，一次停止。</p>
 </li>
 <li><p>MidiEvent的构造方法要接收两个参数，第一个是MidiMessage类型的参数，第二个是节拍，1~32之间的数，意思是从第几个节拍开始发音，从第几个节拍发音结束。</p>
 </li>
