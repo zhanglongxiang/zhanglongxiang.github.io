@@ -97,7 +97,7 @@
 <meta property="og:description" content="先从窗口开始
 写程序总想写出一些图形界面，让程序看起来更象“软件”。这次课就来学习写图形界面。
 图形界面这部分，不需要我们自己写类，Java已经提供了很多图形工具类，大多数在javax.swing这个包下。">
-<meta property="og:updated_time" content="2017-05-17T13:34:43.000Z">
+<meta property="og:updated_time" content="2017-05-17T13:47:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第12次课 图形用户接口">
 <meta name="twitter:description" content="先从窗口开始
@@ -373,11 +373,11 @@
         <h4 id="先从窗口开始"><a href="#先从窗口开始" class="headerlink" title="先从窗口开始"></a>先从窗口开始</h4><ul>
 <li>写程序总想写出一些图形界面，让程序看起来更象“软件”。这次课就来学习写图形界面。</li>
 <li>图形界面这部分，不需要我们自己写类，Java已经提供了很多图形工具类，大多数在<strong>javax.swing</strong>这个包下。<a id="more"></a></li>
-<li>本次课第一个类：<code>JFrame</code>，它代表程序的window，它就象一个容器，一旦生成了window，我们可以向里面加入其它的组件。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwingTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		JFrame frame = <span class="keyword">new</span> JFrame(<span class="string">"登陆界面"</span>);<span class="comment">//创建JFrame</span></div><div class="line">		JButton button = <span class="keyword">new</span> JButton(<span class="string">"click me"</span>);<span class="comment">//创建JButton</span></div><div class="line">		frame.add(button);<span class="comment">//把组件加入到Window</span></div><div class="line">		frame.setSize(<span class="number">300</span>,<span class="number">300</span>);<span class="comment">//window尺寸</span></div><div class="line">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">		frame.setVisible(<span class="keyword">true</span>);<span class="comment">//显示为真</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>本次课第一个类：<code>JFrame</code>，它代表程序的window，它就象一个容器，一旦生成了window，我们可以向里面加入其它的组件。</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwingTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		JFrame frame = <span class="keyword">new</span> JFrame(<span class="string">"登陆界面"</span>);<span class="comment">//创建JFrame</span></div><div class="line">		JButton button = <span class="keyword">new</span> JButton(<span class="string">"click me"</span>);<span class="comment">//创建JButton</span></div><div class="line">		frame.add(button);<span class="comment">//把组件加入到Window</span></div><div class="line">		frame.setSize(<span class="number">300</span>,<span class="number">300</span>);<span class="comment">//window尺寸</span></div><div class="line">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">		frame.setVisible(<span class="keyword">true</span>);<span class="comment">//显示为真</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h4 id="按钮怎么才能有反应？"><a href="#按钮怎么才能有反应？" class="headerlink" title="按钮怎么才能有反应？"></a>按钮怎么才能有反应？</h4><ul>
+<h4 id="按动button怎么才能有反应？"><a href="#按动button怎么才能有反应？" class="headerlink" title="按动button怎么才能有反应？"></a>按动button怎么才能有反应？</h4><ul>
 <li>上面窗口的按钮只是个摆设，按下去没有反应。</li>
 <li>假设你要把按钮上面的文字在用户按下按钮时从”click me”变成”clicked”。如何让<strong>按钮被按下执行这个改变</strong>呢？</li>
 <li>用户按下按钮，就会产生事件。Java有许多不同的事件类型，大多数都与用户操作有关。</li>
@@ -452,22 +452,18 @@
 <h4 id="实验2：做一个动画"><a href="#实验2：做一个动画" class="headerlink" title="实验2：做一个动画"></a>实验2：做一个动画</h4><ul>
 <li>上面的内部类会用了，来做下面这个有趣的实验。</li>
 <li>能不能做出这个视频的效果：<a href="http://v.youku.com/v_show/id_XMTU4NDQ3MDgwNA==.html" target="_blank" rel="external">视频链接</a>，一个移动的小球。</li>
-<li><p>解决思路：</p>
-<ol>
-<li><p>fillOval方法共有四个参数，前两个参数是像素坐标，你尝试一下改变像素坐标，重新运行程序，小球会出现在另一个位置。后两个参数是小球大小。这一步你得做到手工设置能让小球灵活起来。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.fillOval(70,70,100,100)</div></pre></td></tr></table></figure>
-</li>
-<li><p>只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？</p>
-</li>
-<li><p>小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">		Thread.sleep(50);</div><div class="line">	&#125;catch(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>MyDrawPanel应该写成内部类，方便某些变量的共享。</p>
-</li>
+<li>解决思路：<ol>
+<li>fillOval方法共有四个参数，前两个参数是像素坐标，你尝试一下改变像素坐标，重新运行程序，小球会出现在另一个位置。后两个参数是小球大小。这一步你得做到手工设置能让小球灵活起来。</li>
 </ol>
 </li>
-<li><p>其实做完这个动画，会感觉到数学在计算机中的重要性，我们这个球如果再继续做下去，会成为弹球，球怎么弹呢？朝哪弹呢？再加上速度。是不是需要数学进行模拟计算呢？</p>
-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.fillOval(<span class="number">70</span>,<span class="number">70</span>,<span class="number">100</span>,<span class="number">100</span>)</div></pre></td></tr></table></figure>
+<pre><code>2. 只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？
+3. 小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
+<pre><code>4. MyDrawPanel应该写成内部类，方便某些变量的共享。
+</code></pre><ul>
+<li>其实做完这个动画，会感觉到数学在计算机中的重要性，我们这个球如果再继续做下去，会成为弹球，球怎么弹呢？朝哪弹呢？再加上速度。是不是需要数学进行模拟计算呢？</li>
 </ul>
 
       
@@ -640,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#先从窗口开始"><span class="nav-number">1.</span> <span class="nav-text">先从窗口开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按钮怎么才能有反应？"><span class="nav-number">2.</span> <span class="nav-text">按钮怎么才能有反应？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小总结：监听、事件源与程序"><span class="nav-number">3.</span> <span class="nav-text">小总结：监听、事件源与程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自己创建的绘图组件"><span class="nav-number">4.</span> <span class="nav-text">自己创建的绘图组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在paintComponent-可以做的事情-举两个例子"><span class="nav-number">5.</span> <span class="nav-text">在paintComponent()可以做的事情,举两个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验1：按下button，小球变色"><span class="nav-number">6.</span> <span class="nav-text">实验1：按下button，小球变色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下内容本周没有讲到，有余力的同学可以自己实践学习。"><span class="nav-number"></span> <span class="nav-text">以下内容本周没有讲到，有余力的同学可以自己实践学习。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#frame上有两个按钮都有事件发生怎么办？"><span class="nav-number">1.</span> <span class="nav-text">frame上有两个按钮都有事件发生怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">2.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验2：做一个动画"><span class="nav-number">3.</span> <span class="nav-text">实验2：做一个动画</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#先从窗口开始"><span class="nav-number">1.</span> <span class="nav-text">先从窗口开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按动button怎么才能有反应？"><span class="nav-number">2.</span> <span class="nav-text">按动button怎么才能有反应？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小总结：监听、事件源与程序"><span class="nav-number">3.</span> <span class="nav-text">小总结：监听、事件源与程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自己创建的绘图组件"><span class="nav-number">4.</span> <span class="nav-text">自己创建的绘图组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在paintComponent-可以做的事情-举两个例子"><span class="nav-number">5.</span> <span class="nav-text">在paintComponent()可以做的事情,举两个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验1：按下button，小球变色"><span class="nav-number">6.</span> <span class="nav-text">实验1：按下button，小球变色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下内容本周没有讲到，有余力的同学可以自己实践学习。"><span class="nav-number"></span> <span class="nav-text">以下内容本周没有讲到，有余力的同学可以自己实践学习。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#frame上有两个按钮都有事件发生怎么办？"><span class="nav-number">1.</span> <span class="nav-text">frame上有两个按钮都有事件发生怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">2.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验2：做一个动画"><span class="nav-number">3.</span> <span class="nav-text">实验2：做一个动画</span></a></li></ol></div>
             
 
           </div>
