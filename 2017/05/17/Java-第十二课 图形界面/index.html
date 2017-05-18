@@ -97,7 +97,7 @@
 <meta property="og:description" content="先从窗口开始
 写程序总想写出一些图形界面，让程序看起来更象“软件”。这次课就来学习写图形界面。
 图形界面这部分，不需要我们自己写类，Java已经提供了很多图形工具类，大多数在javax.swing这个包下。">
-<meta property="og:updated_time" content="2017-05-18T00:06:40.000Z">
+<meta property="og:updated_time" content="2017-05-18T14:30:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第12次课 图形用户接口">
 <meta name="twitter:description" content="先从窗口开始
@@ -456,11 +456,17 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.fillOval(<span class="number">70</span>,<span class="number">70</span>,<span class="number">100</span>,<span class="number">100</span>)</div></pre></td></tr></table></figure>
-<pre><code>2. 只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？
-3. 小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。
-</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
-<pre><code>4. MyDrawPanel应该写成内部类，方便某些变量的共享。
-</code></pre><ul>
+<ol>
+<li>只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？<ol>
+<li>小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>MyDrawPanel应该写成内部类，方便某些变量的共享。</li>
+</ol>
+<ul>
 <li>其实做完这个动画，会感觉到数学在计算机中的重要性，我们这个球如果再继续做下去，会成为弹球，球怎么弹呢？朝哪弹呢？再加上速度。是不是需要数学进行模拟计算呢？</li>
 </ul>
 
