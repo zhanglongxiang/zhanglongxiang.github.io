@@ -97,7 +97,7 @@
 <meta property="og:description" content="先从窗口开始
 写程序总想写出一些图形界面，让程序看起来更象“软件”。这次课就来学习写图形界面。
 图形界面这部分，不需要我们自己写类，Java已经提供了很多图形工具类，大多数在javax.swing这个包下。">
-<meta property="og:updated_time" content="2017-05-18T14:48:10.000Z">
+<meta property="og:updated_time" content="2017-05-25T02:12:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第12次课 图形用户接口">
 <meta name="twitter:description" content="先从窗口开始
@@ -452,15 +452,13 @@
 <li>能不能做出这个视频的效果：<a href="http://v.youku.com/v_show/id_XMTU4NDQ3MDgwNA==.html" target="_blank" rel="external">视频链接</a>，一个移动的小球。</li>
 <li><p>解决思路：</p>
 <ol>
-<li><p>fillOval方法共有四个参数，前两个参数是像素坐标，你尝试一下改变像素坐标，重新运行程序，小球会出现在另一个位置。后两个参数是小球大小。这一步你得做到手工设置能让小球灵活起来。</p>
+<li>MyDrawPanel应该写成内部类，这样小球坐标变量可以共享。</li>
+<li><p>fillOval方法共有四个参数，前两个参数是像素坐标，你尝试一下改变像素坐标，重新运行程序，小球会出现在另一个位置。后两个参数是小球大小。这一步你能做到手工设置能让小球灵活起来。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.fillOval(<span class="number">70</span>,<span class="number">70</span>,<span class="number">100</span>,<span class="number">100</span>)</div></pre></td></tr></table></figure>
 </li>
 <li><p>只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？</p>
 </li>
-<li><p>小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>MyDrawPanel应该写成内部类，方便某些变量的共享。</p>
+<li>小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
