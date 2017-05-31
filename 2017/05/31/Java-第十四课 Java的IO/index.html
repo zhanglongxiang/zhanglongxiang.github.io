@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="序列化和文件的输入/输出
+打游戏的时候，我们经常按保存游戏按钮，这样，就能把游戏即时状态保存下来，将来再玩的时候，可以按载入游戏按钮，继续玩。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java第14次课 Java的I/O">
+<meta property="og:url" content="http://yoursite.com/2017/05/31/Java-第十四课 Java的IO/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="序列化和文件的输入/输出
+打游戏的时候，我们经常按保存游戏按钮，这样，就能把游戏即时状态保存下来，将来再玩的时候，可以按载入游戏按钮，继续玩。">
+<meta property="og:updated_time" content="2017-05-31T14:47:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java第14次课 Java的I/O">
+<meta name="twitter:description" content="序列化和文件的输入/输出
+打游戏的时候，我们经常按保存游戏按钮，这样，就能把游戏即时状态保存下来，将来再玩的时候，可以按载入游戏按钮，继续玩。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/31/Java-第十四课 Java的IO/"/>
+
+
+
+
+
+  <title> Java第14次课 Java的I/O | 乌龙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/Java-第十四课 Java的IO/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java第14次课 Java的I/O
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-31T22:47:47+08:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java教学/" itemprop="url" rel="index">
+                    <span itemprop="name">Java教学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/31/Java-第十四课 Java的IO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/31/Java-第十四课 Java的IO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="序列化和文件的输入-输出"><a href="#序列化和文件的输入-输出" class="headerlink" title="序列化和文件的输入/输出"></a>序列化和文件的输入/输出</h4><ul>
+<li>打游戏的时候，我们经常按<code>保存游戏</code>按钮，这样，就能把游戏即时状态保存下来，将来再玩的时候，可以按<code>载入游戏</code>按钮，继续玩。<a id="more"></a></li>
+<li>如果这个游戏是用Java来写的，这个游戏中所有的东西就是一个一个的对象，我们的保存实际上是把一个一个的对象保存到文件中，然后将来再玩的时候读取这些文件中的数据，再让这些对象“复原”。</li>
+<li>Java的数据保存有两种方式：<ol>
+<li>如果只有自己写的Java程序会用到这些数据，用序列化。</li>
+<li>如果数据需要被其他程序引用，用纯文本文件。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="如果要让类能够被序列化，就要实现Serializable接口"><a href="#如果要让类能够被序列化，就要实现Serializable接口" class="headerlink" title="如果要让类能够被序列化，就要实现Serializable接口"></a>如果要让类能够被序列化，就要实现Serializable接口</h4><ul>
+<li><code>Serializable</code>接口又被称为标记用接口，因为这个接口并没有任何方法需要实现。它的唯一目的就是声明要实现它的类是可以被序列化的。也就是说，此类型的对象可以通过序列化的机制来存储。</li>
+<li>如果某类是可序列化的，则它的子类也自动地可以序列化。</li>
+<li>都玩过“超级玛丽”游戏，下面是“玛丽”类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="comment">/*</span></div><div class="line">实现Serializable接口，代表此类可以被序列化</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mario</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> life;<span class="comment">//生命值</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Mario</span><span class="params">(<span class="keyword">int</span> l)</span></span>&#123; <span class="comment">//构造方法</span></div><div class="line">		life = l;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLife</span><span class="params">()</span></span>&#123; <span class="comment">//getter方法</span></div><div class="line">		<span class="keyword">return</span> life;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fight</span><span class="params">()</span></span>&#123; <span class="comment">//搏击失10点生命值</span></div><div class="line">		life = life - <span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>假设游戏玩到一半，想保存退出，下次接着玩。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		Mario mario = <span class="keyword">new</span> Mario(<span class="number">100</span>);</div><div class="line">		mario.fight();</div><div class="line">		System.out.println(mario.getLife());</div><div class="line"></div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			<span class="comment">//创建存取文件的FileOutputStream对象</span></div><div class="line">			FileOutputStream fs = <span class="keyword">new</span> FileOutputStream(<span class="string">"foo.ser"</span>);</div><div class="line">			<span class="comment">//ObjectOutputStream能让你写入对象，但无法直接连接文件，所以fs做为参数指引</span></div><div class="line">			ObjectOutputStream os = <span class="keyword">new</span> ObjectOutputStream(fs);</div><div class="line">			<span class="comment">//将变量所引用的对象序列化并写入foo.ser这个文件</span></div><div class="line">			os.writeObject(mario);</div><div class="line">			os.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(Exception exception)&#123;</div><div class="line">			exception.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="解序列化：还原对象"><a href="#解序列化：还原对象" class="headerlink" title="解序列化：还原对象"></a>解序列化：还原对象</h4><ul>
+<li>将对象序列化事件事情的重点在于你可以在事后，把对象恢复到存储时的状态。解序列化有点像是序列化的反向操作。</li>
+<li>以上面的Mario为例，现在对保存的序列化文件foo.ser进行解序列化。看看mario的值是不是原来的状态90。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"foo.ser"</span>);</div><div class="line">			ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis);</div><div class="line">			Mario mario = (Mario)ois.readObject();</div><div class="line">			System.out.println(mario.getLife());</div><div class="line">		&#125;<span class="keyword">catch</span>(Exception exception)&#123;</div><div class="line">			exception.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="将字符串写入文本文件"><a href="#将字符串写入文本文件" class="headerlink" title="将字符串写入文本文件"></a>将字符串写入文本文件</h4><ul>
+<li>通过序列化来存储对象是Java程序在来回执行间存储和恢复数据最简单的方式。</li>
+<li>但有时你还得把数据存储到单纯的文本文件中，以让其他可能是非Java的程序读取。</li>
+<li>写入文本数据（字符串）与定义对象是很类似的，你可以使用<code>FileWrite</code>来代替FileOutputStream。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WriteAFile</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			FileWriter writer = <span class="keyword">new</span> FileWriter(<span class="string">"Foo.txt"</span>);</div><div class="line">			writer.write(<span class="string">"hello foo!"</span>);</div><div class="line">			writer.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(IOException exception)&#123;</div><div class="line">			exception.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="java-io-File"><a href="#java-io-File" class="headerlink" title="java.io.File"></a>java.io.File</h4><ul>
+<li><code>File</code>这个类代表磁盘上的文件，但并不是文件中的内容。你可以把File对象想象成文件的路径，而不是文件本身。</li>
+<li>你可以对File对象做的事情(举例)：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="comment">//创建出代表现存盘文件的对象</span></div><div class="line">		File f = <span class="keyword">new</span> File(<span class="string">"MyCode.txt"</span>);</div><div class="line">		<span class="comment">//建立新的目录</span></div><div class="line">		File dir = <span class="keyword">new</span> File(<span class="string">"Chapter"</span>);</div><div class="line">		dir.mkdir();</div><div class="line">		<span class="comment">//列出目录下的内容</span></div><div class="line">		<span class="keyword">if</span>(dir.isDirectory())&#123;</div><div class="line">			String[] dirContents = dir.list();</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dirContents.length; i++)&#123;</div><div class="line">				System.out.println(dirContents[i]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//取得文件或目录的绝对路径</span></div><div class="line">		System.out.println(dir.getAbsolutePath());</div><div class="line">		<span class="comment">//删除文件或目录（成功会返回true）</span></div><div class="line">		<span class="keyword">boolean</span> isDeleted = f.delete();</div><div class="line">		System.out.println(isDeleted);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="缓冲区的奥秘之处"><a href="#缓冲区的奥秘之处" class="headerlink" title="缓冲区的奥秘之处"></a>缓冲区的奥秘之处</h4><ul>
+<li>没有缓冲区，就好象逛超市没有推车一样。你只能一次拿一项东西结帐。缓冲区能让你暂时摆一堆东西一直到满为止。用了缓冲区就可以省下好几趟的来回。</li>
+<li>你也可以直接使用FileWriter，调用它的write()来写文件，但它每次都会直接写下去。你应该不喜欢这种方式，因为每趟磁盘操作都比内存操作要花费更多时间。</li>
+<li>通过BufferedWriter和FileWriter的链接，BufferedWriter可以暂存一堆数据，然后到满的时候再实际写入磁盘，这样就可以减少对磁盘操作的次数。</li>
+<li>如果你想要强制缓冲区立即写入，只要调用writer.flush()这个方法就可以要求缓冲区马上把内容写下去。</li>
+</ul>
+<hr>
+<h4 id="读取文本文件"><a href="#读取文本文件" class="headerlink" title="读取文本文件"></a>读取文本文件</h4><ul>
+<li>从文本文件读取数据是很简单的，但是这次我们会使用File对象来表示文件，以FileReader来执行实际的读取，并用BufferedReader来让读取更有效率。</li>
+<li>读取是以while循环来逐行进行，一直到readLine()的结果为null为止。这是最常见的读取数据方式（几乎非序列化对象都是这样的）。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReadAFile</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			File myFile = <span class="keyword">new</span> File(<span class="string">"MyText.txt"</span>);</div><div class="line">			<span class="comment">//FileReader是字符串连接到文本文件的串流</span></div><div class="line">			FileReader fileReader = <span class="keyword">new</span> FileReader(myFile);</div><div class="line">			<span class="comment">/*</span></div><div class="line">			将FileReader链接到BufferedReader以获取更高的效率，</div><div class="line">			它只会在缓冲区读空的时候才会回头去磁盘读取</div><div class="line">			*/</div><div class="line">			BufferedReader reader = <span class="keyword">new</span> BufferedReader(fileReader);</div><div class="line">			<span class="comment">//用String变量来承接所读取的结果</span></div><div class="line">			String line = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">			<span class="keyword">while</span>((line = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line">				System.out.println(line);</div><div class="line">			&#125;</div><div class="line">			reader.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(Exception exception)&#123;</div><div class="line">			exception.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
+<li>写程序，实现：从一个文件中读取数据，把数据写到另外一个文件中。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/25/Java-第十三课 图形界面（续）/" rel="next" title="Java第13次课 图形用户接口（续）">
+                <i class="fa fa-chevron-left"></i> Java第13次课 图形用户接口（续）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/31/Java-第十四课 Java的IO/"
+           data-title="Java第14次课 Java的I/O" data-url="http://yoursite.com/2017/05/31/Java-第十四课 Java的IO/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化和文件的输入-输出"><span class="nav-number">1.</span> <span class="nav-text">序列化和文件的输入/输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果要让类能够被序列化，就要实现Serializable接口"><span class="nav-number">2.</span> <span class="nav-text">如果要让类能够被序列化，就要实现Serializable接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解序列化：还原对象"><span class="nav-number">3.</span> <span class="nav-text">解序列化：还原对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将字符串写入文本文件"><span class="nav-number">4.</span> <span class="nav-text">将字符串写入文本文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-io-File"><span class="nav-number">5.</span> <span class="nav-text">java.io.File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓冲区的奥秘之处"><span class="nav-number">6.</span> <span class="nav-text">缓冲区的奥秘之处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取文本文件"><span class="nav-number">7.</span> <span class="nav-text">读取文本文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验"><span class="nav-number">8.</span> <span class="nav-text">实验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
