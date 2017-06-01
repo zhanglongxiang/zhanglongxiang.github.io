@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="序列化和文件的输入/输出
 打游戏的时候，我们经常按保存游戏按钮，这样，就能把游戏即时状态保存下来，将来再玩的时候，可以按载入游戏按钮，继续玩。">
-<meta property="og:updated_time" content="2017-05-31T14:47:47.000Z">
+<meta property="og:updated_time" content="2017-06-01T00:22:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第14次课 Java的I/O">
 <meta name="twitter:description" content="序列化和文件的输入/输出
@@ -421,7 +421,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReadAFile</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span>&#123;</div><div class="line">			File myFile = <span class="keyword">new</span> File(<span class="string">"MyText.txt"</span>);</div><div class="line">			<span class="comment">//FileReader是字符串连接到文本文件的串流</span></div><div class="line">			FileReader fileReader = <span class="keyword">new</span> FileReader(myFile);</div><div class="line">			<span class="comment">/*</span></div><div class="line">			将FileReader链接到BufferedReader以获取更高的效率，</div><div class="line">			它只会在缓冲区读空的时候才会回头去磁盘读取</div><div class="line">			*/</div><div class="line">			BufferedReader reader = <span class="keyword">new</span> BufferedReader(fileReader);</div><div class="line">			<span class="comment">//用String变量来承接所读取的结果</span></div><div class="line">			String line = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">			<span class="keyword">while</span>((line = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line">				System.out.println(line);</div><div class="line">			&#125;</div><div class="line">			reader.close();</div><div class="line">		&#125;<span class="keyword">catch</span>(Exception exception)&#123;</div><div class="line">			exception.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
 <h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><ul>
-<li>写程序，实现：从一个文件中读取数据，把数据写到另外一个文件中。</li>
+<li>写一个类，实现从input.txt中读数据，然后把数据写入到output.txt中。</li>
+<li>用到的编程元素有：数组、File类、FileReader类、FileWriter类。</li>
 </ul>
 
       
