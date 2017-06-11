@@ -373,14 +373,11 @@
 <li>完成的软件作品大体如下图：<br><img src="http://nos.netease.com/imglf0/img/TVpzSWthVWN0a28vK3daWTd5ZndLWlNmbXdTK0ZkQllKSDBvSzFib3RTWkloS2FOcC9jN3hnPT0.png?imageView&amp;thumbnail=1680x0" alt=""></li>
 </ul>
 <hr>
-<h4 id="第1步，用Swing写出服务器端的界面，如下图："><a href="#第1步，用Swing写出服务器端的界面，如下图：" class="headerlink" title="第1步，用Swing写出服务器端的界面，如下图："></a>第1步，用Swing写出服务器端的界面，如下图：</h4><p><img src="http://imglf1.nosdn.127.net/img/TVpzSWthVWN0a28vK3daWTd5ZndLWGRZWVZ3dlN1NllQY0UwbU83cksrbW1LYUVxUXlHNUVnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=""></p>
+<h4 id="第1步，用Swing写出服务器端的界面，如下图："><a href="#第1步，用Swing写出服务器端的界面，如下图：" class="headerlink" title="第1步，用Swing写出服务器端的界面，如下图："></a>第1步，用Swing写出服务器端的界面，如下图：</h4><p><img src="http://nos.netease.com/imglf1/img/TVpzSWthVWN0a28vK3daWTd5ZndLWHZrQXhFZTNSVjAzbTJpV0k0YVg2OHZUUWo0UGJiUHR3PT0.png?imageView&amp;thumbnail=1680x0" alt=""></p>
 <ul>
-<li><p>思路提示：界面可以分成以下三部分：<br><img src="http://imglf0.nosdn.127.net/img/TVpzSWthVWN0a28vK3daWTd5ZndLVFlhMm5CMG5PWTcxZE5pSWtlSWJvSFBHSEVFSEd6OTZBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=""></p>
-</li>
-<li><p>最外层的容器是JFrame。这个窗口分为如下三部分。</p>
-</li>
-<li><p>该frame的上方（North）放进去一个面板<strong>JPanel</strong>，这个JPanel的布局是GridLayout(1,6)，在JPanel里面又放进去了<strong>人数上限、端口</strong>，它们都是<strong>JLabel</strong>；<strong>人数文本框、端口文本框</strong>，它们都是<strong>JTextField</strong>；<strong>启动、停止按钮</strong>，它们都是<strong>JButton</strong>;<strong>配置信息</strong>，是JPanel的一个方法：</p>
-</li>
+<li>思路提示：界面可以分成以下三部分：</li>
+<li>最外层的容器是JFrame。这个窗口分为如下三部分。</li>
+<li>该frame的上方（North）放进去一个面板<strong>JPanel</strong>，这个JPanel的布局是GridLayout(1,6)，在JPanel里面又放进去了<strong>人数上限、端口</strong>，它们都是<strong>JLabel</strong>；<strong>人数文本框、端口文本框</strong>，它们都是<strong>JTextField</strong>；<strong>启动、停止按钮</strong>，它们都是<strong>JButton</strong>;<strong>配置信息</strong>，是JPanel的一个方法：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">northPanel.setBorder(<span class="keyword">new</span> TitleBorder(<span class="string">"配置信息"</span>))</div></pre></td></tr></table></figure>
 <ul>
