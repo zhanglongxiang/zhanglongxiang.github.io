@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/Java课程设计（第1步）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/19/Java课程设计/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="乌龙">
@@ -280,8 +280,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/11/Java课程设计（第1步）/" itemprop="url">
-                  Java课程设计（第1步）
+                <a class="post-title-link" href="/2017/06/19/Java课程设计/" itemprop="url">
+                  Java课程设计
                 </a>
               
             
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-11T23:01:31+08:00">
-                2017-06-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T22:16:57+08:00">
+                2017-06-19
               </time>
             
 
@@ -338,8 +338,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/11/Java课程设计（第1步）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/11/Java课程设计（第1步）/" itemprop="commentCount"></span>
+                <a href="/2017/06/19/Java课程设计/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/19/Java课程设计/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,23 +367,14 @@
       
         
           
-            <ul>
-<li>我们已经学习了Java基础，能做点东西了。当然，大家还是感觉无从下手。</li>
-<li>我们用这学期所学的知识，做一个网络聊天室，做为我们的课程设计。</li>
-<li>完成的软件作品大体如下图：<br><img src="http://nos.netease.com/imglf0/img/TVpzSWthVWN0a28vK3daWTd5ZndLWlNmbXdTK0ZkQllKSDBvSzFib3RTWkloS2FOcC9jN3hnPT0.png?imageView&amp;thumbnail=1680x0" alt=""></li>
+            <h4 id="课程设计任务："><a href="#课程设计任务：" class="headerlink" title="课程设计任务："></a>课程设计任务：</h4><ul>
+<li>一个命令行版的聊天室。</li>
+<li>完成的软件作品大体如下图：<br><img src="http://imglf0.nosdn.127.net/img/TVpzSWthVWN0a3J0ZTJmTC95MUxjcm9IcXFDNzBBdGFYYzRvK0tHZGRueHFaYWRXZU90Y3B3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=""></li>
 </ul>
 <hr>
-<h4 id="第1步，用Swing写出服务器端的界面，如下图："><a href="#第1步，用Swing写出服务器端的界面，如下图：" class="headerlink" title="第1步，用Swing写出服务器端的界面，如下图："></a>第1步，用Swing写出服务器端的界面，如下图：</h4><p><img src="http://nos.netease.com/imglf1/img/TVpzSWthVWN0a28vK3daWTd5ZndLWHZrQXhFZTNSVjAzbTJpV0k0YVg2OHZUUWo0UGJiUHR3PT0.png?imageView&amp;thumbnail=1680x0" alt=""></p>
-<h5 id="思路提示："><a href="#思路提示：" class="headerlink" title="思路提示："></a>思路提示：</h5><ul>
-<li>最外层的容器是JFrame。这个窗口分为如下三部分:</li>
-<li>该frame的上方（North）放进去一个面板<strong>JPanel</strong>，这个JPanel的布局是GridLayout(1,6)，在JPanel里面又放进去了<strong>人数上限、端口</strong>，它们都是<strong>JLabel</strong>；<strong>人数文本框、端口文本框</strong>，它们都是<strong>JTextField</strong>；<strong>启动、停止按钮</strong>，它们都是<strong>JButton</strong>;<strong>配置信息</strong>，是JPanel的一个方法：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">northPanel.setBorder(<span class="keyword">new</span> TitleBorder(<span class="string">"配置信息"</span>))</div></pre></td></tr></table></figure>
-<ul>
-<li><p>该frame的中部(Center)放进去一个<strong>JSplitPane</strong>。JScrollPane可以做为组件放进JSplitPane中；<strong>在线用户</strong>是一个<strong>JScrollPane</strong>，里面有一个<strong>JList</strong>；<strong>消息显示区</strong>也是一个<strong>JScrollPane</strong>，里面有一个<strong>JTextArea</strong>。</p>
-</li>
-<li><p>该frame的下方(South)放进去一个面板<strong>JPanel</strong>，这个JPanel的布局是BorderLayout，在JPanel里面放进去了一个<strong>JTextField</strong>和一个<strong>JButton</strong>。</p>
-</li>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ul>
+<li>先完成一个客户端与服务器的聊天。</li>
+<li>在完成上一步的基础上，学习线程，完成多个客户端与服务器的聊天。</li>
 </ul>
 
           
