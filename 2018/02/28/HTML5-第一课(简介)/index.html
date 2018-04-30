@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="HTML简介
+HTML:HyperText Markup Language，超级文本标记语言。
+尽管网页变得越来越复杂，但是其底层结构依然相当简单。创建网页是离不开HTML的。
+HTML包含网页内容并说明这些内容的意义，Web浏览器会将HTML包含的内容呈现给用户。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1课 网页构造块">
+<meta property="og:url" content="http://yoursite.com/2018/02/28/HTML5-第一课(简介)/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="HTML简介
+HTML:HyperText Markup Language，超级文本标记语言。
+尽管网页变得越来越复杂，但是其底层结构依然相当简单。创建网页是离不开HTML的。
+HTML包含网页内容并说明这些内容的意义，Web浏览器会将HTML包含的内容呈现给用户。">
+<meta property="og:updated_time" content="2018-03-02T10:07:45.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1课 网页构造块">
+<meta name="twitter:description" content="HTML简介
+HTML:HyperText Markup Language，超级文本标记语言。
+尽管网页变得越来越复杂，但是其底层结构依然相当简单。创建网页是离不开HTML的。
+HTML包含网页内容并说明这些内容的意义，Web浏览器会将HTML包含的内容呈现给用户。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/28/HTML5-第一课(简介)/"/>
+
+
+
+
+
+  <title> 第1课 网页构造块 | 乌龙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/HTML5-第一课(简介)/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第1课 网页构造块
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T06:28:44+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/H5教学/" itemprop="url" rel="index">
+                    <span itemprop="name">H5教学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/28/HTML5-第一课(简介)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/28/HTML5-第一课(简介)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="HTML简介"><a href="#HTML简介" class="headerlink" title="HTML简介"></a>HTML简介</h4><ul>
+<li>HTML:HyperText Markup Language，超级文本标记语言。</li>
+<li>尽管网页变得越来越复杂，但是其底层结构依然相当简单。创建网页是离不开HTML的。</li>
+<li>HTML包含网页内容并说明这些内容的意义，Web浏览器会将HTML包含的内容呈现给用户。<a id="more"></a></li>
+<li>一个网页主要包括以下三部分：<ol>
+<li>文本内容：页面上让访问者了解页面内容的纯文字。</li>
+<li>对其他文件的引用：我们使用这些引用来加载图像、音频、视频文件以及样式表（控制页面的显示效果）和JavaScript文件（为页面添加行为）。这些引用可以指向其他的HTML页面和资源。</li>
+<li>标记：对文本内容进行描述并确保引用正确地工作。</li>
+</ol>
+</li>
+<li>此外，在每个HTML页面的开头都有一些主要用于浏览器和搜索引擎的信息。浏览器不会将这些信息呈现给访问者。</li>
+<li>网页的这些成分都仅由文本构成，这意味着网页可以保存为纯文件格式，可以在任何平台（无论是台式机、平板电脑、手机还是其他平台）上用任何浏览器查看。这个特性也确保了很容易创建HTML页面。</li>
+</ul>
+<hr>
+<h4 id="HTML思想"><a href="#HTML思想" class="headerlink" title="HTML思想"></a>HTML思想</h4><ul>
+<li>设想这样一种场景：你在厨房里，一个手上拿着便利贴，上面的每一页都写着一个词语，有的贴纸上写的是“汤”，有的写着“燕麦片”、“盘子”、“辣椒酱”等。<br>你打开一个橱柜，为里面的每一样物品都贴上最能描述它的便利贴。一只黄色的装燕麦片的盒子贴上了写有“燕麦片”的贴纸，还有一个红色的盒子也是装燕麦片的，也为它贴上写有“燕麦片”的贴纸。其他的物品也采用类似的做法。</li>
+<li>编写HTML与这个过程是很相似的。不同的是，编写HTML并非向食物和餐桌上贴标签，而是为网页内容打上能够描述它们的标签，你无需自己创建标签名称，HTML已经完成了这一工作，它有一套预先定义好的元素（标签）。</li>
+<li>注意，便利贴上的用户是“燕麦片”，而不是“黄色的谷物盒子”、“红色的谷物盒子”。类似地，HTML元素描述的是内容是什么，而非看起来是什么样。CSS才控制内容的外观（如字体、颜色、阴影等）。因此，不管你最后让段落显示为绿色还是橙色，它们都是p元素，这才是HTML唯一关心的。</li>
+<li>在学习HTML创建网页时，应该始终牢记这一思想：“标签”思想。</li>
+</ul>
+<hr>
+<h4 id="基本的HTML页面"><a href="#基本的HTML页面" class="headerlink" title="基本的HTML页面"></a>基本的HTML页面</h4><ul>
+<li>来看一个基本的HTML页面，大概了解一下。</li>
+<li>每个网页都由下面所示的结构开始构建，这个HTML相当于一张白纸，因为访问者看到的内容位于主体(body)部分，而这部分现在是空着的。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">	&lt;title&gt;Your page title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>每个网页都包含DOCTYPE、html、head和body元素，它们是网页的基础。</li>
+<li>简单说明一下上面的代码，HTML使用&lt;和&gt;包围HTML标签。开始标签（如&lt; head &gt;）用于标记元素的开始，结束标签（如&lt; /head &gt;）用于标记元素的结束。有的元素没有结束标签，如meta。</li>
+<li>网页的顶部和头部，前面提到，页面内容位于主体部分，那么其他的代码有什么作用呢？实际上，<body>开始标签以上的内容都是为浏览器和搜索引擎准备的。<ol>
+<li>&lt;!DOCTYPE html&gt;部分告诉浏览器这是一个HTML5页面。它应该始终位于页面的第一行。</li>
+<li>接下来是html元素，它包着页面的其余部分，即<html lang="en">和&lt; /html &gt;结束标签之间的内容。在这里可以为网页指定其他语言。</html></li>
+<li>再接下来是文档的头部，即<head>和&lt; /head &gt;之间的区域。&lt; meta charset=”utf-8”/ &gt;后讲。主体前面的代码中，有一部分是用户可见的，即&lt; title &gt;和&lt; /title &gt;之间的文本。这些文本会出现在浏览器标签页中，对于某些浏览器，这些文本还会出现在浏览器窗口的顶部，做为网页的标题。</head></li>
+</ol>
+</body></li>
+<li>网页的主体：你的内容。下面为刚才的页面添加一些内容。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">	&lt;title&gt;Your page title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;article&gt;</div><div class="line">	&lt;h1&gt;The Ephemeral Blue Flax&lt;/h1&gt;</div><div class="line">	&lt;img src=&quot;blueflax.jpg&quot; width=&quot;300&quot; height=&quot;175&quot; alt=&quot;Blue Flax&quot; /&gt;</div><div class="line">	&lt;p&gt;I am continually &lt;em&gt;amazed&lt;/em&gt; at the beautiful, delicate &lt;a href=&quot;http://en.wikipedia.org/wiki/Linum_lewisii&quot; rel=&quot;external&quot; title=&quot;Learn more about Blue Flax&quot;&gt; Blue Flax&lt;/a&gt; that somehow took hold in my garden. They ar awash in color every morning, yet not a single flower remains by the afternoon. They are the very definition of ephemeral.&lt;/p&gt;</div><div class="line">&lt;/article&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>前面提到过，使用浏览器查看网页时，不会显示包围文本内容的标记，不过这些标记是非常有用的，我们就是使用它们来描述内容的。例如，<p>标记用于表示段落的开始。</p></li>
+<li>代码的缩进与内容在浏览器中的显示效果没有任何关系。不过，对嵌套在父元素中的代码进行缩进是一种惯例，这样我们在编写和阅读代码时就会更容易看出元素之间的层次关系。</li>
+<li>HTML提供了很多这样的元素，上面的例子演示了六种最为常见的元素：a、article、em、h1、img和p。每个元素都有各种的含义，例如，h1是标题，a是链接，img是图像。</li>
+<li>暂时不会对示例代码做过多的探讨。在此之前，要进一步介绍HTML的基础认识。如通常意义上的元素、属性、文件名、URL等。介绍完之些，再回过头来解释为什么要以这样的方式标记这些内容。</li>
+</ul>
+<hr>
+<h4 id="标签的组成：元素、属性、值及其他"><a href="#标签的组成：元素、属性、值及其他" class="headerlink" title="标签的组成：元素、属性、值及其他"></a>标签的组成：元素、属性、值及其他</h4><ul>
+<li><p>看过基础的HTML之后，仔细看看标签的组成：元素、属性和值。还有父元素和子元素的概念。在上面页面中已经见到这些概念的例子，不过你可能并没有意识到。</p>
+<ol>
+<li><p>元素：元素就像描述网页不同部分的小标签一样，有的元素有一个或多个属性，属性用来进一步描述元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">	&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;!--典型的HTML元素，开始标签是放在一对尖括号中的元素名称及可能包含的属性，结束标签</div><div class="line">	是放在一对尖括号中的斜杠加元素的名称，开始标签和结束标签包着描述元素的文字。--&gt;</div><div class="line">	am continually&lt;em&gt;amazed&lt;/em&gt; </div><div class="line">	&lt;!--空元素，既不包含文本也不包含其他元素。它们看起来像是开始标签和结束标签的结合，由</div><div class="line">	左括号开头，然后是元素的名称和可能包含的属性，然后是一个可选的空格和一个可选的斜杠，最后</div><div class="line">	是必有的右尖括号--&gt; </div><div class="line">	&lt;img src=&quot;blueflax.jpg&quot; width=&quot;300&quot; height=&quot;175&quot; alt=&quot;blueflax&quot;/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>属性和值：属性了包含元素的额外信息。在HTML5中，属性值两边的引号是可选的，但习惯上大家还是会写上，因此建议始终这样做。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">	&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;!--这是一个label元素，for是label的一个属性，&quot;email&quot;是for属性的值。</div><div class="line">	属性总是位于元素的开始标签内，属性的值通常放在一对引号中--&gt;</div><div class="line">	&lt;label for=&quot;email&quot;&gt;Email Address&lt;/label&gt;</div><div class="line">	&lt;!--有的元素可以有多个属性，每个属性都有各自的值。属性的顺序并不重要。不同的属性-值对之间都用空格隔开--&gt;</div><div class="line">	&lt;a href=&quot;http://en.wikipedia.org/wiki/Linum_lewisii&quot; rel=&quot;external&quot;</div><div class="line">	title=&quot;Learn more about Blue Flax&quot;&gt;Blue Flax&lt;/a&gt;</div><div class="line">	&lt;!--有的属性只能接受特定的值，例如：link元素里的media属性设为all、screen、print等值中的一个，</div><div class="line">	不能像href属性和title属性那样可以输入任意值--&gt;</div><div class="line">	&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;style.css&quot; /&gt;</div><div class="line">	&lt;!--还有一种特殊的属性值称为布尔属性，这种属性出现就表示其值是真。</div><div class="line">	下面代码，布尔属性required代表用户必须填写该输入框，布尔属性不需要属性值--&gt;</div><div class="line">	&lt;input type=&quot;email&quot; name=&quot;emailaddr&quot; required /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>父元素和子元素：如果一个元素包含另一个元素，它就是被包含元素的父元素，被包含元素称为子元素。子元素中包含的任何元素都是外层的父元素的后代。值得注意的，当元素中包含其他元素时，每个元素都必须嵌套正确，也就是子元素必须完全地包含在父元素中。使用结束标签时，前面必须有跟它成对的开始标签。换句话说，先开始元素1，再开始元素2，就要先结束元素2，再结束元素1。</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="网页的文本内容"><a href="#网页的文本内容" class="headerlink" title="网页的文本内容"></a>网页的文本内容</h4><ul>
+<li>Unicode极大缓解了特殊字符问题，用UTF-8对页面进行编码，并用同样的编码保存HTML文件已成为一种标准做法。</li>
+</ul>
+<hr>
+<h4 id="链接、图像和其他非文本内容"><a href="#链接、图像和其他非文本内容" class="headerlink" title="链接、图像和其他非文本内容"></a>链接、图像和其他非文本内容</h4><ul>
+<li>互联网充满生机的部分原因是页面之间的链接，以及图像、视频、音乐等。</li>
+<li>外部文件（如图像）实际上并没有放在HTML文件中，而单独保存的，页面只是简单的引用了这些文件。</li>
+<li>浏览器可以处理链接和图像。但是，它们无法处理其他任何文件类型。例如，对有的浏览器来说，要查看PDF就需要在系统中预先装好Adobe Reader。</li>
+<li>过去，浏览器没有内置的方法播放视频和音频文件，各个厂商都开发出了相应的软件，用户可以下载并安装这些软件，从而弥补缺失的功能。这样的软件称为插件。</li>
+<li>HTML5已经为缓解这一问题迈出一大步，HTML5提供了audio和video元素，这样，不需要使用插件就可以播放音频和视频。</li>
+</ul>
+<hr>
+<h4 id="文件名和文件夹名"><a href="#文件名和文件夹名" class="headerlink" title="文件名和文件夹名"></a>文件名和文件夹名</h4><ul>
+<li><p>同其他文件文件一样，网页也有文件名。对网页文件命名时要记住几点，这些要点有助于对文件进行组织，使访问者更容易找到并访问你的页面。</p>
+<ol>
+<li>文件名使用使用小写字母。</li>
+<li>使用正确的扩展名。浏览器主要通过查看文件的扩展名得知需要读取的文本文档是一个网页。如果页面使用其他的扩展名，浏览器会将其当做文件处理，相当于将你的代码直接呈现给访问者。</li>
+<li><p>用短横线分隔单词。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buckminster-fuller.html//文件名小写，单词之间使用短横线分隔</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><ul>
+<li>URL（统一资源定位符）是地址的别名，它包含关于文件存储位置和浏览器应如何处理它的信息。互联网上的每个文件都有唯一的URL。</li>
+<li>URL的第一个部分称为模式，模式告诉浏览器如何处理需要打开的文件。最常见的模式是HTTP（超文本传输协议）。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.site.com/tofu/index.html</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftp://ftp.site.com/pub/proposal.pdf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mailto:somename@somedomain.com</div></pre></td></tr></table></figure>
+<ul>
+<li>URL的第二个部分是文件所在的主机名称，紧接着是路径，路径包含到达这个文件的文件夹以及文件自身的名称。</li>
+<li><p>有时URL路径不要文件名结尾，而以一个目录结尾，在这种情况下，URL指的是路径中最后一个目录中的默认文件，通常为index.html。</p>
+<ol>
+<li>绝对URL：包含了指向目录或文件的完整信息，包括模式、主机名和路径。绝对URL就像是完整的通信地址。引用别人Web服务器上的文件时，应该总是使用绝对URL。</li>
+<li>相对URL：它指出的位置是以信息提供者位置为参照的。相对URL以包含URL本身的文件位置为参照点，描述目标文件的位置。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="浏览器对网页的默认显示效果"><a href="#浏览器对网页的默认显示效果" class="headerlink" title="浏览器对网页的默认显示效果"></a>浏览器对网页的默认显示效果</h4><ul>
+<li>既然控制页面模式的是CSS而非HTML，为什么在浏览器中查看我们的基本页面时，某些文字的字号会比其他文字的字号大呢？为什么有的文件是粗体或斜体呢？</li>
+<li>原因就是每个浏览器有一个内置CSS文件（一张样式表），它决定了每个HTML元素的默认样式。你自己创建的CSS可以覆盖这些样式。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/19/Java课程设计/" rel="next" title="Java课程设计">
+                <i class="fa fa-chevron-left"></i> Java课程设计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/Java-第二课 类与对象/" rel="prev" title="Java第2次课 类与对象">
+                Java第2次课 类与对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/02/28/HTML5-第一课(简介)/"
+           data-title="第1课 网页构造块" data-url="http://yoursite.com/2018/02/28/HTML5-第一课(简介)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML简介"><span class="nav-number">1.</span> <span class="nav-text">HTML简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML思想"><span class="nav-number">2.</span> <span class="nav-text">HTML思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本的HTML页面"><span class="nav-number">3.</span> <span class="nav-text">基本的HTML页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签的组成：元素、属性、值及其他"><span class="nav-number">4.</span> <span class="nav-text">标签的组成：元素、属性、值及其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网页的文本内容"><span class="nav-number">5.</span> <span class="nav-text">网页的文本内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链接、图像和其他非文本内容"><span class="nav-number">6.</span> <span class="nav-text">链接、图像和其他非文本内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件名和文件夹名"><span class="nav-number">7.</span> <span class="nav-text">文件名和文件夹名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL"><span class="nav-number">8.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器对网页的默认显示效果"><span class="nav-number">9.</span> <span class="nav-text">浏览器对网页的默认显示效果</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

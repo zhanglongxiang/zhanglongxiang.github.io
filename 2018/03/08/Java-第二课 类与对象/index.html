@@ -1,0 +1,832 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Java是面向对象的程序设计语言，大家上个学期学习了面向过程的C语言。那么什么是面向对象呢，什么是面向过程呢？感觉这是好抽象的区别。
+我们用一个例子，分别用C语言和Java来实现，从理论上来说，都能达到用计算机程序来解决实际问题的目的，但是面对具体问题它们看待事物的角度是不一样的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java第2次课 类与对象">
+<meta property="og:url" content="http://yoursite.com/2018/03/08/Java-第二课 类与对象/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="Java是面向对象的程序设计语言，大家上个学期学习了面向过程的C语言。那么什么是面向对象呢，什么是面向过程呢？感觉这是好抽象的区别。
+我们用一个例子，分别用C语言和Java来实现，从理论上来说，都能达到用计算机程序来解决实际问题的目的，但是面对具体问题它们看待事物的角度是不一样的。">
+<meta property="og:updated_time" content="2018-03-08T03:48:37.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java第2次课 类与对象">
+<meta name="twitter:description" content="Java是面向对象的程序设计语言，大家上个学期学习了面向过程的C语言。那么什么是面向对象呢，什么是面向过程呢？感觉这是好抽象的区别。
+我们用一个例子，分别用C语言和Java来实现，从理论上来说，都能达到用计算机程序来解决实际问题的目的，但是面对具体问题它们看待事物的角度是不一样的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/08/Java-第二课 类与对象/"/>
+
+
+
+
+
+  <title> Java第2次课 类与对象 | 乌龙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/Java-第二课 类与对象/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java第2次课 类与对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T11:46:51+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java教学/" itemprop="url" rel="index">
+                    <span itemprop="name">Java教学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/Java-第二课 类与对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/08/Java-第二课 类与对象/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Java是面向对象的程序设计语言，大家上个学期学习了面向过程的C语言。那么什么是面向对象呢，什么是面向过程呢？感觉这是好抽象的区别。</li>
+<li>我们用一个例子，分别用C语言和Java来实现，从理论上来说，都能达到用计算机程序来解决实际问题的目的，但是面对具体问题它们看待事物的角度是不一样的。<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h3 id="1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。"><a href="#1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。" class="headerlink" title="1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。"></a>1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。</h3><ul>
+<li>如果用C语言来写程序，它是面向过程的思考方式，以过程（事件）为单位，现在有二个过程（事件），所以要写二个函数，一个是按动按钮函数，一个是发出声音函数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    void pressButton();</div><div class="line">    void playSound();</div><div class="line">    pressButton();</div><div class="line">    playSound();</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void pressButton()</div><div class="line">&#123;</div><div class="line">    printf(&quot;完成按钮按下\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void playSound()</div><div class="line">&#123;</div><div class="line">    printf(&quot;嘀嘀嘀声音发出\n&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>如果用Java语言来写程序，它是面向对象的思考方式，以对象（类）为单位，现在有三个不同职责的工位，需要写三个类(工位类)，每个工位类都要完成“按钮”和“声音”这两个动作，所以每个类里都要写两个方法。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class StationA &#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;完成按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;嘀嘀声音发出&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class StationB &#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;完成按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;嘀嘀声音发出&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class StationC &#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;完成按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;嘀嘀声音发出&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>看上面的代码，感觉C语言更简洁一点。同一个操作过程，C语言只写一次。然后反复调用就可以。而Java要写三个类，好象相同的操作代码要写三遍。</li>
+</ul>
+<hr>
+<h3 id="2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。"><a href="#2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。" class="headerlink" title="2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。"></a>2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。</h3><ul>
+<li>对于C语言程序来说，我们马上会想到如何修改上面两个函数的程序逻辑，让它能够满足新的工作局面。可是修改是让人头疼的。上面的C语言程序修改成了下面这样，用参数的数值来代表现在是哪个工位，我用4来代表工位D，用1、2、3分别来代表工位A、B、C。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    void pressButton();</div><div class="line">    void playSound();</div><div class="line">    pressButton(4);</div><div class="line">    playSound(4);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void pressButton(int i)</div><div class="line">&#123;</div><div class="line">    if(i == 4)</div><div class="line">        printf(&quot;出货按扭按下\n&quot;);</div><div class="line">    else</div><div class="line">        printf(&quot;完成按钮按下\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void playSound(int i)</div><div class="line">&#123;</div><div class="line">    if(i == 4)</div><div class="line">        printf(&quot;喜洋洋声音发出\n&quot;);</div><div class="line">    else</div><div class="line">        printf(&quot;嘀嘀声音发出\n&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>对于Java来说呢，新增了一个不同职责的工位，就是新增了一个类，你再写一个新类就好了。其他三个工位的代码不需要任何修改。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class StationD &#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;出货按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;喜洋洋按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>代码写到这里，大家有没有感觉，随着工厂发展，需求不断提出，C语言刚才那两个函数可能要加上更多的if…else…，代码可能会陷入泥潭。而Java还是很清晰，几乎不需要费什么脑筋，只要增加新写的类就可以了。</li>
+<li>通过以上的举例，我想表达的是面向事件和面向事物的区别。</li>
+</ul>
+<hr>
+<h3 id="到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。"><a href="#到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。" class="headerlink" title="到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。"></a>到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。</h3><ul>
+<li>写一个新的类Station类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Station &#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;完成按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;嘀嘀声音发出&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>上面的类是父类，它总结了大部分工位相同的地方。我们让不同的工位类继承它。如下这种形式。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationA extends Station&#123;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationB extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationC extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class StationD extends Station&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样，ABCD四个工位类都继承了Station类里面的方法，虽然看起来是空空的，实际上已经有了“隐形”的方法。</li>
+<li>问题出来了，StationD类，这两个方法的实现是不一样的。这样继承过来的方法明显不符合它的要求。</li>
+<li>面向对象里有方法的重写，你可以对StationD继承过来的方法进行重写。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class StationD extends Station&#123;</div><div class="line">    public void pressButton()&#123;</div><div class="line">        System.out.println(&quot;出货按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">    public void playSound()&#123;</div><div class="line">        System.out.println(&quot;喜洋洋按钮按下&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这样，执行StationD类中的方法，会执行自己重写的方法，而不会执行继承过来的方法。</li>
+<li>通过这个继承，大家会发现代码少了许多。而且并没有增加思考的难度。</li>
+<li>在这个地方，一定自己要动手做一做，才能有所理解。</li>
+</ul>
+<hr>
+<h3 id="面向对象，类和对象是什么关系呢？"><a href="#面向对象，类和对象是什么关系呢？" class="headerlink" title="面向对象，类和对象是什么关系呢？"></a>面向对象，类和对象是什么关系呢？</h3><ul>
+<li>人以类聚，物以群分。一个人是一个具体的存在，是一个真实的对象。很多具有相同特征的人划分在了一起，成为一类人。</li>
+<li>大体的描述是，类是对相同对象进行统一性描述。想让类执行，这句话是错误的，怎么可能让一类人一起吃饭？只能让某一个人吃饭。所以，用类进行定义来描述外在客观世界，然后用类生成一个一个的具体对象来做它们具体的事情。</li>
+<li>对象有状态和行为两大部分组成，状态称为“属性”，行为称为“方法”。既然类是对对象的描述，类中当然要有这两部分。</li>
+</ul>
+<hr>
+<h3 id="对象如何执行呢？"><a href="#对象如何执行呢？" class="headerlink" title="对象如何执行呢？"></a>对象如何执行呢？</h3><ul>
+<li>要怎么做才会让对象执行呢？现在给大家提供一个模板。</li>
+<li>1、让对象执行，没有类哪有对象？所以要先编写一个类，比如Dog类，我们用颜色和体重两个数据来描述它（属性），它会叫，这是它的行为（方法）。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">    String color;</div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"wangwang"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>2、编写测试Dog的类，这个测试类中要有main方法，做为程序的入口。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//待写测试代码</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>3、进行测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Dog dog = <span class="keyword">new</span> Dog();</div><div class="line">        dog.color = <span class="string">"yellow"</span>;</div><div class="line">        dog.weight = <span class="number">18</span>;</div><div class="line">        dog.bark();</div><div class="line">        System.out.println(dog.color);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这是典型测试三步走。</li>
+<li>这叫双类测试，一个实体类，一个测试类，实体类的取名要有意义，不要用class A这种无意义的名字。将来根本不知道这个A是什么意思。测试类的取名为DogTest，命名习惯是：实体类名+Test。</li>
+<li>main方法放在测试类里。用new来生成具体的对象，用小黑点“.”代表对对象属性和方法的存取调用。</li>
+<li>所以main方法的作用，就是生成对象，启动程序，在Java里不要对main方法有过高期望。</li>
+</ul>
+<hr>
+<h3 id="好了，说了这么多，下面是实验环节。"><a href="#好了，说了这么多，下面是实验环节。" class="headerlink" title="好了，说了这么多，下面是实验环节。"></a>好了，说了这么多，下面是实验环节。</h3><h5 id="1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。"><a href="#1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。" class="headerlink" title="1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。"></a>1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。</h5><ul>
+<li>第一个程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TapeDeck</span></span>&#123;</div><div class="line">    <span class="keyword">boolean</span> canRecord = <span class="keyword">false</span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">playTape</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"tape playing"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">recordTape</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"tape recording"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TapeDeckTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        t.canRecord = <span class="keyword">true</span>;</div><div class="line">        t.playTape();</div><div class="line">        <span class="keyword">if</span>(t.canRecord == <span class="keyword">true</span>)&#123;</div><div class="line">            t.recordTape();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>第二个程序</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DVDPlayer</span></span>&#123;</div><div class="line">    <span class="keyword">boolean</span> canRecord = <span class="keyword">false</span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">recordDVD</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"DVD recording"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DVDPlayerTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        DVDPlayer d = <span class="keyword">new</span> DVDPlayer();</div><div class="line">        d.canRecord = <span class="keyword">true</span>;</div><div class="line">        d.playDVD();</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(d.canRecord == <span class="keyword">true</span>)&#123;</div><div class="line">            d.recordDVD();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。"><a href="#2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。" class="headerlink" title="2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。"></a>2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。</h5><p>这个程序的输出结果是：</p>
+<p>bang bang ba-bang</p>
+<p>ding ding da-ding</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.playSnare();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DrumKit d = new DrumKit();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">boolean topHat = true;</div><div class="line">boolean snare = true;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void playSnare()&#123;</div><div class="line">	System.out.println(&quot;bang bang ba-bang&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args)&#123;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(d.snare == true)&#123;</div><div class="line">	d.playSnare();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.snare = false;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class DrumKitTest&#123;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d.playTopHat();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class DrumKit&#123;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void playTopHat()&#123;</div><div class="line">	System.out.println(&quot;ding ding da-ding&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。"><a href="#3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。" class="headerlink" title="3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。"></a>3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。</h5><p>这个程序的输出结果是：</p>
+<p>helloooo…</p>
+<p>helloooo…</p>
+<p>helloooo…</p>
+<p>helloooo…</p>
+<p>10</p>
+<ul>
+<li>以下是可供选择的程序片段：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">e1 = e1 + 1;</div><div class="line">e1 = count + 1;</div><div class="line">e1.count = count + 1;</div><div class="line">e1.count = e1.count + 1;</div><div class="line">x</div><div class="line">y</div><div class="line">e2</div><div class="line">count</div><div class="line">x &lt; 4</div><div class="line">x &lt; 5</div><div class="line">x &gt; 0</div><div class="line">x &gt; 1</div><div class="line">Echo</div><div class="line">Tester</div><div class="line">echo()</div><div class="line">count()</div><div class="line">hello()</div><div class="line">e2 = e1;</div><div class="line">Echo e2;</div><div class="line">Echo e2 = e1;</div><div class="line">Echo e2 = new Echo();</div><div class="line">x == 3</div><div class="line">x == 4</div></pre></td></tr></table></figure>
+<ul>
+<li>根据以上的片段对下面的程序填空，让它输出上面的结果:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EchoTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Echo e1 = <span class="keyword">new</span> Echo();</div><div class="line">        __________;</div><div class="line">        <span class="keyword">int</span> x = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(_______)&#123;</div><div class="line">            e1.hello();</div><div class="line">            ________;</div><div class="line">            <span class="keyword">if</span>(________)&#123;</div><div class="line">                e2.count = e2.count + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(________)&#123;</div><div class="line">                e2.count = e2.count + e1.count;</div><div class="line">            &#125;</div><div class="line">            x = x + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        System.out.println(e2.count);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">________</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> _______ = <span class="number">0</span>;</div><div class="line">    <span class="keyword">void</span> _______&#123;</div><div class="line">        System.out.println(<span class="string">"helloooo..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>思考：如果最后一行的输出不是10而是24，又应该如何填空呢？</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/HTML5-第一课(简介)/" rel="next" title="第1课 网页构造块">
+                <i class="fa fa-chevron-left"></i> 第1课 网页构造块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/30/抽签/" rel="prev" title="抽签">
+                抽签 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/03/08/Java-第二课 类与对象/"
+           data-title="Java第2次课 类与对象" data-url="http://yoursite.com/2018/03/08/Java-第二课 类与对象/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。"><span class="nav-number">1.</span> <span class="nav-text">1、工厂车间里有三个不同职责的工位A、B、C，他们完成自己的工作之后，要按动“完成”按扭，然后发出“滴滴滴”的声音。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。"><span class="nav-number">2.</span> <span class="nav-text">2、现在对程序有了新的需求，工厂又增加了一个工位D，这个工位有点特殊，完成工作要按动“出货”按钮，然后要发出“喜洋洋”的音乐。看来这是流水线上最后一个工位，这个工位的工作完成之后，产品完成了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。"><span class="nav-number">3.</span> <span class="nav-text">到目前为止，Java的代码好象重复的太多，我们对面向对象还没有介绍完。我们可以提取出各种工位相同的部分，组成新的类。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象，类和对象是什么关系呢？"><span class="nav-number">4.</span> <span class="nav-text">面向对象，类和对象是什么关系呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象如何执行呢？"><span class="nav-number">5.</span> <span class="nav-text">对象如何执行呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好了，说了这么多，下面是实验环节。"><span class="nav-number">6.</span> <span class="nav-text">好了，说了这么多，下面是实验环节。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。"><span class="nav-number">6.0.1.</span> <span class="nav-text">1、你扮演编译器角色并判断哪个程序可以执行，如果有问题，是哪里出现了问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。"><span class="nav-number">6.0.2.</span> <span class="nav-text">2、下面是一个完整的程序，顺序乱了，你给排正确。注意有些括号已经遗失，你在必要时可以补上。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。"><span class="nav-number">6.0.3.</span> <span class="nav-text">3、片段填空，下面给了一些程序片段，同一个片段不能使用两次，而且有多余的片段。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
