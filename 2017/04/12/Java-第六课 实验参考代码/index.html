@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/12/Java-第六课 实验参考代码/index.html">
 <meta property="og:site_name" content="乌龙">
 <meta property="og:description" content="先写Tank类：">
-<meta property="og:updated_time" content="2017-04-12T13:49:31.000Z">
+<meta property="og:updated_time" content="2018-10-12T03:10:18.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第6次课 实验答案">
 <meta name="twitter:description" content="先写Tank类：">
@@ -130,7 +130,7 @@
 
 
 
-  <title> Java第6次课 实验答案 | 乌龙 </title>
+  <title>Java第6次课 实验答案 | 乌龙</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -205,6 +205,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -296,7 +306,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T06:04:06+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T06:04:06+08:00">
                 2017-04-12
               </time>
             
@@ -343,12 +353,12 @@
 
       
         <ul>
-<li><p>先写Tank类：</p>
-<a id="more"></a>
+<li>先写Tank类：<a id="more"></a>
+</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tank</span> </span>&#123;</div><div class="line">    <span class="comment">//坦克位置存储在ArrayList中</span></div><div class="line">    <span class="keyword">private</span> ArrayList&lt;String&gt; locationCells;</div><div class="line">    <span class="comment">//坦克位置的 设置方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocationCells</span><span class="params">(ArrayList&lt;String&gt; loc)</span></span>&#123;</div><div class="line">        locationCells = loc;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">checkYourself</span><span class="params">(String userInput)</span></span>&#123;</div><div class="line">        String result = <span class="string">"miss"</span>;<span class="comment">//初始值为miss</span></div><div class="line">        <span class="comment">//用户输入在list列表中的索引值</span></div><div class="line">        <span class="keyword">int</span> index = locationCells.indexOf(userInput);</div><div class="line">        <span class="comment">//如果索引值&gt;=0，说明用户的输入在list存在。说明猜中了。</span></div><div class="line">        <span class="keyword">if</span>(index &gt;= <span class="number">0</span>)&#123;</div><div class="line">            <span class="comment">//猜中了，就把这个元素移除</span></div><div class="line">            locationCells.remove(index);  </div><div class="line">            <span class="comment">//如果isEmpty为真，那么说明所有的元素都被猜中了。</span></div><div class="line">            <span class="keyword">if</span>(locationCells.isEmpty())&#123;   </div><div class="line">                result = <span class="string">"kill"</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                result = <span class="string">"hit"</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(result);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>再写游戏测试类TankTest:</p>
-</li>
+<ul>
+<li>再写游戏测试类TankTest:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TankTest</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> numOfGuesses = <span class="number">0</span>;<span class="comment">//猜了几次 计数器</span></div><div class="line">		GameHelper gameHelper = <span class="keyword">new</span> GameHelper();<span class="comment">//生成输入工具类对象</span></div><div class="line">		Tank tank = <span class="keyword">new</span> Tank(); <span class="comment">//生成一辆坦克</span></div><div class="line">		ArrayList&lt;String&gt; loc = <span class="keyword">new</span> ArrayList&lt;String&gt;(); <span class="comment">//坦克位置存储列表</span></div><div class="line">		<span class="keyword">int</span> randomNum = (<span class="keyword">int</span>)(Math.random()*<span class="number">5</span>); <span class="comment">//生成一个随机数</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;  <span class="comment">//把三个数转换String放进坦克位置列表中</span></div><div class="line">			loc.add(String.valueOf(randomNum+i));</div><div class="line">		&#125;</div><div class="line">		tank.setLocationCells(loc); <span class="comment">//调用tank的setLocationCells方法把loc传进去</span></div><div class="line">		<span class="keyword">boolean</span> isAlive = <span class="keyword">true</span>;</div><div class="line">		<span class="keyword">while</span> (isAlive == <span class="keyword">true</span>)&#123;</div><div class="line">			System.out.println(<span class="string">"请你输入要猜的数字："</span>);</div><div class="line">			String userGuess = gameHelper.getUserInput();<span class="comment">//获取用户从键盘输入</span></div><div class="line">	   		String result = tank.checkYourself(userGuess);<span class="comment">//调用tank的check方法进行判断</span></div><div class="line">			numOfGuesses++;</div><div class="line">			<span class="keyword">if</span>(result == <span class="string">"kill"</span>)&#123;</div><div class="line">				isAlive = <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		System.out.println(<span class="string">"坦克被击坏，你共用了"</span>+numOfGuesses+<span class="string">"次取得胜利！"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -466,7 +476,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

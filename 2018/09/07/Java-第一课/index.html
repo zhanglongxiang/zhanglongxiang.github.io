@@ -1,0 +1,812 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Java的工作方式
+1 编写源代码文件。
+2 用编译器编译源代码，编译器会对源文件进行检查，如果有错误就要改正才能产生正确的输出。
+3 编译器会产生字节码文件，任何支持Java的设备都能把字节码文件转译成可执行的内容。
+4 用设备装的Java虚拟机可以读取并且执行字节码文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java第1次课 Java简介">
+<meta property="og:url" content="http://yoursite.com/2018/09/07/Java-第一课/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="Java的工作方式
+1 编写源代码文件。
+2 用编译器编译源代码，编译器会对源文件进行检查，如果有错误就要改正才能产生正确的输出。
+3 编译器会产生字节码文件，任何支持Java的设备都能把字节码文件转译成可执行的内容。
+4 用设备装的Java虚拟机可以读取并且执行字节码文件。">
+<meta property="og:updated_time" content="2018-09-07T02:35:03.590Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java第1次课 Java简介">
+<meta name="twitter:description" content="Java的工作方式
+1 编写源代码文件。
+2 用编译器编译源代码，编译器会对源文件进行检查，如果有错误就要改正才能产生正确的输出。
+3 编译器会产生字节码文件，任何支持Java的设备都能把字节码文件转译成可执行的内容。
+4 用设备装的Java虚拟机可以读取并且执行字节码文件。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/07/Java-第一课/"/>
+
+
+
+
+
+  <title>Java第1次课 Java简介 | 乌龙</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/Java-第一课/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java第1次课 Java简介
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T10:29:03+08:00">
+                2018-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java教学/" itemprop="url" rel="index">
+                    <span itemprop="name">Java教学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/07/Java-第一课/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/07/Java-第一课/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Java的工作方式"><a href="#Java的工作方式" class="headerlink" title="Java的工作方式"></a>Java的工作方式</h3><ul>
+<li>1 编写源代码文件。</li>
+<li>2 用编译器编译源代码，编译器会对源文件进行检查，如果有错误就要改正才能产生正确的输出。</li>
+<li>3 编译器会产生字节码文件，任何支持Java的设备都能把字节码文件转译成可执行的内容。</li>
+<li>4 用设备装的Java虚拟机可以读取并且执行字节码文件。<a id="more"></a>
+</li>
+</ul>
+<p>我们来做一做</p>
+<ul>
+<li>1 进入命令行窗口，先看一下机器有没有安装Java环境。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -version</div></pre></td></tr></table></figure>
+<ul>
+<li>2 用任何一个文本编辑器都可以来写Java源代码文件，比如最原始的windows的记事本。写完代码，把文件保存。注意，文件名必须与class后面的那串字母完全一致（包括大小写），扩展名必须为.java。所以下面这个例子的源代码文件名字为：JavaTest.java。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class JavaTest&#123;</div><div class="line">  public static void main(String[] args)&#123;</div><div class="line">        System.out.println(&quot;Hello World!&quot;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>3 对源代码文件进行编译，产生字节码文件。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac JavaTest.java</div></pre></td></tr></table></figure>
+<ul>
+<li>4 这时看目录中，应该比原来多了一个JavaTest.class文件，这就是字节码文件。</li>
+<li>5 用Java虚拟机执行字节码文件。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java JavaTest</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="Java简介"><a href="#Java简介" class="headerlink" title="Java简介"></a>Java简介</h3><ul>
+<li>Java是一种面向对象程序设计语言，目前版本是1.8。由美国的Sun公司在1995年正式推出，2010年被Oracle公司收购。Java经过20年的发展，目前在全球的移动互联网、云计划、大数据等领域都占有重要的一席之地，发展前景看好。Java编译器、虚拟机的获得可以到Oracle官方网站下载。</li>
+</ul>
+<hr>
+<h3 id="Java的程序结构"><a href="#Java的程序结构" class="headerlink" title="Java的程序结构"></a>Java的程序结构</h3><ul>
+<li>1 源文件：扩展名为.java的文件，里面有类的定义，类是用来表示程序的一个组件。小程序或许只会有一个类，大软件肯定有多个类组成。类的内容必须包在花括号里面。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>2 类：类中带有一个或多个方法。在Dog这个类中，bark方法带有如何“汪汪”的指令。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line">   void bark()&#123;</div><div class="line">   </div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>3 方法：在方法的花括号中编写这个方法应该执行的语句。你可以把方法想象成是一个函数或过程。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class Dog&#123;</div><div class="line">   void bark()&#123;</div><div class="line">   	  System.out.println(&quot;汪汪&quot;);</div><div class="line">   	   ......</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>经过上面的介绍，大体结构是：首先要有源文件，然后源文件中有类，类中有方法。画一画会看得更清楚。</li>
+</ul>
+<hr>
+<h3 id="一个特殊的方法：main-方法"><a href="#一个特殊的方法：main-方法" class="headerlink" title="一个特殊的方法：main()方法"></a>一个特殊的方法：main()方法</h3><ul>
+<li>当Java虚拟机启动执行时，它会寻找你在命令行所指定的类，然后它会锁定这个类中一个特定的方法:main()方法。</li>
+<li>main()方法就是程序的起点。不管你的程序有多大（也可以说不管有多少个类），一定都会有一个main()来作为程序的起点，而且只有一个。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args)&#123;</div><div class="line">	//代码......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>先简单介绍一下，上面这一行，称作main()方法声明。public是访问修饰符关键字，static也是一个关键字，void关键字表示这个方法没有返回值，main是这个方法的名字，小括号表示这个方法的参数。这些关键字具体起什么作用，我们以后会详细介绍。</li>
+</ul>
+<hr>
+<h3 id="能在main-方法中做什么"><a href="#能在main-方法中做什么" class="headerlink" title="能在main()方法中做什么"></a>能在main()方法中做什么</h3><ul>
+<li>1 做某件事。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int x = 3;</div><div class="line">String name = &quot;Marry&quot;;</div><div class="line">x = x * 10;</div><div class="line">System.out.print(&quot;x is &quot; + x);</div><div class="line">//这是注释行</div></pre></td></tr></table></figure>
+<ul>
+<li>2 反复做某件事。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">while(x &gt; 12)&#123;</div><div class="line">  x = x - 1;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">for(int i = 0; i &lt; 10; i = i + 1)&#123;</div><div class="line">	System.out.println(&quot;i is now &quot; + i);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>3 在适当条件下做某件事。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if(x == 10)&#123;</div><div class="line">  System.out.println(&quot;x is 10&quot;);</div><div class="line">&#125;else&#123;</div><div class="line">  System.out.println(&quot;x isn&apos;t 10&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="介绍了这么多，实践出真知，下面是实践"><a href="#介绍了这么多，实践出真知，下面是实践" class="headerlink" title="介绍了这么多，实践出真知，下面是实践"></a>介绍了这么多，实践出真知，下面是实践</h3><ul>
+<li>1 如果程序的输出结果是：DooBeeDooBeeDo，下面的空白处应该填什么呢？请实验一下，然后填空。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class DooBee&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		int x = 1;</div><div class="line">		while(x &lt; _____)&#123;</div><div class="line">			System.out._____(&quot;Doo&quot;);</div><div class="line">			System.out._____(&quot;Bee&quot;);</div><div class="line">			x = x + 1;</div><div class="line">		&#125;</div><div class="line">		if(x == _____)&#123;</div><div class="line">		  System.out.print(&quot;Do&quot;);	</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>2 程序的输出结果是:a-b  c-d ，下面的程序代码是乱的，排排看，排成正确的。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if(x == 1)&#123;</div><div class="line"> System.out.print(&quot;d&quot;);</div><div class="line"> x = x - 1;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(x == 2)&#123;</div><div class="line">	System.out.print(&quot;b c&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class Shuffle&#123;</div><div class="line">	public static void main(String[] args)&#123;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(x &gt; 2)&#123;</div><div class="line">  System.out.print(&quot;a&quot;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int x = 3;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = x - 1;</div><div class="line">System.out.print(&quot;-&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">while(x &gt; 0)&#123;</div></pre></td></tr></table></figure>
+<ul>
+<li>3 有A、B、C三个源程序，你扮演编译器角色,判断哪个程序可以编译过关，如果有问题，哪里需要修改。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class ExerciseA&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		int x = 1;</div><div class="line">		while(x &lt; 10)&#123;</div><div class="line">			if(x &gt; 3)&#123;</div><div class="line">				System.out.println(&quot;big x&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class ExerciseB&#123;</div><div class="line">	int x = 5;</div><div class="line">	while(x &gt; 1)&#123;</div><div class="line">		x = x - 1;</div><div class="line">		if(x &lt; 3)&#123;</div><div class="line">			System.out.println(&quot;small x&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static void main(String args)&#123;</div><div class="line">	int x = 5;</div><div class="line">	while(x &gt; 1)&#123;</div><div class="line">		x = x - 1;</div><div class="line">		if(x &lt; 3)&#123;</div><div class="line">			System.out.println(&quot;small x&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/30/抽签/" rel="next" title="抽签">
+                <i class="fa fa-chevron-left"></i> 抽签
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/09/07/Java-第一课/"
+           data-title="Java第1次课 Java简介" data-url="http://yoursite.com/2018/09/07/Java-第一课/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java的工作方式"><span class="nav-number">1.</span> <span class="nav-text">Java的工作方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java简介"><span class="nav-number">2.</span> <span class="nav-text">Java简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java的程序结构"><span class="nav-number">3.</span> <span class="nav-text">Java的程序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个特殊的方法：main-方法"><span class="nav-number">4.</span> <span class="nav-text">一个特殊的方法：main()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#能在main-方法中做什么"><span class="nav-number">5.</span> <span class="nav-text">能在main()方法中做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍了这么多，实践出真知，下面是实践"><span class="nav-number">6.</span> <span class="nav-text">介绍了这么多，实践出真知，下面是实践</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -97,7 +97,7 @@
 <meta property="og:description" content="先从窗口开始
 写程序总想写出一些图形界面，让程序看起来更象“软件”。这次课就来学习写图形界面。
 图形界面这部分，不需要我们自己写类，Java已经提供了很多图形工具类，大多数在javax.swing这个包下。">
-<meta property="og:updated_time" content="2017-05-25T02:12:06.000Z">
+<meta property="og:updated_time" content="2018-05-07T01:23:01.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java第12次课 图形用户接口">
 <meta name="twitter:description" content="先从窗口开始
@@ -136,7 +136,7 @@
 
 
 
-  <title> Java第12次课 图形用户接口 | 乌龙 </title>
+  <title>Java第12次课 图形用户接口 | 乌龙</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -211,6 +211,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -302,7 +312,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T21:50:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T21:50:13+08:00">
                 2017-05-17
               </time>
             
@@ -419,51 +429,6 @@
 <h4 id="实验1：按下button，小球变色"><a href="#实验1：按下button，小球变色" class="headerlink" title="实验1：按下button，小球变色"></a>实验1：按下button，小球变色</h4><ul>
 <li>上面讲稿的几个例子做到了：可以响应button事件，可以绘制图形。</li>
 <li>你来尝试一下：按下一次button就改变一次球的颜色。</li>
-</ul>
-<hr>
-<h3 id="以下内容本周没有讲到，有余力的同学可以自己实践学习。"><a href="#以下内容本周没有讲到，有余力的同学可以自己实践学习。" class="headerlink" title="以下内容本周没有讲到，有余力的同学可以自己实践学习。"></a>以下内容本周没有讲到，有余力的同学可以自己实践学习。</h3><h4 id="frame上有两个按钮都有事件发生怎么办？"><a href="#frame上有两个按钮都有事件发生怎么办？" class="headerlink" title="frame上有两个按钮都有事件发生怎么办？"></a>frame上有两个按钮都有事件发生怎么办？</h4><ul>
-<li>现在的需求，窗口有两个按钮，button1是要改变圆圈颜色，button2是要改变label文本</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.swing.*;</div><div class="line"><span class="keyword">import</span> java.awt.event.*;</div><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwingTest</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;</div><div class="line"></div><div class="line">	JFrame frame;</div><div class="line">	JLabel label;</div><div class="line">	JButton button1,button2;</div><div class="line">	MyDrawPanel drawPanel;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">		frame = <span class="keyword">new</span> JFrame();</div><div class="line">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">		label = <span class="keyword">new</span> JLabel(<span class="string">"Hello World"</span>);</div><div class="line">		button1 = <span class="keyword">new</span> JButton(<span class="string">"Change colors"</span>);</div><div class="line">		button2 = <span class="keyword">new</span> JButton(<span class="string">"Change text"</span>);</div><div class="line">		button1.addActionListener(<span class="keyword">this</span>); <span class="comment">//向按钮1注册事件监听器</span></div><div class="line">		button2.addActionListener(<span class="keyword">this</span>);</div><div class="line">		drawPanel = <span class="keyword">new</span> MyDrawPanel();</div><div class="line">		<span class="comment">/*</span></div><div class="line">		把生成的组件都放到frame中去</div><div class="line">		*/</div><div class="line">		frame.getContentPane().add(BorderLayout.WEST,label);</div><div class="line">		frame.getContentPane().add(BorderLayout.SOUTH,button1);</div><div class="line">		frame.getContentPane().add(BorderLayout.EAST,button2);</div><div class="line">		frame.getContentPane().add(BorderLayout.CENTER,drawPanel);</div><div class="line">		frame.setSize(<span class="number">300</span>,<span class="number">300</span>);<span class="comment">//frame尺寸</span></div><div class="line">		frame.setVisible(<span class="keyword">true</span>);<span class="comment">//frame可见</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>&#123; <span class="comment">//实现接口中的方法</span></div><div class="line">		frame.repaint();</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  <span class="comment">//主方法</span></div><div class="line">		SwingTest st = <span class="keyword">new</span> SwingTest();</div><div class="line">		st.go();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>上面这个例子能够运行，但是点击两个按钮都是改变圆圈的颜色。</li>
-<li>尝试解决办法有三种<ol>
-<li>实现两个actionPerformed()方法</li>
-<li>对两个按钮注册同一个监听口,根据传进来的event对象来判断是哪个事件再做出下一步的动作</li>
-<li>创建不同的ActionListener</li>
-</ol>
-</li>
-<li>第1种和第3种行不通，第2种能行通，但是导致程序结构复杂，不符合面向对象的编程思想。</li>
-</ul>
-<hr>
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
-<li>如果有两个不同的监听类，它们却能够存取frame的实例组件，并且两者都好象互相属于对方一样，这就能达到上面的需求。</li>
-<li>内部类：一个类可以嵌套在另一个类的内部，它就是这个外部类的一个组件。</li>
-<li>内部类可以使用外部类所有的方法与变量，就算是私有的也一样。就是下面这种形式：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyOutClass</span></span>&#123;  <span class="comment">//外部类</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">20</span>;</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">MyInnerClass</span></span>&#123;  <span class="comment">//内部类</span></div><div class="line">		<span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</div><div class="line">			x = <span class="number">40</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>现在就可以用内部类实现两个按钮不同监听的程序，如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoButtons</span></span>&#123;</div><div class="line">	JFrame frame;</div><div class="line">	JLabel label;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		TwoButtons tb = <span class="keyword">new</span> TwoButtons();</div><div class="line">		tb.go();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</div><div class="line">		frame = <span class="keyword">new</span> JFrame();</div><div class="line">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">		JButton labelButton = <span class="keyword">new</span> JButton(<span class="string">"Change text"</span>);</div><div class="line">		labelButton.addActionListener(<span class="keyword">new</span> TextListener());</div><div class="line">		JButton colorButton = <span class="keyword">new</span> JButton(<span class="string">"Change color"</span>);</div><div class="line">		colorButton.addActionListener(<span class="keyword">new</span> ColorListener());</div><div class="line"></div><div class="line">		label = <span class="keyword">new</span> JLabel(<span class="string">"I`m a label’"</span>);</div><div class="line"></div><div class="line">		MyDrawPanel drawPanel = <span class="keyword">new</span> MyDrawPanel();</div><div class="line"></div><div class="line">		frame.getContentPane().add(BorderLayout.CENTER,drawPanel);</div><div class="line">		frame.getContentPane().add(BorderLayout.EAST,labelButton);</div><div class="line">		frame.getContentPane().add(BorderLayout.SOUTH,colorButton);</div><div class="line">		frame.getContentPane().add(BorderLayout.WEST,label);</div><div class="line"></div><div class="line">		frame.setSize(<span class="number">300</span>,<span class="number">300</span>);</div><div class="line">		frame.setVisible(<span class="keyword">true</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TextListener</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;  <span class="comment">//内部类、实现一个监听器</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>&#123;</div><div class="line">			label.setText(<span class="string">"change text"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">ColorListener</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;  <span class="comment">//内部类、又实现一个监听器</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent event)</span></span>&#123;</div><div class="line">			frame.repaint();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="实验2：做一个动画"><a href="#实验2：做一个动画" class="headerlink" title="实验2：做一个动画"></a>实验2：做一个动画</h4><ul>
-<li>上面的内部类会用了，来做下面这个有趣的实验。</li>
-<li>能不能做出这个视频的效果：<a href="http://v.youku.com/v_show/id_XMTU4NDQ3MDgwNA==.html" target="_blank" rel="external">视频链接</a>，一个移动的小球。</li>
-<li><p>解决思路：</p>
-<ol>
-<li>MyDrawPanel应该写成内部类，这样小球坐标变量可以共享。</li>
-<li><p>fillOval方法共有四个参数，前两个参数是像素坐标，你尝试一下改变像素坐标，重新运行程序，小球会出现在另一个位置。后两个参数是小球大小。这一步你能做到手工设置能让小球灵活起来。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g.fillOval(<span class="number">70</span>,<span class="number">70</span>,<span class="number">100</span>,<span class="number">100</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>只要小球坐标能有规律的移动，然后不断的repaint()，是不是小球就不断的重新绘制，看起来就象小球在移动一样？用for循环能不能解决这个问题？</p>
-</li>
-<li>小球不断的repaint()，太快了，我们会看到小球立即出现在了终点，它从起点到终点的移动我们根本看不到。所以在小球不断repaint()的时候，我们想让它慢一点，所以要加个时间间隔，就是下面这段代码。这是以后要讲的线程类知识，现在先不用细究，你先给加上就可以了（加在repaint()的后面）。<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">		Thread.sleep(<span class="number">50</span>);</div><div class="line">	&#125;<span class="keyword">catch</span>(Exception ex)&#123;&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>其实做完这个动画，会感觉到数学在程序软件中的重要性，这个球如果再继续做下去，会成为弹球，球怎么弹呢？朝哪弹呢？是不是需要数学进行模拟计算它的路径和速度呢？</p>
-</li>
 </ul>
 
       
@@ -583,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -636,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#先从窗口开始"><span class="nav-number">1.</span> <span class="nav-text">先从窗口开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按动button怎么才能有反应？"><span class="nav-number">2.</span> <span class="nav-text">按动button怎么才能有反应？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小总结：监听、事件源与程序"><span class="nav-number">3.</span> <span class="nav-text">小总结：监听、事件源与程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自己创建的绘图组件"><span class="nav-number">4.</span> <span class="nav-text">自己创建的绘图组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在paintComponent-可以做的事情-举两个例子"><span class="nav-number">5.</span> <span class="nav-text">在paintComponent()可以做的事情,举两个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验1：按下button，小球变色"><span class="nav-number">6.</span> <span class="nav-text">实验1：按下button，小球变色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以下内容本周没有讲到，有余力的同学可以自己实践学习。"><span class="nav-number"></span> <span class="nav-text">以下内容本周没有讲到，有余力的同学可以自己实践学习。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#frame上有两个按钮都有事件发生怎么办？"><span class="nav-number">1.</span> <span class="nav-text">frame上有两个按钮都有事件发生怎么办？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">2.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验2：做一个动画"><span class="nav-number">3.</span> <span class="nav-text">实验2：做一个动画</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#先从窗口开始"><span class="nav-number">1.</span> <span class="nav-text">先从窗口开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按动button怎么才能有反应？"><span class="nav-number">2.</span> <span class="nav-text">按动button怎么才能有反应？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小总结：监听、事件源与程序"><span class="nav-number">3.</span> <span class="nav-text">小总结：监听、事件源与程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自己创建的绘图组件"><span class="nav-number">4.</span> <span class="nav-text">自己创建的绘图组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在paintComponent-可以做的事情-举两个例子"><span class="nav-number">5.</span> <span class="nav-text">在paintComponent()可以做的事情,举两个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验1：按下button，小球变色"><span class="nav-number">6.</span> <span class="nav-text">实验1：按下button，小球变色</span></a></li></ol></div>
             
 
           </div>
