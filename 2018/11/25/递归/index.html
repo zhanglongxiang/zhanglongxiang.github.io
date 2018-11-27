@@ -99,7 +99,7 @@
 递归函数不断的调用自己，通过传递参数来解决问题或者完成任务。待解决的问题都有着自我相似的特征。">
 <meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3F4eDNtU2pOdjJFSVovU3ZjQnpvTmJ5SXFnU3MzOXc2dFZ1bzFLSTZzcGRnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
 <meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3JTMnl6czk1aHlRWWFwYTZ4ZlpzbE1zQXRlcDF3VFN0amxJUnNZQlR4N1JnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
-<meta property="og:updated_time" content="2018-11-27T07:40:59.337Z">
+<meta property="og:updated_time" content="2018-11-27T07:43:56.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="递归">
 <meta name="twitter:description" content="递归思想
@@ -435,7 +435,7 @@
 <li>问题天生就有着递归的结构。这时递归就是很好的工具。</li>
 </ul>
 <hr>
-<h4 id="回文串"><a href="#回文串" class="headerlink" title="回文串"></a>回文串</h4><ul>
+<h4 id="用递归解决回文串"><a href="#用递归解决回文串" class="headerlink" title="用递归解决回文串"></a>用递归解决回文串</h4><ul>
 <li>“回文串”是一个正读和反读都一样的字符串，比如“level”或者“noon”等等就是回文串。</li>
 <li>用循环解决这个问题，由外向内循环，看看是不是回文的，是很麻烦的。因为你必须监视你在操纵的字符串，并且要考虑进到中部时可能出现的状况。</li>
 <li>某种意义上，递归可以避免这种麻烦，递归有着更整体的思维方式。通过将字符串分为外部和内部来判断。从而得出问题的答案。</li>
@@ -467,7 +467,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">int BSearch(int *a,int start,int stop,int key)</div><div class="line">&#123;</div><div class="line">	if(start &gt; stop) return NotFound;</div><div class="line">	</div><div class="line">	int mid = (start + stop) / 2;</div><div class="line">	if(key == a[mid])</div><div class="line">		return mid;</div><div class="line">	else if(key &lt; a[mid])</div><div class="line">		return BSearch(a,start,mid-1,key);</div><div class="line">	else </div><div class="line">		return BSearch(a,mid+1,stop,key);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h4 id="用递归解决选择子集问题"><a href="#用递归解决选择子集问题" class="headerlink" title="用递归解决选择子集问题"></a>用递归解决选择子集问题</h4><ul>
+<h4 id="用递归解决选择子集"><a href="#用递归解决选择子集" class="headerlink" title="用递归解决选择子集"></a>用递归解决选择子集</h4><ul>
 <li>内容是你有N个元素，你想在其中选择K个，有多少种不同的方式，不重复选取。</li>
 <li>我们现在用递归的方式，来思考这个问题。我们画一个集合，来说明这个问题。</li>
 <li>一共有N个元素，我们要选择其中的K个。</li>
@@ -657,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归思想"><span class="nav-number">1.</span> <span class="nav-text">递归思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归程序举例"><span class="nav-number">2.</span> <span class="nav-text">递归程序举例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指数运算"><span class="nav-number">2.1.</span> <span class="nav-text">指数运算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个错误的递归"><span class="nav-number">3.</span> <span class="nav-text">一个错误的递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归效率问题"><span class="nav-number">4.</span> <span class="nav-text">递归效率问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么学习递归"><span class="nav-number">5.</span> <span class="nav-text">为什么学习递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回文串"><span class="nav-number">6.</span> <span class="nav-text">回文串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用递归解决二分查找"><span class="nav-number">7.</span> <span class="nav-text">用递归解决二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用递归解决选择子集问题"><span class="nav-number">8.</span> <span class="nav-text">用递归解决选择子集问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归思想"><span class="nav-number">1.</span> <span class="nav-text">递归思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归程序举例"><span class="nav-number">2.</span> <span class="nav-text">递归程序举例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指数运算"><span class="nav-number">2.1.</span> <span class="nav-text">指数运算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个错误的递归"><span class="nav-number">3.</span> <span class="nav-text">一个错误的递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归效率问题"><span class="nav-number">4.</span> <span class="nav-text">递归效率问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么学习递归"><span class="nav-number">5.</span> <span class="nav-text">为什么学习递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用递归解决回文串"><span class="nav-number">6.</span> <span class="nav-text">用递归解决回文串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用递归解决二分查找"><span class="nav-number">7.</span> <span class="nav-text">用递归解决二分查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用递归解决选择子集"><span class="nav-number">8.</span> <span class="nav-text">用递归解决选择子集</span></a></li></ol></div>
             
 
           </div>
