@@ -353,20 +353,19 @@
 
       
         
-          
-            <ul>
+          <ul>
 <li><p>第1题：在单链表中，要将s所指结点插入到p所指结点之后，其语句应为:</p>
 </li>
 <li><p>以下代码为实验思路：</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line"></div><div class="line">typedef struct Node&#123; //定义结点</div><div class="line"></div><div class="line">	int data;</div><div class="line">	struct Node *next;</div><div class="line">&#125;Node;</div><div class="line"></div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line"></div><div class="line">	struct Node* s =(struct Node*)(malloc(sizeof(Node))); //创建一个新结点s</div><div class="line">	</div><div class="line">	s-&gt;data = 1;</div><div class="line"></div><div class="line">	printf(&quot;%p\n&quot;,s-&gt;next); //打印看值，结点的next指针为空</div><div class="line"></div><div class="line">	s-&gt;next =(struct Node*)(malloc(sizeof(Node))); //创建一个新结点，s的next指针指向它</div><div class="line"></div><div class="line">	printf(&quot;%p\n&quot;,s-&gt;next);</div><div class="line"></div><div class="line">	struct Node* p =(struct Node*)(malloc(sizeof(Node))); //创建一个新结点p</div><div class="line"></div><div class="line">	p-&gt;next = (struct Node*)(malloc(sizeof(Node))); //创建一个新结点，p的next指针指向它</div><div class="line"></div><div class="line">	/*</div><div class="line">	s所指结点插入到p所指结点之后。意味着</div><div class="line">	s的next要指向原p的下一个结点；</div><div class="line">	p的next要指向s。</div><div class="line">	*/</div><div class="line">	s-&gt;next = p-&gt;next;</div><div class="line">	p-&gt;next = s;</div><div class="line">	return 1; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>第2题：已知指针P指向链表L中的某结点,执行p=p—&gt;next不会删除该结点。</li>
-<li>答案：正确。这个只是将p指到了p的后继结点，没有删除的问题。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;stdlib.h&gt;</div><div class="line"></div><div class="line">typedef struct Node&#123; //定义结点</div><div class="line">	int data;</div><div class="line">	struct Node *next;</div><div class="line">&#125;Node;</div><div class="line"></div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	struct Node* p =(struct Node*)(malloc(sizeof(Node))); //创建一个新结点p</div><div class="line"></div><div class="line">	p-&gt;data = 77; </div><div class="line">	printf(&quot;%d\n&quot;,p-&gt;data); //打印77</div><div class="line"></div><div class="line">	p-&gt;next = (struct Node*)(malloc(sizeof(Node))); //创建一个新结点，p的next指针指向它</div><div class="line"></div><div class="line">	p-&gt;next-&gt;data = 66;</div><div class="line"></div><div class="line">	p = p-&gt;next;</div><div class="line"></div><div class="line">	printf(&quot;%d\n&quot;,p-&gt;data); //打印66</div><div class="line"></div><div class="line">	return 1; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/14/数据结构 链表指针修改选择题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
