@@ -264,6 +264,193 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/将问题转变成代码/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/03/01/将问题转变成代码/" itemprop="url">
+                  chapter1 将问题变成代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T21:25:26+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程技能/" itemprop="url" rel="index">
+                    <span itemprop="name">编程技能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/01/将问题转变成代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/01/将问题转变成代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="将问题转变成代码"><a href="#将问题转变成代码" class="headerlink" title="将问题转变成代码"></a>将问题转变成代码</h1><p>如果你才接触编程，可能想知道有经验的开发者是如何看问题以及如何将其转变为可运行的代码的。其实，编写代码只是这个过程中很小的一部分。在解决问题之前，首先要将其分解。如果你观察过有经验的开发者，可能会觉得他们看上去就是打开代码编辑器，噼里啪啦敲出了一个解决方案。但是多年以来，他们分解的问题就算没有几千个，也有几百个了，他们能看出一些模式。而新手可能并不知道怎么做。所以，本章将研究一种分解问题并将其转变为代码的方法。你可以使用该方法解决本书其余部分的问题。</p>
+<h2 id="理解问题"><a href="#理解问题" class="headerlink" title="理解问题"></a>理解问题</h2><p>要想知道应该做什么，最好的一个方法是把它写下来。如果我告诉你，我想要一个小费计算程序，是不是凭这个信息你就能开工写一个了？可能还不够。你可能还必须向我提一些问题。这通常称作收集需求，不过我喜欢把它看作找出程序应该提供的特性。<br>先考虑一些可以向我提出的问题，以便通过这些问题更好地理解我想要的是什么。要构建这个应用，你需要了解什么呢？<br>下面是一些你可能想问的问题。</p>
+<ul>
+<li>你想使用什么样的公式？可以解释一下如何计算小费吗？</li>
+<li>小费的比例是多少？是固定的15%，还是用户可以修改？</li>
+<li>程序启动后，屏幕上应该显示什么？</li>
+<li>程序应该如何显示其输出？你想看小费和总额，还是只想看总额？<br>一旦得到这些问题的答案，就可以尝试写一下问题描述，精确地解释要构建的东西。下面是欲构建程序的问题描述：</li>
+</ul>
+<hr>
+<p><strong>创建一个简单的小费计算程序。该程序应该提示用户输入帐单金额和小费比例。该程序必须计算出小费，并显示小费和总金额。</strong></p>
+<hr>
+<p>示例输出:</p>
+<hr>
+<p><strong>What is the bill?  $200</strong><br><strong>What is the tip percentage? 15</strong><br><strong>The tip is $30.00</strong><br><strong>The total is $230.00</strong></p>
+<hr>
+<p>如何处理复杂的程序？<br>将较大的程序分解成更容易管理的、较小的特性。这么做的话，因为每个特性可以具体化，所以成功的概率更大。已有的大部分复杂应用都是由很多较小的、一起工作的程序组成的。Linux上的命令行工具就是这么工作的；一个程序的输出可以作为另一个程序的输入。</p>
+<h2 id="发现输入、处理和输出"><a href="#发现输入、处理和输出" class="headerlink" title="发现输入、处理和输出"></a>发现输入、处理和输出</h2><p>不管是小费计算程序这样的简单应用，还是Facebook那样的复杂应用，每个程序都有输入、处理和输出。事实上，大型应用就是由一系列较小的、相互通信的程序组成的。其中，一个程序的输出会成为另一个程序的输入。<br>不管程序是大是小，如果能花点时间清晰地阐明输入、处理和输出各是什么，就能确保其工作地很好。如果有比较清晰的问题描述，则有个简单的方法，就是看一下问题描述中的名词和动词。名词最终会成为输入和输出，动词会成为处理。<br>我们确定了这种程序的输入、处理和输出，如下所示：</p>
+<ul>
+<li>输入：帐单金额，小费比例</li>
+<li>处理：计算小费</li>
+<li>输出：小费，总金额<br>我们是不是已经为编写代码做好准备了呢？还没有。</li>
+</ul>
+<h2 id="用测试驱动设计"><a href="#用测试驱动设计" class="headerlink" title="用测试驱动设计"></a>用测试驱动设计</h2><h2 id="用伪代码编写算法"><a href="#用伪代码编写算法" class="headerlink" title="用伪代码编写算法"></a>用伪代码编写算法</h2><h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class chapter1 &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		/*</div><div class="line">		 * 输入金额</div><div class="line">		 */</div><div class="line">		 System.out.print(&quot;What is the bill?&quot;);</div><div class="line">		 Scanner sc = new Scanner(System.in);</div><div class="line">		 String str1 = sc.next();</div><div class="line">		 int billAmount = Integer.parseInt(str1);</div><div class="line">		 System.out.println();</div><div class="line">		 /*</div><div class="line">		  * 输入小费比率</div><div class="line">		  */</div><div class="line">		 System.out.print(&quot;What is the tip percentage?&quot;);</div><div class="line">		 String str2 = sc.next();</div><div class="line">		 int tipPercentage = Integer.parseInt(str2);</div><div class="line">		 double percentage = (double) (Math.round(tipPercentage)/100.0);</div><div class="line">		 System.out.println();</div><div class="line">		 /*</div><div class="line">		  * 计算小费，并输出小费。不足一分，向上取整</div><div class="line">		  */</div><div class="line">		 double tip = (double)(Math.round(billAmount*100)/100.0) *percentage;</div><div class="line">		 tip = Math.ceil(tip);//取整，大于等于tip的最小整数</div><div class="line">		 System.out.println(&quot;The tip is&quot; + &quot; &quot; + tip);</div><div class="line">		/*</div><div class="line">		 * 计算总和，并输出总和</div><div class="line">		 */</div><div class="line">		 double total = billAmount + tip;</div><div class="line">		 System.out.println(&quot;The total is&quot; + &quot; &quot; + total);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><ul>
+<li>小费比例应输入百分比的数字部分，比如，15%的小费比例，应该输入15，而不是0.15。应该由程序来处理除法。</li>
+<li>不足一分的，向上取整。</li>
+</ul>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>在编写出一个基本的版本后，可以再试试解决下面这些挑战。</p>
+<ul>
+<li>对于帐单金额和小费比例，确保用户只能输入数值。如果用户输入的不是数值，则显示相应的提示信息并退出程序。</li>
+<li>不再是显示错误消息并退出，而是在用户输入合法的值之前，一直提示输入。</li>
+<li>将程序分解为做计算的函数。</li>
+<li>使用图形用户界面（GUI）实现这个程序，当有任何值改变时，自动在界面中更新这些值。</li>
+<li>不再是让用户以百分比形式输入小费比例，而是让用户通过拖动一个滑动条表示对服务员的满意度，区间是5%-20%。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/数据结构 链表指针修改选择题/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1677,169 +1864,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/Java-复习上机练习/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="乌龙">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="乌龙">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/08/Java-复习上机练习/" itemprop="url">
-                  Java期末复习上机练习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T00:04:34+08:00">
-                2017-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java教学/" itemprop="url" rel="index">
-                    <span itemprop="name">Java教学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/08/Java-复习上机练习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/08/Java-复习上机练习/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int arry1[] = &#123;1,2,3,4&#125;;//一种定义赋值方式</div><div class="line"></div><div class="line">int arry2[] = new int[10];//定义了一个int类型的数组，长度为10</div><div class="line"></div><div class="line">//数组的遍历</div><div class="line">for(int i=0; i &lt; arr2.length; i++)&#123;</div><div class="line">	System.out.println(arry2[i]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">String strArry[] = new String[5];//定义了一个String类型的数组，长度为5</div></pre></td></tr></table></figure>
-<h4 id="以下为数组实验"><a href="#以下为数组实验" class="headerlink" title="以下为数组实验"></a>以下为数组实验</h4><ul>
-<li>定义整型数组，求出其中的奇数个数和偶数个数。</li>
-<li>定义整型数组，求出数组元素的和、数组元素的最大值和最小值，并输出所求的结果。</li>
-<li>给出10个整数，然后任意查询一个数字是否存在该10个数字内。</li>
-<li>编程统计字符串数组中某个字符串元素出现的次数。</li>
-<li>编程对10个数从大到小降序排序并输出。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/08/Java-复习上机练习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1889,7 +1913,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1898,7 +1922,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1947,7 +1971,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
