@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="教学," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,25 +87,27 @@
 
 
 
-<meta name="description" content="实验思路，下面的步骤，一步一步做，逐步扩展。
-写一个测试类MainTest
-在主方法中定义一个int类型的类量，赋初值，输出看结果
-在上一步的基础上，扩展，会不会定义一个int类型的数组nums，赋初值，输出看结果？">
+<meta name="description" content="接上次，已经完成了BeerV1版本能完成如下功能：
+
+输入网址：http://localhost:8080/beerV1/form.html，能正常访问form.html。
+在页面选择某个color，color的值能传递到servlet中，servlet能把该color的值绘制到页面中。（这说明前后与后台的数据传输已经贯通了，这是很重要的一步）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java第3次实验课思路总结">
-<meta property="og:url" content="http://yoursite.com/2017/03/17/Java-第3次实验课总结/index.html">
+<meta property="og:title" content="JavaWeb之MVC（续）">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/JavaWeb-week3/index.html">
 <meta property="og:site_name" content="乌龙">
-<meta property="og:description" content="实验思路，下面的步骤，一步一步做，逐步扩展。
-写一个测试类MainTest
-在主方法中定义一个int类型的类量，赋初值，输出看结果
-在上一步的基础上，扩展，会不会定义一个int类型的数组nums，赋初值，输出看结果？">
-<meta property="og:updated_time" content="2017-03-16T23:30:13.000Z">
+<meta property="og:description" content="接上次，已经完成了BeerV1版本能完成如下功能：
+
+输入网址：http://localhost:8080/beerV1/form.html，能正常访问form.html。
+在页面选择某个color，color的值能传递到servlet中，servlet能把该color的值绘制到页面中。（这说明前后与后台的数据传输已经贯通了，这是很重要的一步）">
+<meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3FMMm9GVmtBYTBKVktmR3JmTmlidDhYVlRGbmI4aEFyazN1cWlNWTJXWGdnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:updated_time" content="2019-03-26T07:11:14.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java第3次实验课思路总结">
-<meta name="twitter:description" content="实验思路，下面的步骤，一步一步做，逐步扩展。
-写一个测试类MainTest
-在主方法中定义一个int类型的类量，赋初值，输出看结果
-在上一步的基础上，扩展，会不会定义一个int类型的数组nums，赋初值，输出看结果？">
+<meta name="twitter:title" content="JavaWeb之MVC（续）">
+<meta name="twitter:description" content="接上次，已经完成了BeerV1版本能完成如下功能：
+
+输入网址：http://localhost:8080/beerV1/form.html，能正常访问form.html。
+在页面选择某个color，color的值能传递到servlet中，servlet能把该color的值绘制到页面中。（这说明前后与后台的数据传输已经贯通了，这是很重要的一步）">
+<meta name="twitter:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3FMMm9GVmtBYTBKVktmR3JmTmlidDhYVlRGbmI4aEFyazN1cWlNWTJXWGdnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/17/Java-第3次实验课总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/26/JavaWeb-week3/"/>
 
 
 
 
 
-  <title>Java第3次实验课思路总结 | 乌龙</title>
+  <title>JavaWeb之MVC（续） | 乌龙</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/17/Java-第3次实验课总结/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/JavaWeb-week3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="乌龙">
@@ -300,7 +302,7 @@
             
             
               
-                Java第3次实验课思路总结
+                JavaWeb之MVC（续）
               
             
           </h1>
@@ -315,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T07:26:20+08:00">
-                2017-03-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T09:57:54+08:00">
+                2019-03-26
               </time>
             
 
@@ -326,6 +328,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -334,8 +358,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/17/Java-第3次实验课总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/Java-第3次实验课总结/" itemprop="commentCount"></span>
+                <a href="/2019/03/26/JavaWeb-week3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/26/JavaWeb-week3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,25 +385,32 @@
       
 
       
-        <h4 id="实验思路，下面的步骤，一步一步做，逐步扩展。"><a href="#实验思路，下面的步骤，一步一步做，逐步扩展。" class="headerlink" title="实验思路，下面的步骤，一步一步做，逐步扩展。"></a>实验思路，下面的步骤，一步一步做，逐步扩展。</h4><ul>
-<li>写一个测试类MainTest</li>
-<li>在主方法中定义一个int类型的类量，赋初值，输出看结果</li>
-<li>在上一步的基础上，扩展，会不会定义一个int类型的数组<code>nums</code>，赋初值，输出看结果？<a id="more"></a></li>
-<li>写一个空的Dog类</li>
-<li>Java规定：<code>Dog类也是一种数据类型</code>，能不能在主方法中定义一个Dog类型的变量，赋初值，输出看结果？</li>
-<li>在上一步的基础上，扩展，会不会定义一个Dog类型的数组<code>dogs</code>，赋初值，输出看结果？</li>
-<li>Dog类添加属性<code>weight</code>，dogs数组中的weight会写吗？</li>
+        <h1 id="接上次，已经完成了BeerV1版本"><a href="#接上次，已经完成了BeerV1版本" class="headerlink" title="接上次，已经完成了BeerV1版本"></a>接上次，已经完成了BeerV1版本</h1><p>能完成如下功能：</p>
+<ol>
+<li>输入网址：<strong><a href="http://localhost:8080/beerV1/form.html，" target="_blank" rel="external">http://localhost:8080/beerV1/form.html，</a></strong>能正常访问form.html。</li>
+<li>在页面选择某个color，color的值能传递到servlet中，servlet能把该color的值绘制到页面中。（<strong>这说明前后与后台的数据传输已经贯通了，这是很重要的一步</strong>）<a id="more"></a>
+</li>
+</ol>
+<h1 id="今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）"><a href="#今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）" class="headerlink" title="今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）"></a>今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）</h1><ul>
+<li>要求：用户在页面选择某个color，系统后台会给用户推荐一个啤酒品牌。比如用户在页面选择dark，系统页面推荐Tsingdao。这样，用户可能会购买这个品牌的啤酒，促进了销售。<h1 id="BeerV2动手过程："><a href="#BeerV2动手过程：" class="headerlink" title="BeerV2动手过程："></a>BeerV2动手过程：</h1></li>
+<li>在src/model目录下建立BeerExpert.java这个模型类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> model;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeerExpert</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getBrands</span><span class="params">(String color)</span></span>&#123;</div><div class="line">		<span class="comment">//根据传进来的color，进行判断，返回品牌</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>写完之后，我们要对它进行编译。这是一个普通的java类，不是servlet类，所以在编译的时候，编译命令要比以前简单一些，不需要servlet-api.jar这个类库。</li>
+<li>改写BeerSelect.java这个servlet。<ul>
+<li>要求：在servlet中要生成BeerExpert这个对象，调用它的相关方法，把color作为参数传进这个方法，会把brand作为结果返回。然后servlet会把结果写到页面中，返回给用户。</li>
+</ul>
+</li>
+<li>代码有变化，所以要对BeerSelect.java重新编译。</li>
+<li>在beerV1目录下，运行如下编译命令：(机器环境不同，下面命令相关路径会有不同）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javac -classpath /usr/local/cellar/tomcat/8.0.32/libexec/lib/servlet-api.jar:WEB-INF/classes  -d WEB-INF/classes src/web/BeerSelect.java</div></pre></td></tr></table></figure>
+<ul>
+<li>最后的目录结构应该是这样：<br><img src="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3FMMm9GVmtBYTBKVktmR3JmTmlidDhYVlRGbmI4aEFyazN1cWlNWTJXWGdnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt=""></li>
 </ul>
 <hr>
-<h4 id="Hobbits实验，分析关键代码，简短验证，找出问题。"><a href="#Hobbits实验，分析关键代码，简短验证，找出问题。" class="headerlink" title="Hobbits实验，分析关键代码，简短验证，找出问题。"></a>Hobbits实验，分析关键代码，简短验证，找出问题。</h4><ul>
-<li>写普通类Hobbits:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hobbits</span> </span>&#123;</div><div class="line">	String name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>写测试类MainTest:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		Hobbits[] h = <span class="keyword">new</span> Hobbits[<span class="number">3</span>];<span class="comment">//数组下标为0,1,2</span></div><div class="line">		<span class="keyword">int</span> z = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(z &lt; <span class="number">3</span>)&#123;</div><div class="line">			z = z+<span class="number">1</span>; <span class="comment">//此处的值 1,2,3。</span></div><div class="line">			h[z] = <span class="keyword">new</span> Hobbits(); <span class="comment">//所以执行到h[3]会报错，数组下标越界！</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+<h1 id="重启tomcat，访问看页面结果，会不会有品牌推荐。"><a href="#重启tomcat，访问看页面结果，会不会有品牌推荐。" class="headerlink" title="重启tomcat，访问看页面结果，会不会有品牌推荐。"></a>重启tomcat，访问看页面结果，会不会有品牌推荐。</h1>
       
     </div>
 
@@ -400,12 +431,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/教学/" rel="tag"># 教学</a>
-          
-        </div>
-      
 
       
         
@@ -415,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/13/Java-第三课(变量)/" rel="next" title="Java第3次课 变量">
-                <i class="fa fa-chevron-left"></i> Java第3次课 变量
+              <a href="/2019/03/12/JavaWeb-week2/" rel="next" title="JavaWeb之要用MVC的一个例子">
+                <i class="fa fa-chevron-left"></i> JavaWeb之要用MVC的一个例子
               </a>
             
           </div>
@@ -424,10 +449,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/21/Java-第四课(方法与属性)/" rel="prev" title="Java第4次课 方法与属性">
-                Java第4次课 方法与属性 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,8 +474,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/17/Java-第3次实验课总结/"
-           data-title="Java第3次实验课思路总结" data-url="http://yoursite.com/2017/03/17/Java-第3次实验课总结/">
+      <div class="ds-thread" data-thread-key="2019/03/26/JavaWeb-week3/"
+           data-title="JavaWeb之MVC（续）" data-url="http://yoursite.com/2019/03/26/JavaWeb-week3/">
       </div>
     
   </div>
@@ -556,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#实验思路，下面的步骤，一步一步做，逐步扩展。"><span class="nav-number">1.</span> <span class="nav-text">实验思路，下面的步骤，一步一步做，逐步扩展。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hobbits实验，分析关键代码，简短验证，找出问题。"><span class="nav-number">2.</span> <span class="nav-text">Hobbits实验，分析关键代码，简短验证，找出问题。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接上次，已经完成了BeerV1版本"><span class="nav-number">1.</span> <span class="nav-text">接上次，已经完成了BeerV1版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）"><span class="nav-number">2.</span> <span class="nav-text">今天的任务，实现BeerV2版本（一个啤酒品牌推荐系统）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BeerV2动手过程："><span class="nav-number">3.</span> <span class="nav-text">BeerV2动手过程：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启tomcat，访问看页面结果，会不会有品牌推荐。"><span class="nav-number">4.</span> <span class="nav-text">重启tomcat，访问看页面结果，会不会有品牌推荐。</span></a></li></ol></div>
             
 
           </div>
