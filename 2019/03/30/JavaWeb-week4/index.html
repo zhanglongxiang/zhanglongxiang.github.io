@@ -1,0 +1,815 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="servlet执行原理
+浏览器发送URL的请求–&amp;gt;&amp;gt;直到浏览器收到响应结果，发生了什么？
+
+例如
+浏览器向tomcat发出http请求：http://localhost:8080/web项目名/servlet的url-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb之servlet接收请求和产生响应">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/JavaWeb-week4/index.html">
+<meta property="og:site_name" content="乌龙">
+<meta property="og:description" content="servlet执行原理
+浏览器发送URL的请求–&amp;gt;&amp;gt;直到浏览器收到响应结果，发生了什么？
+
+例如
+浏览器向tomcat发出http请求：http://localhost:8080/web项目名/servlet的url-pattern">
+<meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a29yZUttNVN3YWQ4NmcyWnpXN2dHc2pHUkt3NEVYVGZweWFUUnB2UW5WSFVRPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://imglf6.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaMHNGd3hhZjdUOUZXNVJVSEN5d2hxVGtlMTlqR2dMNnR3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaM3h4R1FHQVcwQWJ4S2ZMNXZiSnVxd2ZhTW1yQlB6OVFnPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaMnExMCtLRWJtMW1MWmZFZVcwaG12dkJHbkxSbm01cU1RPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf3.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaNmdYZml3SGFjc3Zzbk1iYXRhaFN0RVNPUXNCUk45WTNBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:updated_time" content="2019-03-30T02:20:12.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaWeb之servlet接收请求和产生响应">
+<meta name="twitter:description" content="servlet执行原理
+浏览器发送URL的请求–&amp;gt;&amp;gt;直到浏览器收到响应结果，发生了什么？
+
+例如
+浏览器向tomcat发出http请求：http://localhost:8080/web项目名/servlet的url-pattern">
+<meta name="twitter:image" content="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a29yZUttNVN3YWQ4NmcyWnpXN2dHc2pHUkt3NEVYVGZweWFUUnB2UW5WSFVRPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/30/JavaWeb-week4/"/>
+
+
+
+
+
+  <title>JavaWeb之servlet接收请求和产生响应 | 乌龙</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ada34fd9baa03d9f1925de926f7f1b1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">乌龙</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/JavaWeb-week4/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="乌龙">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="乌龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="乌龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaWeb之servlet接收请求和产生响应
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T10:19:38+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/30/JavaWeb-week4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/30/JavaWeb-week4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="servlet执行原理"><a href="#servlet执行原理" class="headerlink" title="servlet执行原理"></a>servlet执行原理</h1><ul>
+<li>浏览器发送URL的请求–&gt;&gt;直到浏览器收到响应结果，发生了什么？</li>
+</ul>
+<h3 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h3><ul>
+<li>浏览器向tomcat发出http请求：<a href="http://localhost:8080/web项目名/servlet的url-pattern" target="_blank" rel="external">http://localhost:8080/web项目名/servlet的url-pattern</a><a id="more"></a>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3></li>
+</ul>
+<ol>
+<li>浏览器向tomcat发出GET请求（或者POST请求）</li>
+<li>获得URL的项目名，从tomcat下的webapss下找到对应文件夹</li>
+<li>根据URL中servlet的url-pattern，从web.xml找到servlet-name，找到servlet-class（被访问的servlet的类名）</li>
+<li>创建出servlet类对象；请求对象（HttpServletRequest）和响应对象(HttpServletResponse)</li>
+<li>tomcat先调用servlet对象中的init()方法（servlet第一次被访问）</li>
+<li>调用servlet的service方法；servlet.service(req,resp)；service方法根据请求类型（本例为GET请求）调用doGet方法</li>
+<li>服务器将响应结果返回给浏览器</li>
+<li>此时 如果浏览器发出第二次请求</li>
+<li>tomcat会直接根据url-pattern，找到servlet对象，调用service方法</li>
+</ol>
+<ul>
+<li>servlet在容器中的执行过程图：<br><img src="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a29yZUttNVN3YWQ4NmcyWnpXN2dHc2pHUkt3NEVYVGZweWFUUnB2UW5WSFVRPT0.jpg?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><p>MyServlet继承HttpServlet，重写抽象类HttpServlet的doGet()和doPost()方法。</p>
+</li>
+<li><p>HTTP的主要方法：</p>
+<ol>
+<li>GET：获取URI指定的信息。如果URI指定的是文件，则返回文件的内容；如果URI指定的是服务器程序，则返回该程序的输出数据。</li>
+<li>POST：从客户端向服务器发送数据，一般用于发送表单中填写的数据等情况。</li>
+</ol>
+</li>
+<li><p>GET和POST的区别：POST有一个体，这是关键。GET和POST都能发送参数。但是利用GET的话，对参数数据有限制，只能是放在请求行的内容。</p>
+</li>
+<li>service()方法根据客户发出的HTTP方法(GET、POST等），确定要调用哪个servlet方法。如果客户发出一个HTTP GET请求，service()方法会调用serlvet的doGet()方法，把请求和响应对象作为参数传递给它。</li>
+<li>你的任务是覆盖doGet()或者doPost()方法，service()方法根据HTTP请求，来调用doGet()或者doPost()方法。</li>
+</ul>
+<hr>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h3 id="第1个实验：搭建好项目文件夹结构，写一个空的servlet-MyServlet-java-，访问试一试。"><a href="#第1个实验：搭建好项目文件夹结构，写一个空的servlet-MyServlet-java-，访问试一试。" class="headerlink" title="第1个实验：搭建好项目文件夹结构，写一个空的servlet(MyServlet.java)，访问试一试。"></a>第1个实验：搭建好项目文件夹结构，写一个空的servlet(MyServlet.java)，访问试一试。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.servlet.*;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.*;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>此时，应该出现405错误，错误提示大体意思 好象HTTP GET方法 不支持此URL。<br><img src="http://imglf6.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaMHNGd3hhZjdUOUZXNVJVSEN5d2hxVGtlMTlqR2dMNnR3PT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt=""></li>
+</ul>
+<h3 id="第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet-java中重写GET方法，再来试试行不行。"><a href="#第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet-java中重写GET方法，再来试试行不行。" class="headerlink" title="第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet.java中重写GET方法，再来试试行不行。"></a>第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet.java中重写GET方法，再来试试行不行。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span><span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">	PrintWriter out = response.getWriter();</div><div class="line">	out.println(<span class="string">"&lt;html&gt;"</span> + <span class="string">"&lt;body&gt;"</span> + <span class="string">"&lt;h1 align=center&gt;This is GET request&lt;/h1&gt;"</span></div><div class="line">		+ <span class="string">"&lt;br&gt;"</span> + <span class="string">"&lt;/body&gt;"</span> + <span class="string">"&lt;/html&gt;"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>此时，应该可以了，正常显示页面</li>
+</ul>
+<p><img src="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaM3h4R1FHQVcwQWJ4S2ZMNXZiSnVxd2ZhTW1yQlB6OVFnPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt=""></p>
+<h3 id="第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet-java中重写doPost方法。"><a href="#第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet-java中重写doPost方法。" class="headerlink" title="第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet.java中重写doPost方法。"></a>第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet.java中重写doPost方法。</h3><ul>
+<li>点击第一个页面的按钮，出现第二个页面</li>
+</ul>
+<p><img src="http://imglf4.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaMnExMCtLRWJtMW1MWmZFZVcwaG12dkJHbkxSbm01cU1RPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt=""></p>
+<p><img src="http://imglf3.nosdn0.126.net/img/TVpzSWthVWN0a3JhenVNdUg3V2VaNmdYZml3SGFjc3Zzbk1iYXRhaFN0RVNPUXNCUk45WTNBPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt=""></p>
+<h3 id="第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？"><a href="#第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？" class="headerlink" title="第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？"></a>第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？</h3><h3 id="一些参考-附录代码："><a href="#一些参考-附录代码：" class="headerlink" title="一些参考 附录代码："></a>一些参考 附录代码：</h3><ul>
+<li><p>HTML表单代码：GET请求没有method参数，POST请求有method参数。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"Test"</span>&gt;</span></div><div class="line">		</div><div class="line">			<span class="tag">&lt;<span class="name">center</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"SUBMIT"</span> <span class="attr">value</span>=<span class="string">"GET SUBMIT"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">center</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"Test"</span>&gt;</span></div><div class="line">		</div><div class="line">			<span class="tag">&lt;<span class="name">center</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"SUBMIT"</span> <span class="attr">value</span>=<span class="string">"POST SUBMIT"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">center</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>HTML表单代码：POST发送两个参数</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"SelectBeerTaste.do"</span>&gt;</span></div><div class="line">		Select beer characteristics<span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">			COLOR:</div><div class="line">			<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">size</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>light</div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>amber</div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>brown</div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>dark</div><div class="line">			<span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">			BODY:</div><div class="line">			<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"body"</span> <span class="attr">size</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>light</div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>medium</div><div class="line">				<span class="tag">&lt;<span class="name">option</span>&gt;</span>heavy</div><div class="line">			<span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">center</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"SUBMIT"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">center</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>html表单代码：POST发送请求，一个参数可以有多个值</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"SelectBeer.do"</span>&gt;</span></div><div class="line">		Select beer characteristics<span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">			Can Sizes:<span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">checkbox</span> <span class="attr">name</span>=<span class="string">sizes</span> <span class="attr">value</span>=<span class="string">"12oz"</span>&gt;</span> 12 oz.<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">checkbox</span> <span class="attr">name</span>=<span class="string">sizes</span> <span class="attr">value</span>=<span class="string">"16oz"</span>&gt;</span> 16 oz.<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">checkbox</span> <span class="attr">name</span>=<span class="string">sizes</span> <span class="attr">value</span>=<span class="string">"22oz"</span>&gt;</span> 22 oz.<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">center</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"SUBMIT"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">center</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>web.xml文件结构</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/j2ee"</span></span></div><div class="line">  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/j2ee</span></div><div class="line">  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</div><div class="line">  <span class="attr">version</span>=<span class="string">"2.4"</span>&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>request的相关方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String colorParam = request.getParameter(<span class="string">"color"</span>);<span class="comment">//参数只有一个值</span></div><div class="line"></div><div class="line">String param[] = request.getParameterValues(<span class="string">"paramName"</span>);<span class="comment">//参数有多个值</span></div></pre></td></tr></table></figure>
+<!--
+#### 实验2：尝试把上面，发送两个参数的页面、一个参数有多个值的页面，这两种情况分别用Servlet->JSP接收过来，进行结果显示。
+
+* 一个参数有多个值的情况，Servlet关键代码：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String one = request.getParameterValues(&quot;sizes&quot;)[0];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String[] sizes = request.getParameterValues(&quot;sizes&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你想看到数组中的所有内容，就可以使用：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String[] sizes = request.getParameterValues(&quot;sizes&quot;);</div><div class="line">for(int x=0;x&lt;sizes.length;x++)&#123;</div><div class="line">	out.println(&quot;&lt;br&gt;sizes:&quot; + sizes[x]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>–&gt;</p>
+<!--<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">package com.example.web;</div><div class="line">import javax.servlet.*;</div><div class="line">import javax.servlet.http.*;</div><div class="line">import java.io.*;</div><div class="line"></div><div class="line">public class Ch4Servlet extends HttpServlet&#123;</div><div class="line"></div><div class="line">	public void doGet(HttpServletRequest request,HttpServletResponse response)throws IOException&#123;</div><div class="line">		PrintWriter out = response.getWriter();</div><div class="line">		out.println(&quot;&lt;html&gt;&quot; + &quot;&lt;body&gt;&quot; + &quot;&lt;h1 align=center&gt;This is GET request&lt;/h1&gt;&quot;</div><div class="line">			+ &quot;&lt;br&gt;&quot; + &quot;&lt;/body&gt;&quot; + &quot;&lt;/html&gt;&quot;);</div><div class="line">	&#125;</div><div class="line">	public void doPost(HttpServletRequest request,HttpServletResponse response)throws IOException&#123;</div><div class="line">		PrintWriter out = response.getWriter();</div><div class="line">		out.println(&quot;&lt;html&gt;&quot; + &quot;&lt;body&gt;&quot; + &quot;&lt;h1 align=center&gt;This is POST request&lt;/h1&gt;&quot;</div><div class="line">			+ &quot;&lt;br&gt;&quot; + &quot;&lt;/body&gt;&quot; + &quot;&lt;/html&gt;&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>–&gt;</p>
+-->
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/26/JavaWeb-week3/" rel="next" title="JavaWeb之MVC（续）">
+                <i class="fa fa-chevron-left"></i> JavaWeb之MVC（续）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/03/30/JavaWeb-week4/"
+           data-title="JavaWeb之servlet接收请求和产生响应" data-url="http://yoursite.com/2019/03/30/JavaWeb-week4/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="乌龙" />
+          <p class="site-author-name" itemprop="name">乌龙</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#servlet执行原理"><span class="nav-number">1.</span> <span class="nav-text">servlet执行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例如"><span class="nav-number">1.0.1.</span> <span class="nav-text">例如</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程"><span class="nav-number">1.0.2.</span> <span class="nav-text">过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验"><span class="nav-number">2.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1个实验：搭建好项目文件夹结构，写一个空的servlet-MyServlet-java-，访问试一试。"><span class="nav-number">2.0.1.</span> <span class="nav-text">第1个实验：搭建好项目文件夹结构，写一个空的servlet(MyServlet.java)，访问试一试。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet-java中重写GET方法，再来试试行不行。"><span class="nav-number">2.0.2.</span> <span class="nav-text">第2个实验：经过第1个实验验证不写代码是不行的。我们现在需要在MyServlet.java中重写GET方法，再来试试行不行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet-java中重写doPost方法。"><span class="nav-number">2.0.3.</span> <span class="nav-text">第3个实验：试一试POST方法。思路：你要在前端页面写一个POST请求；要在MyServlet.java中重写doPost方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？"><span class="nav-number">2.0.4.</span> <span class="nav-text">第4个实验：POST请求，是想前端携带数据到后台的。你能不能做个实验，前端页面传送多个数据（一个以上）到servlet，并显示在页面上？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些参考-附录代码："><span class="nav-number">2.0.5.</span> <span class="nav-text">一些参考 附录代码：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">乌龙</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lyrunner"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
